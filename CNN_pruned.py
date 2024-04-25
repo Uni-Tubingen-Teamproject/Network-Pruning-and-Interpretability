@@ -154,6 +154,9 @@ print('The mean accuracy of the unpruned model is:', mean_accuracy_model_unprune
 
 ### UNSTRUCTURED PRUNING OF THE CNN 
 
+
+## 1) UNSTRUCTURED PRUNING OF CONVOLUTION LAYERS
+
 # prune randomly in a systematic fashion by increasing the amount of pruned weights by 0.1
 # test random pruning for each amount 100 to calculate mean and sd
 amounts = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
@@ -256,3 +259,99 @@ pd.set_option('display.max_rows', None)
 # Print the results for unstructured pruning
 print('The following table contains the results of our systematic, repeated pruning and testing:')
 print(results_df)
+
+## 2) UNSTRUCTURED PRUNING OF FULLY CONNECTED LAYERS
+
+# Define the fully connected layers for pruning
+module3 = net.fc1
+module4 = net.fc2
+module5 = net.fc3
+
+# define the amounts for pruning
+amounts_fc = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+
+# create a multidimensional array to store the results
+results_fc = np.zeros((len(amounts_fc), len(amounts_fc), len(amounts_fc), runs))  # Include third dimension for fc3
+
+# if unstructured pruning has not been conducted, do it
+# otherwise, load the testing results for the pruned network
+
+if not os.path.exists('results_fc.npy'):
+    for index_i, i in enumerate(amounts_fc):
+        for index_j, j in enumerate(amounts_fc):
+            for index_k, k in enumerate(amounts_fc):  # Include loop for third fully connected layer
+
+                # skip instances where all pruning parameters are 0
+                if i == 0 and j == 0 and k == 0:
+                    continue
+
+                # perform testing multiple times to obtain mean accuracy
+                for l in range(runs):
+
+                    # reload the original model
+                    net.load_state_dict(torch.load(PATH))
+
+                    # instantiate pruning in this loop to obtain newly random pruned net each time
+                    prune.random_unstructured(module3, name="weight", amount=i)
+                    prune.random_unstructured(module4, name="weight", amount=j)
+                    prune.random_unstructured(module5, name="weight", amount=k)  # Include pruning for fc3
+
+                    # assess accuracy of pruned network 
+                    correct = 0
+                    total = 0
+
+                    # test performance for this instance
+                    with torch.no_grad():
+                        for data in testloader:
+                            images, labels = data
+                            outputs = net(images)
+                            _, predicted = torch.max(outputs.data, 1)
+                            total += labels.size(0)
+                            correct += (predicted == labels).sum().item()
+
+                    print(i, j, k, round(correct / total, 4))  # Include k in the print statement
+
+                    results_fc[index_i][index_j][index_k][l] = round(correct / total, 4)
+
+                    # reset the net to its original state
+                    prune.remove(module3, "weight")
+                    prune.remove(module4, "weight")
+                    prune.remove(module5, "weight")  # Remove pruning for fc3
+
+    print('Finished Unstructured Pruning of Fully Connected Layers')
+
+    # save the results
+    np.save('results_fc.npy', results_fc)
+else: 
+    loaded_results_fc = np.load('results_fc.npy')
+    print('Pruned model results loaded successfully!')
+
+# calculate mean accuracy and standard deviation
+mean_accuracy_fc = np.mean(loaded_results_fc, axis=(2, 3))
+std_accuracy_fc = np.std(loaded_results_fc, axis=(2, 3))
+
+# display results with a dataframe
+results_list_fc = []
+
+for index_i, i in enumerate(amounts_fc):
+    for index_j, j in enumerate(amounts_fc):
+        for index_k, k in enumerate(amounts_fc):
+
+            if i == 0 and j == 0 and k == 0:
+                continue
+
+            if index_i < mean_accuracy_fc.shape[0] and index_j < mean_accuracy_fc.shape[1] and index_k < mean_accuracy_fc.shape[2]:
+                row_fc = {
+                    "RP FC1": i,
+                    "RP FC2": j,
+                    "RP FC3": k,  # Include RP FC3
+                    "Mean Accuracy": mean_accuracy_fc[index_i, index_j, index_k],
+                    "Standard Deviation": std_accuracy_fc[index_i, index_j, index_k]
+                }
+                results_list_fc.append(row_fc)
+
+results_df_fc = pd.DataFrame(results_list_fc)
+
+# print results for unstructured pruning of fully connected layers
+print('The following table contains the results of systematic, repeated pruning and testing of Fully Connected Layers:')
+print(results_df_fc)
