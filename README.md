@@ -1,4 +1,4 @@
-# Network-Pruning-and-Interpretabilit
+# Network Pruning and Interpretability
 
 ## Project Description
 
