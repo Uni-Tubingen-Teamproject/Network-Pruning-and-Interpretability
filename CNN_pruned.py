@@ -219,7 +219,8 @@ if os.path.exists('results.npy') == False:
 
     # save the results
     np.save('results.npy', results)
-    loaded_results = np.load('results.npy')
+    loaded_results = results
+    print('Pruned model results loaded successfully!')
 else: 
     loaded_results = np.load('results.npy')
     print('Pruned model results loaded successfully!')
