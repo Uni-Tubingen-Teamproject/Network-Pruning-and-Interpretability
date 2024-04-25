@@ -153,6 +153,9 @@ print('The mean accuracy of the unpruned model is:', mean_accuracy_model_unprune
 
 ## 2) UNSTRUCTURED PRUNING OF FULLY CONNECTED LAYERS
 
+# can be set to an arbitrary value; runs per parameter pairing
+runs = 2
+
 # Define the fully connected layers for pruning
 module3 = net.fc1
 module4 = net.fc2
