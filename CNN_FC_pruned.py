@@ -216,13 +216,14 @@ if not os.path.exists('results_fc.npy'):
 
     # save the results
     np.save('results_fc.npy', results_fc)
+    loaded_results_fc = results_fc
 else: 
     loaded_results_fc = np.load('results_fc.npy')
     print('Pruned model results loaded successfully!')
 
 # calculate mean accuracy and standard deviation
-mean_accuracy_fc = np.mean(loaded_results_fc, axis=(2, 3))
-std_accuracy_fc = np.std(loaded_results_fc, axis=(2, 3))
+mean_accuracy_fc = np.mean(loaded_results_fc, axis= 3)
+std_accuracy_fc = np.std(loaded_results_fc, axis= 3)
 
 # display results with a dataframe
 results_list_fc = []
