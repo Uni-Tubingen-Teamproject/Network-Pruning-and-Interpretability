@@ -152,121 +152,7 @@ mean_accuracy_model_unpruned_loaded = np.load('mean_accuracy.npy')
 print('The mean accuracy of the unpruned model is:', mean_accuracy_model_unpruned_loaded)
 
 
-### UNSTRUCTURED PRUNING OF THE CNN 
-
-# prune randomly in a systematic fashion by increasing the amount of pruned weights by 0.1
-# test random pruning for each amount 100 to calculate mean and sd
-amounts = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-
-# can be set to an arbitrary value; runs per parameter pairing 
-runs = 2
-
-# define the layers to be pruned; we do this first for the convolutional layers
-module1 = net.conv1
-module2 = net.conv2
-
-# print parameters if wanted
-# print(list(module.named_parameters()))
-# print(list(module2.named_parameters()))
-
-fc1 = net.fc1
-fc2 = net.fc2
-fc3 = net.fc3
-
-
-results = np.zeros((len(amounts), len(amounts), len(amounts), len(amounts), len(amounts), runs))
-
-## UPDATED CODE FOR BIAS PRUNING OF ALL LAYERS
-if os.path.exists('results_biases.npy') == False:
-    for index_i, i in enumerate(amounts):
-        for index_j, j in enumerate(amounts):
-            for index_l, l in enumerate(amounts):
-                for index_m, m in enumerate(amounts):
-                    for index_n, n in enumerate(amounts):
-
-                        
-                        if i == 0 and j == 0 and l == 0 and m == 0 and n == 0:
-                            continue
-
-                        
-                        for k in range(runs):
-
-                            #reload the original model
-                            net.load_state_dict(torch.load(PATH))
-
-                            
-                            prune.random_unstructured(module1, name = "bias", amount = i)
-                            prune.random_unstructured(module2, name = "bias", amount = j)
-                            prune.random_unstructured(fc1, name = "bias", amount = l)
-                            prune.random_unstructured(fc2, name = "bias", amount = m)
-                            prune.random_unstructured(fc3, name = "bias", amount = n)
-                            
-
-                            #Assess the accuracy of the pruned network 
-                            correct = 0
-                            total = 0
-
-                            #Test performance for this instance
-                            with torch.no_grad():
-                                for data in testloader:
-                                    images, labels = data
-                                    outputs = net(images)
-                                    _, predicted = torch.max(outputs.data, 1)
-                                    total += labels.size(0)
-                                    correct += (predicted == labels).sum().item()
-
-                            print(i, j, l, m, n, round(correct / total, 4))
-                
-                            results[index_i][index_j][index_l][index_m][index_n][k] = round(correct / total, 4)
-
-                            #reset to original state
-                            prune.remove(module1, "bias")
-                            prune.remove(module2, "bias")
-                            prune.remove(fc1, "bias")
-                            prune.remove(fc2, "bias")
-                            prune.remove(fc3, "bias")
-                            
-
-    print('Finished Unstructured Pruning for Biases')
-
-    #save results
-    np.save('results_biases.npy', results)
-    loaded_results = np.load('results_biases.npy')
-else: 
-    loaded_results = np.load('results_biases.npy')
-    print('Pruned model results loaded successfully!')
-
-
-# Get the mean accuracy and the standard deviation 
-mean_accuracy = np.mean(loaded_results, axis = 5)
-std_accuracy = np.std(loaded_results, axis = 5)        
-
-# Display results for bias pruning 
-results_list = []
-
-for index_i, i in enumerate(amounts):
-    for index_j, j in enumerate(amounts):
-        for index_l, l in enumerate(amounts):
-            for index_m, m in enumerate(amounts):
-                for index_n, n in enumerate(amounts):
-                    if i == 0 and j == 0 and l == 0 and m == 0 and n == 0:
-                        continue
-                    
-                    if index_i < mean_accuracy.shape[0] and index_j < mean_accuracy.shape[1] and index_l < mean_accuracy.shape[2] and index_m < mean_accuracy.shape[3] and index_n < mean_accuracy.shape[4]:
-                        row = {
-                            "RP Bias Conv1": i,
-                            "RP Bias Conv2": j,
-                            "RP Bias FC1": l,
-                            "RP Bias FC2": m,
-                            "RP Bias FC3": n,
-                            "Mean Accuracy": mean_accuracy[index_i, index_j, index_l, index_m, index_n],
-                            "Standard Deviation": std_accuracy[index_i, index_j, index_l, index_m, index_n]
-                            }
-                        
-                    results_list.append(row)
-
-results_df = pd.DataFrame(results_list)
-
+### UNSTRUCTURED BIAS PRUNING PRUNING OF THE CNN 
 
 ## GETTING THE BIAS OF THE CNN-LAYERS
 # convolutional layer 1
@@ -278,7 +164,6 @@ for name, param in module1.named_parameters():
 
 print("Bias amount L1:", total_bias_count)
 # Bias amount L1: 6
-
 
 
 # convolutional layer 2
@@ -324,19 +209,121 @@ for name, param in fc3.named_parameters():
 print("Bias amount FCL3:", bias_count3)
 # Bias amount FCL3: 10
 
+## PRUNING
+# prune randomly in a systematic fashion by increasing the amount of pruned weights by 0.1
+# test random pruning for each amount 100 to calculate mean and sd
+amounts_bias = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 
-# Print the bias
-print(list(module1.named_parameters()))
-print(list(module2.named_parameters()))
-print(list(fc1.named_parameters()))
-print(list(fc2.named_parameters()))
-print(list(fc3.named_parameters()))
+# can be set to an arbitrary value; runs per parameter pairing 
+runs_bias = 2
+
+# define the layers to be pruned
+module1 = net.conv1
+module2 = net.conv2
+fc1 = net.fc1
+fc2 = net.fc2
+fc3 = net.fc3
+
+
+results_bias = np.zeros((len(amounts_bias), len(amounts_bias), len(amounts_bias), len(amounts_bias), len(amounts_bias), runs_bias))
+
+## UPDATED CODE FOR BIAS PRUNING OF ALL LAYERS
+
+if os.path.exists('results_bias.npy') == False:
+    for index_i, i in enumerate(amounts_bias):
+        for index_j, j in enumerate(amounts_bias):
+            for index_k, k in enumerate(amounts_bias):
+                for index_l, l in enumerate(amounts_bias):
+                    for index_m, m in enumerate(amounts_bias):                        
+                        if i == 0 and j == 0 and k == 0 and l == 0 and m == 0:
+                            continue
+
+                        
+                        for n in range(runs_bias):
+
+                            #reload the original model
+                            net.load_state_dict(torch.load(PATH))
+
+                            # pruning the bias of all layers
+                            prune.random_unstructured(module1, name = "bias", amount = i)
+                            prune.random_unstructured(module2, name = "bias", amount = j)
+                            prune.random_unstructured(fc1, name = "bias", amount = k)
+                            prune.random_unstructured(fc2, name = "bias", amount = l)
+                            prune.random_unstructured(fc3, name = "bias", amount = m)
+                            
+
+                            #Assess the accuracy of the pruned network 
+                            correct = 0
+                            total = 0
+
+                            #Test performance for this instance
+                            with torch.no_grad():
+                                for data in testloader:
+                                    images, labels = data
+                                    outputs = net(images)
+                                    _, predicted = torch.max(outputs.data, 1)
+                                    total += labels.size(0)
+                                    correct += (predicted == labels).sum().item()
+
+                            print(i, j, k, l, m, round(correct / total, 4)) # include k, l, m
+                
+                            results_bias[index_i][index_j][index_k][index_l][index_m][n] = round(correct / total, 4)
+
+                            # reset to original state
+                            prune.remove(module1, "bias")
+                            prune.remove(module2, "bias")
+                            prune.remove(fc1, "bias")
+                            prune.remove(fc2, "bias")
+                            prune.remove(fc3, "bias")
+                            
+
+    print('Finished Unstructured Pruning for Biases')
+
+    #save results
+
+    np.save('results_bias.npy', results_bias)
+    loaded_results_bias = np.load('results_bias.npy')
+else: 
+    loaded_results_bias = np.load('results_bias.npy')
 
 
 
-# to view all rows, we need to enable the following options
+    print('Pruned model results loaded successfully!')
+
+
+# Get the mean accuracy and the standard deviation 
+mean_accuracy_bias = np.mean(loaded_results_bias, axis = 5)
+std_accuracy_bias = np.std(loaded_results_bias, axis = 5)        
+
+# Display results for bias pruning 
+results_list_bias = []
+
+for index_i, i in enumerate(amounts_bias):
+    for index_j, j in enumerate(amounts_bias):
+        for index_k, k in enumerate(amounts_bias):
+            for index_l, l in enumerate(amounts_bias):
+                for index_m, m in enumerate(amounts_bias):
+                    if i == 0 and j == 0 and k == 0 and l == 0 and m == 0:
+                        continue
+                    
+                    if index_i < mean_accuracy_bias.shape[0] and index_j < mean_accuracy_bias.shape[1] and index_k < mean_accuracy_bias.shape[2] and index_l < mean_accuracy_bias.shape[3] and index_m < mean_accuracy_bias.shape[4]:
+                        row_bias = {
+                            "RP Bias Conv1": i,
+                            "RP Bias Conv2": j,
+                            "RP Bias FC1": k,
+                            "RP Bias FC2": l,
+                            "RP Bias FC3": m,
+                            "Mean Accuracy": mean_accuracy_bias[index_i, index_j, index_k, index_l, index_m],
+                            "Standard Deviation": std_accuracy_bias[index_i, index_j, index_k, index_l, index_m]
+                            }
+                        
+                    results_list_bias.append(row_bias)
+
+results_df_bias = pd.DataFrame(results_list_bias)
+
+
 pd.set_option('display.max_rows', None)
 
-# Print the results for unstructured pruning
-print('The following table contains the results of our systematic, repeated pruning and testing:')
-# print(results_df)
+# Print the results for unstructured pruning of the bias
+print('The following table contains the results of our systematic, repeated pruning and testing of the Bias of all layers:')
+print(results_df_bias)
