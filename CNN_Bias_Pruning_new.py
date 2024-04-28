@@ -228,14 +228,13 @@ fc3 = net.fc3
 results_bias = np.zeros((len(amounts_bias), len(amounts_bias), len(amounts_bias), len(amounts_bias), len(amounts_bias), runs_bias))
 
 ## UPDATED CODE FOR BIAS PRUNING OF ALL LAYERS
+
 if os.path.exists('results_bias.npy') == False:
     for index_i, i in enumerate(amounts_bias):
         for index_j, j in enumerate(amounts_bias):
             for index_k, k in enumerate(amounts_bias):
                 for index_l, l in enumerate(amounts_bias):
-                    for index_m, m in enumerate(amounts_bias):
-
-                        
+                    for index_m, m in enumerate(amounts_bias):                        
                         if i == 0 and j == 0 and k == 0 and l == 0 and m == 0:
                             continue
 
@@ -281,10 +280,14 @@ if os.path.exists('results_bias.npy') == False:
     print('Finished Unstructured Pruning for Biases')
 
     #save results
+
     np.save('results_bias.npy', results_bias)
     loaded_results_bias = np.load('results_bias.npy')
 else: 
     loaded_results_bias = np.load('results_bias.npy')
+
+
+
     print('Pruned model results loaded successfully!')
 
 
