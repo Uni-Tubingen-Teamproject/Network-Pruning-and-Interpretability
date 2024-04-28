@@ -6,6 +6,10 @@ from mpl_toolkits.mplot3d import Axes3D
 data = np.load('results.npy')
 data2 = np.load('results (1).npy')
 
+# Print Data
+# print("First run:", data, "\n")
+# print("Second run:", data2)
+
 mean_array = np.mean(data2, axis=-1)
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
