@@ -6,7 +6,7 @@ from mpl_toolkits.mplot3d import Axes3D
 data = np.load('results.npy')
 data2 = np.load('results (1).npy')
 
-mean_array = np.mean(data, axis=-1)
+mean_array = np.mean(data2, axis=-1)
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
 
@@ -16,8 +16,8 @@ X, Y = np.meshgrid(np.arange(0, 1.0, 0.1), np.arange(0, 1.0, 0.1))
 # Plot der Oberfläche
 ax.plot_surface(X, Y, mean_array, cmap='viridis')
 
-ax.set_xlabel('Conv 1')
-ax.set_ylabel('Conv 2')
+ax.set_xlabel('Conv 2')
+ax.set_ylabel('Conv 1')
 ax.set_zlabel('Accuracy')
 
 plt.show()
