@@ -72,7 +72,7 @@ for pruning_rate in amount_pruning:
     # Collect all parameters in the model that can be pruned
     parameters_to_prune = []
     for name, module in model.named_modules():
-            parameters_to_prune.append((module, 'weight'))
+        parameters_to_prune.append((module, 'weight'))
 
     # Prune the model
     prune.global_unstructured(
@@ -89,25 +89,24 @@ for pruning_rate in amount_pruning:
     print("Non-zero parameters after pruning:", non_zero_params)
     print("Pruned parameters:", pruned_params)
 
-   
-# Validate accuracy after pruning
-correct_predictions = 0
+    # Validate accuracy after pruning
+    correct_predictions = 0
 
-# Loop through the validation set and compute accuracy after pruning
-for images, labels in validation_loader:
-    if torch.cuda.is_available():
-        images = images.to('cuda')
-        labels = labels.to('cuda')
+    # Loop through the validation set and compute accuracy after pruning
+    for images, labels in validation_loader:
+        if torch.cuda.is_available():
+            images = images.to('cuda')
+            labels = labels.to('cuda')
 
-    with torch.no_grad():
-        output = model(images)
+        with torch.no_grad():
+            output = model(images)
 
-    _, prediction = torch.max(output, 1)
-    correct_predictions += (prediction == labels).sum().item()
+        _, prediction = torch.max(output, 1)
+        correct_predictions += (prediction == labels).sum().item()
 
-# Calculate the accuracy for the validation set after pruning
-accuracy_after_pruning = correct_predictions / len(validation_set)
-print("Accuracy after pruning:", accuracy_after_pruning)
+    # Calculate the accuracy for the validation set after pruning
+    accuracy_after_pruning = correct_predictions / len(validation_set)
+    print("Accuracy after pruning:", accuracy_after_pruning)
 
-# Reset the model to its original state (remove pruning)
-prune.remove(model, 'weight')
+    # Reset the model to its original state (remove pruning)
+    prune.remove(model, 'weight')
