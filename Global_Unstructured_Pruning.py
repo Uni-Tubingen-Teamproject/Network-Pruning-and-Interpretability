@@ -4,6 +4,9 @@ import torchvision.datasets as datasets
 from torchvision import transforms
 import json
 import torch.nn.utils.prune as prune
+from torch.utils.data.sampler import SubsetRandomSampler
+import numpy as np
+import pandas as pd
 
 # Load the GoogleNet model
 model = torch.hub.load('pytorch/vision:v0.10.0', 'googlenet', weights = 'GoogLeNet_Weights.DEFAULT')
@@ -27,6 +30,7 @@ validation_set = datasets.ImageNet(root='./data', split='val', transform=validat
 
 # Create a data loader for the validation set
 validation_loader = torch.utils.data.DataLoader(validation_set, batch_size=batch_size, shuffle=False, num_workers=0)
+
 
 # Load the ImageNet class labels
 with open('imagenet_class_index.json') as f:
@@ -58,55 +62,79 @@ for images, labels in validation_loader:
 accuracy_before_pruning = correct_predictions / len(validation_set)
 print("Accuracy before pruning:", accuracy_before_pruning)
 
+
 ## Global unstructured pruning for the whole model
 
 # Pruning amount for the loop
-amount_pruning = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+amounts = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+
+# number of runs per pruning amount
+runs = 2
+
+# create a multidimensional array that can store all the values
+results_global_unstructured = np.zeros((len(amounts), runs), dtype=np.float32)
 
 # Loop through different pruning rates
-for pruning_rate in amount_pruning:
+for i, pruning_rate in enumerate(amounts):
     print(f"Pruning Rate: {pruning_rate}")
+
+    # to obtain the mean, run the testing 2-times
+    for k in range(runs):
     
-    # Apply global unstructured pruning to the entire model
+     # Apply global unstructured pruning to the entire model
 
-    # Collect all parameters in the model that can be pruned
-    parameters_to_prune = []
-    for name, module in model.named_modules():
-        parameters_to_prune.append((module, 'weight'))
+     # Collect all parameters in the model that can be pruned
+      parameters_to_prune = []
+      for name, module in model.named_modules():
+         if hasattr(module, 'weight'):
+          parameters_to_prune.append((module, 'weight'))
 
-    # Prune the model
-    prune.global_unstructured(
+     # Prune the model
+      prune.global_unstructured(
         parameters_to_prune,
-        amount=pruning_rate,
-    )
+        amount = pruning_rate,
+      )
 
-    # Count non-zero trainable parameters after pruning
-    total_params = sum(p.numel() for p in model.parameters())
-    non_zero_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    pruned_params = total_params - non_zero_params
+      # Validate accuracy after pruning
+      correct_predictions = 0
 
-    print("Total parameters:", total_params)
-    print("Non-zero parameters after pruning:", non_zero_params)
-    print("Pruned parameters:", pruned_params)
+      # Loop through the validation set and compute accuracy after pruning
+      for images, labels in validation_loader:
+         if torch.cuda.is_available():
+             images = images.to('cuda')
+             labels = labels.to('cuda')
 
-    # Validate accuracy after pruning
-    correct_predictions = 0
+         with torch.no_grad():
+             output = model(images)
 
-    # Loop through the validation set and compute accuracy after pruning
-    for images, labels in validation_loader:
-        if torch.cuda.is_available():
-            images = images.to('cuda')
-            labels = labels.to('cuda')
+         _, prediction = torch.max(output, 1)
+         correct_predictions += (prediction == labels).sum().item()
 
-        with torch.no_grad():
-            output = model(images)
+      # Calculate the accuracy for the validation set after pruning
+      accuracy_after_pruning_global_unstructured = correct_predictions / len(validation_set)
+      print("Accuracy after pruning:", accuracy_after_pruning_global_unstructured)
+      
+      results_global_unstructured[i][k] = accuracy_after_pruning_global_unstructured
 
-        _, prediction = torch.max(output, 1)
-        correct_predictions += (prediction == labels).sum().item()
+      # Reset the model to its original state (remove pruning)
+      prune.remove(model, 'weight')
 
-    # Calculate the accuracy for the validation set after pruning
-    accuracy_after_pruning = correct_predictions / len(validation_set)
-    print("Accuracy after pruning:", accuracy_after_pruning)
+np.save('results_globalUnstructured.npy', results_global_unstructured)
 
-    # Reset the model to its original state (remove pruning)
-    prune.remove(model, 'weight')
+# Get the mean accuracy and the standard deviation 
+mean_accuracy = np.mean(results_global_unstructured, axis=1)
+std_accuracy = np.std(results_global_unstructured, axis=1)        
+
+# Display the results with a dataframe
+results_list_global_unstructured = []
+
+for index, pruning_rate in enumerate(amounts):
+    row = {
+        "Pruning Rate": pruning_rate,
+        "Mean Accuracy": mean_accuracy[index],
+        "Standard Deviation": std_accuracy[index]
+    }
+    results_list_global_unstructured.append(row)
+
+results_df_global_unstructured = pd.DataFrame(results_list_global_unstructured)
+print(results_df_global_unstructured)
