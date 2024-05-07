@@ -37,8 +37,8 @@ input_batch = input_tensor.unsqueeze(0)
 amounts = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 runs = 2 # Anzahl der Durchläufe für jedes Pruning-Betrag
 
-# Erstellen des validation_loader
-validation_set = datasets.ImageFolder('/Users/philippholzmann/Desktop/Teamprojekt/imagenette2-320', transform=transforms.Compose([
+# create validation_loader
+validation_set = datasets.ImageFolder('/Users/philippholzmann/Desktop/Teamprojekt/imagenette2-320/val', transform=transforms.Compose([
     transforms.Resize(256),      
     transforms.CenterCrop(224),
     transforms.ToTensor(),
@@ -81,7 +81,7 @@ for module_name, module in model.named_modules():
                 # Calculate the accuracy for the validation set after pruning
                 accuracy_after_pruning = correct_predictions / total_images
                 
-                # Speichern der Genauigkeit im Array
+                # save accuracy in array
                 accuracy_results[i, run] = accuracy_after_pruning
 
                 print(f"Run {run+1} - Accuracy after pruning with amount {amt}: {accuracy_after_pruning}")
@@ -101,11 +101,14 @@ for module_name, module in model.named_modules():
         if amt == 0.9:
             break
 
-# Ausgabe der durchschnittlichen Genauigkeiten für jeden Pruning-Betrag
+# Output the average accuracies for each pruning amount
 for i, amt in enumerate(amounts):
     mean_accuracy = np.mean(accuracy_results[i])
     std_deviation = np.std(accuracy_results[i])
     print(f"Pruning amount: {amt}, Mean accuracy: {mean_accuracy}, Std deviation: {std_deviation}")
+
+# save pruning results
+np.save('pruning_results.npy', accuracy_results)
 
 
 
