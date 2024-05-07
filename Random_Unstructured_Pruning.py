@@ -35,7 +35,7 @@ input_batch = input_tensor.unsqueeze(0)
 
 # Pruning parameters and number of runs
 amounts = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-runs = 2 # Anzahl der Durchläufe für jedes Pruning-Betrag
+runs = 2 # number of runs per pruning amount
 
 # create validation_loader
 validation_set = datasets.ImageFolder('/Users/philippholzmann/Desktop/Teamprojekt/imagenette2-320/val', transform=transforms.Compose([
@@ -48,7 +48,7 @@ validation_loader = torch.utils.data.DataLoader(validation_set, batch_size=1,
                                                 sampler=torch.utils.data.SubsetRandomSampler(range(100)),
                                                 num_workers=0)
 
-# Array zum Speichern der Genauigkeitswerte für jeden Pruning-Betrag
+# Array for saving Accuracy for each pruning amount
 accuracy_results = np.zeros((len(amounts), runs))
 
 # Prune the model
