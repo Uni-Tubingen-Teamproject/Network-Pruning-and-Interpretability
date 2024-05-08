@@ -145,7 +145,10 @@ for i, pruning_rate in enumerate(amounts):
     results_global_unstructured_l1[i] = accuracy_after_pruning_global_unstructured_l1
 
     # Reset the model to its original state (remove pruning)
+
+
     for module, _ in parameters_to_prune:
         prune.remove(module, 'weight')
 
 np.save('results_globalUnstructured_l1.npy', results_global_unstructured_l1)
+
