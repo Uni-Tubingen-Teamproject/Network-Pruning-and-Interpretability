@@ -47,8 +47,8 @@ validation_set = datasets.ImageFolder('/Users/emiliamosthaf/Documents/viertes se
                                           transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                                                std=[0.229, 0.224, 0.225]),
                                       ]))
-validation_loader = torch.utils.data.DataLoader(validation_set, batch_size=1,
-                                                sampler=torch.utils.data.SubsetRandomSampler(range(1000)),
+validation_loader = torch.utils.data.DataLoader(validation_set, batch_size=128,
+                                                sampler=torch.utils.data.SubsetRandomSampler(range(100)),
                                                 num_workers=0)
 
 ## Global unstructured pruning for the whole model
