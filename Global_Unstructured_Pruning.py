@@ -9,6 +9,10 @@ import torch.nn.utils.prune as prune
 model = torch.hub.load('pytorch/vision:v0.10.0', 'googlenet', weights = 'GoogLeNet_Weights.DEFAULT')
 model.eval()
 
+# Move the model to GPU if CUDA is available
+if torch.cuda.is_available():
+    model = model.cuda()
+
 ## Validation loop for the ffcv imagenet 
 
 # Define the transformations of the input images
@@ -19,26 +23,46 @@ validation_transformation = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])  
 ])
 
+print("Es wird geprintet!")
+
+print("CUDA Available:", torch.cuda.is_available())
+print("Number of GPUs:", torch.cuda.device_count())
+
 # Define batch size, depending on available memory 
-batch_size = 1
+batch_size = 20
 
 # Load the ImageNet validation set
-validation_set = datasets.ImageNet(root='./data', split='val', transform=validation_transformation, download=True)
+validation_set = datasets.ImageNet(root='/mnt/qb/datasets/ImageNet2012', split='val', transform=validation_transformation)
 
 # Create a data loader for the validation set
-validation_loader = torch.utils.data.DataLoader(validation_set, batch_size=batch_size, shuffle=False, num_workers=0)
+validation_loader = torch.utils.data.DataLoader(validation_set, batch_size=batch_size, shuffle=False, num_workers=8)
+
+# URL to the ImageNet class index json file
+url = 'https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json'
 
 # Load the ImageNet class labels
 with open('imagenet_class_index.json') as f:
     class_idx = json.load(f)
 
+
+# Get the number of images in the validation set
+validation_set_size = len(validation_set)
+print("Size of the ImageNet validation set:", validation_set_size)
+
+
+# # Load the ImageNet class labels
+# with open('imagenet_class_index.json') as f:
+#     class_idx = json.load(f)
+
 classes = {idx: label for idx, label in class_idx.items()}
 
 # Counters to compute accuracy
 correct_predictions = 0
-
+count = 0 
 for images, labels in validation_loader:
-
+    count += 1
+    if count > 1000:
+        break
     # Move the input and model to GPU for speed if available
     if torch.cuda.is_available():
         images = images.to('cuda')
@@ -72,17 +96,21 @@ for pruning_rate in amount_pruning:
     # Collect all parameters in the model that can be pruned
     parameters_to_prune = []
     for name, module in model.named_modules():
-        parameters_to_prune.append((module, 'weight'))
+        # Prüfen, ob das Modul das Attribut 'weight' hat
+        if hasattr(module, 'weight') and module.weight is not None:
+            parameters_to_prune.append((module, 'weight'))
 
-    # Prune the model
-    prune.global_unstructured(
-        parameters_to_prune,
-        amount=pruning_rate,
-    )
+        # Prune the model
+        if parameters_to_prune:
+            prune.global_unstructured(
+                parameters_to_prune,
+                pruning_method=prune.L1Unstructured,
+                amount=pruning_rate,
+            )
 
     # Count non-zero trainable parameters after pruning
     total_params = sum(p.numel() for p in model.parameters())
-    non_zero_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    non_zero_params = sum(p.numel() for p in model.parameters() if p.data.count_nonzero() > 0)
     pruned_params = total_params - non_zero_params
 
     print("Total parameters:", total_params)
@@ -109,4 +137,4 @@ for pruning_rate in amount_pruning:
     print("Accuracy after pruning:", accuracy_after_pruning)
 
     # Reset the model to its original state (remove pruning)
-    prune.remove(model, 'weight')
+    prune.remove(module, 'weight')
