@@ -1,0 +1,1 @@
+python3 Global_Unstructured_Pruning.py
