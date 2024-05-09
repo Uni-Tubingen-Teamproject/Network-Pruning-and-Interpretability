@@ -34,7 +34,7 @@ print("CUDA Available:", torch.cuda.is_available())
 print("Number of GPUs:", torch.cuda.device_count())
 
 # Define batch size, depending on available memory 
-batch_size = 20
+batch_size = 120
 
 # Load the ImageNet validation set
 validation_set = datasets.ImageNet(root='/mnt/qb/datasets/ImageNet2012', split='val', transform=validation_transformation)
@@ -63,11 +63,9 @@ classes = {idx: label for idx, label in class_idx.items()}
 
 # Counters to compute accuracy
 correct_predictions = 0
-count = 0 
+
 for images, labels in validation_loader:
-    count += 1
-    if count > 1000:
-        break
+
     # Move the input and model to GPU for speed if available
     if torch.cuda.is_available():
         images = images.to('cuda')
