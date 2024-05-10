@@ -11,8 +11,6 @@ import numpy as np
 import json
 import torchvision.datasets as datasets
 
-# import for random subset, e.g. 100 images
-from torch.utils.data.sampler import SubsetRandomSampler
 
 
 # Load the GoogleNet model
@@ -29,25 +27,25 @@ validation_transformation = transforms.Compose([
 ])
 
 # Define batch size, depending on available memory
-batch_size = 1
+batch_size = 120
 
-# Load the ImageNet validation set
-validation_set = datasets.ImageFolder('/Users/szagu/OneDrive/Desktop/teamprojekt/imagenette2-320', transform=validation_transformation)
-
-# validation_set = datasets.ImageNet(root='/scratch_local/datasets/ImageNet2012', split='val', transform=validation_transformation, download=True)
+validation_set = datasets.ImageNet(root='/mnt/qb/datasets/ImageNet2012', split='val', transform=validation_transformation)
 
 # Create a data loader for the validation set
-# validation_loader = torch.utils.data.DataLoader(validation_set, batch_size=batch_size, shuffle=False, num_workers=0)
+validation_loader = torch.utils.data.DataLoader(validation_set, batch_size=batch_size, shuffle=False, num_workers=8)
+
+if torch.cuda.is_available():
+    model = model.cuda()
 
 ### MAKE A SUBSET OF 100 PICTURES
-validation_loader = torch.utils.data.DataLoader(validation_set, batch_size=1, 
-                                                sampler=torch.utils.data.SubsetRandomSampler(range(50)),
-                                                num_workers=0)
+# validation_loader = torch.utils.data.DataLoader(validation_set, batch_size=1, 
+#                                                 sampler=torch.utils.data.SubsetRandomSampler(range(50)),
+#                                                 num_workers=0)
 
 
 # Load the ImageNet class labels
 # extract class labels for imagenette
-classes = validation_set.classes
+# classes = validation_set.classes
 
 
 # with open('imagenet_class_index.json') as f:
@@ -57,6 +55,9 @@ classes = validation_set.classes
 
 # Counters to compute accuracy
 correct_predictions = 0
+
+
+print("Hello World!")
 
 for images, labels in validation_loader:
 

@@ -11,42 +11,27 @@ from torch.utils.data.sampler import SubsetRandomSampler
 model = torch.hub.load('pytorch/vision:v0.10.0', 'googlenet', weights='GoogLeNet_Weights.DEFAULT')
 model.eval()
 
-# URL for the imagenet_classes.txt file
-url = "https://raw.githubusercontent.com/pytorch/hub/master/imagenet_classes.txt"
-filename = "imagenet_classes.txt"
+# Move the model to GPU if CUDA is available
+if torch.cuda.is_available():
+    model = model.cuda()
 
-# Download the imagenet_classes.txt file
-urllib.request.urlretrieve(url, filename)
-
-# Load and preprocess the example image
-url_image, filename_image = ("https://github.com/pytorch/hub/raw/master/images/dog.jpg", "dog.jpg")
-try: urllib.URLopener().retrieve(url_image, filename_image)
-except: urllib.request.urlretrieve(url_image, filename_image)
-
-input_image = Image.open(filename_image)
-preprocess = transforms.Compose([
-    transforms.Resize(256),      
-    transforms.CenterCrop(224),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+validation_transformation = transforms.Compose([
+    transforms.Resize(256),               
+    transforms.CenterCrop(224),          
+    transforms.ToTensor(),                
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])  
 ])
-input_tensor = preprocess(input_image)
-input_batch = input_tensor.unsqueeze(0)
 
 # Pruning parameters and number of runs
 amounts = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 runs = 2 # number of runs per pruning amount
 
+batch_size = 120
+
 # create validation_loader
-validation_set = datasets.ImageFolder('/Users/philippholzmann/Desktop/Teamprojekt/imagenette2-320/val', transform=transforms.Compose([
-    transforms.Resize(256),      
-    transforms.CenterCrop(224),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-]))
-validation_loader = torch.utils.data.DataLoader(validation_set, batch_size=1, 
-                                                sampler=torch.utils.data.SubsetRandomSampler(range(100)),
-                                                num_workers=0)
+validation_set = datasets.ImageNet(root='/mnt/qb/datasets/ImageNet2012', split='val', transform=validation_transformation)
+
+validation_loader = torch.utils.data.DataLoader(validation_set, batch_size=batch_size, shuffle=False, num_workers=8)
 
 # Array for saving Accuracy for each pruning amount
 accuracy_results = np.zeros((len(amounts), runs))
