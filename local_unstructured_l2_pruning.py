@@ -66,6 +66,7 @@ for images, labels in validation_loader:
 accuracy = correct_predictions / len(validation_set)
 
 
+
 ## Local unstructured L2-pruning
 
 # Percentage of pruned parameters (ones with the lowest L2 norm)
@@ -108,6 +109,8 @@ for module_name, module in model.named_modules():
 
             # Reset the model to its original state (remove pruning)
             prune.remove(module, 'weight')
+
+
 
 # save the results
 np.save('results_l2.npy', results_l2)

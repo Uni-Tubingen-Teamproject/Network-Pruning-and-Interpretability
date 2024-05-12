@@ -24,8 +24,11 @@ timeline
     2024 : Network Pruning & Interpretability
 ```
 
-# Wir im kommenden Semester: 
-![man](https://github.com/pzump/teamprojekt-first-steps/assets/148431873/022cd755-748c-4402-b6b5-ba594d19c5e7)
+# Wir im kommenden Semester:
+
+DALL-E created Image of us :)
+
+![DALL·E teamprojekt](https://github.com/Uni-Tubingen-Teamproject/Network-Pruning-and-Interpretability/assets/114144046/8431773d-54ce-420a-9e0e-762b23508507)
 
 
  
