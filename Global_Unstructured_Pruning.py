@@ -10,6 +10,42 @@ from torch.utils.data.sampler import SubsetRandomSampler
 import numpy as np
 import pandas as pd
 
+from torchvision.datasets import ImageNet
+import warnings
+import os
+from torchvision.datasets.utils import check_integrity, extract_archive, verify_str_arg
+from torchvision.datasets.imagenet import load_meta_file, parse_devkit_archive, META_FILE, parse_val_archive, parse_train_archive
+
+class HackyImageNet(ImageNet):
+
+    def __init__(self, root: str, devkit_loc="/mnt/qb/datasets/ImageNet2012/", split: str = 'train', transform=None, download = False, **kwargs):
+        if download is True:
+            msg = ("The dataset is no longer publicly accessible. You need to "
+                   "download the archives externally and place them in the root "
+                   "directory.")
+            raise RuntimeError(msg)
+        elif download is False:
+            msg = ("The use of the download flag is deprecated, since the dataset "
+                   "is no longer publicly accessible.")
+            warnings.warn(msg, RuntimeWarning)
+
+        root = self.root = os.path.expanduser(root)
+        self.split = verify_str_arg(split, "split", ("train", "val"))
+        self.devkit_loc = devkit_loc
+
+        wnid_to_classes = load_meta_file(self.devkit_loc)[0]
+
+        super(ImageNet, self).__init__(self.split_folder, **kwargs)
+        self.transform = transform
+        self.root = root
+        self.wnids = self.classes
+        self.wnid_to_idx = self.class_to_idx
+        self.classes = [wnid_to_classes[wnid] for wnid in self.wnids]
+        self.class_to_idx = {cls: idx
+                             for idx, clss in enumerate(self.classes)
+                             for cls in clss}
+        
+
 # Load the GoogleNet model
 model = torch.hub.load('pytorch/vision:v0.10.0', 'googlenet', weights='GoogLeNet_Weights.DEFAULT')
 model.eval()
@@ -28,22 +64,21 @@ validation_transformation = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])  
 ])
 
-print("Es wird geprintet!")
-
 print("CUDA Available:", torch.cuda.is_available())
 print("Number of GPUs:", torch.cuda.device_count())
 
 # Define batch size, depending on available memory 
 batch_size = 120
 
+# Beispiel zur Verwendung:
+root_path = "/scratch_local/datasets/ImageNet2012"
+
+validation_set = HackyImageNet(root=root_path, split='val', transform=validation_transformation)
 # Load the ImageNet validation set
-validation_set = datasets.ImageNet(root='/mnt/qb/datasets/ImageNet2012', split='val', transform=validation_transformation)
+# validation_set = datasets.ImageNet(root='/scratch_local/datasets/ImageNet2012', split='val', transform=validation_transformation)
 
 # Create a data loader for the validation set
 validation_loader = torch.utils.data.DataLoader(validation_set, batch_size=batch_size, shuffle=False, num_workers=8)
-
-# URL to the ImageNet class index json file
-url = 'https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json'
 
 # Load the ImageNet class labels
 with open('imagenet_class_index.json') as f:
@@ -93,26 +128,22 @@ amounts = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 # create a multidimensional array that can store all the values
 results_global_unstructured_l1 = np.zeros(len(amounts))
 
+parameters_to_prune = []
+for name, module in model.named_modules():
+    # Prüfen, ob das Modul das Attribut 'weight' hat
+    if hasattr(module, 'weight') and module.weight is not None:
+        parameters_to_prune.append((module, 'weight'))
+
 # Loop through different pruning rates
 for i, pruning_rate in enumerate(amounts):
     print(f"Pruning Rate: {pruning_rate}")
-
-    # Apply global unstructured L1 pruning to the entire model
-
-    # Collect all parameters in the model that can be pruned
-    parameters_to_prune = []
-    for name, module in model.named_modules():
-        # Prüfen, ob das Modul das Attribut 'weight' hat
-        if hasattr(module, 'weight') and module.weight is not None:
-            parameters_to_prune.append((module, 'weight'))
-
-        # Prune the model
-        if parameters_to_prune:
-            prune.global_unstructured(
-                parameters_to_prune,
-                pruning_method=prune.L1Unstructured,
-                amount=pruning_rate,
-            )
+    
+    # Prune the model
+    prune.global_unstructured(
+        parameters_to_prune,
+        pruning_method=prune.L1Unstructured,
+        amount=pruning_rate,
+    )
 
     # Count non-zero trainable parameters after pruning
     total_params = sum(p.numel() for p in model.parameters())
