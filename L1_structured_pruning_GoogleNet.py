@@ -66,49 +66,48 @@ for images, labels in validation_loader:
 accuracy = correct_predictions / len(validation_set)
 
 
-## Global unstructured L2-pruning
+## L1 Structured Pruning 
 
-# Percentage of pruned parameters (ones with the lowest L2 norm)
+# Percentage of pruned parameters
 amounts = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 
-# Determine how many modules are prunable 
+# count the number of modules that can be pruned
 count = 0
 
 for module in model.named_modules():
     if hasattr(module, 'weight'):
         count += 1
 
-# Save the results in a vector 
-results_l2 = np.zeros(count, len(amounts))
+results_l1_structured = np.zeros(count, len(amounts))
 
-# Loop through different pruning rates
-for module in model.named_modules():
-    for amt in amounts:
+for name, module in model.named_modules():
+    module_index = 0
+    if hasattr(module, 'weight'):
+        for amt in amounts:
+            prune.ln_structured(module, name = 'weight', amount = amt, n = 1, dim = 0)
 
-    # Given modules have weights, we prune them according to the amounts parameter and the L2 norm
-        if hasattr(module, 'weight'):
-            prune.l2_unstructured(module, name = 'weight', amount = amt)
+            # Assess the accuracy and store it 
+            correct_predictions = 0
 
-        # Assess the accuracy and store it 
-        correct_predictions = 0
+            for images, labels in validation_loader:
+                if torch.cuda.is_available():
+                    images = images.to('cuda')
+                    labels = labels.to('cuda')
 
-        for images, labels in validation_loader:
-            if torch.cuda.is_available():
-                images = images.to('cuda')
-                labels = labels.to('cuda')
+                with torch.no_grad():
+                    output = model(images)
 
-            with torch.no_grad():
-                output = model(images)
+                _, prediction = torch.max(output, 1)
+                correct_predictions += (prediction == labels).sum().item()
 
-            _, prediction = torch.max(output, 1)
-            correct_predictions += (prediction == labels).sum().item()
+            # Calculate the accuracy for the validation set after pruning
+            accuracy_l1_structured = correct_predictions / len(validation_set)
+            results_l1_structured[module_index][amt] = accuracy_l1_structured
 
-        # Calculate the accuracy for the validation set after pruning
-        accuracy_l2 = correct_predictions / len(validation_set)
-        results_l2[module][amt] = accuracy_l2
+            # Remove the pruning 
+            prune.remove(module, 'weight')
 
-        # Remove the pruning 
-        prune.remove(module, 'weight')
+        module_index += 1
 
 # save the results
-np.save('results_l2.npy', results_l2)
+np.save('results_l1_structured.npy', results_l1_structured)
