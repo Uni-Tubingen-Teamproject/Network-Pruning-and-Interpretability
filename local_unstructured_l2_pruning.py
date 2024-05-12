@@ -66,7 +66,8 @@ for images, labels in validation_loader:
 accuracy = correct_predictions / len(validation_set)
 
 
-## Global unstructured L2-pruning
+
+## Local unstructured L2-pruning
 
 # Percentage of pruned parameters (ones with the lowest L2 norm)
 amounts = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
@@ -82,33 +83,34 @@ for module in model.named_modules():
 results_l2 = np.zeros(count, len(amounts))
 
 # Loop through different pruning rates
-for module in model.named_modules():
-    for amt in amounts:
-
+for module_name, module in model.named_modules():
     # Given modules have weights, we prune them according to the amounts parameter and the L2 norm
-        if hasattr(module, 'weight'):
+    if hasattr(module, 'weight'):
+        for i, amt in enumerate(amounts):
             prune.l2_unstructured(module, name = 'weight', amount = amt)
 
-        # Assess the accuracy and store it 
-        correct_predictions = 0
+            # Assess the accuracy and store it 
+            correct_predictions = 0
 
-        for images, labels in validation_loader:
-            if torch.cuda.is_available():
-                images = images.to('cuda')
-                labels = labels.to('cuda')
+            for images, labels in validation_loader:
+                if torch.cuda.is_available():
+                    images = images.to('cuda')
+                    labels = labels.to('cuda')
 
-            with torch.no_grad():
-                output = model(images)
+                with torch.no_grad():
+                    output = model(images)
 
-            _, prediction = torch.max(output, 1)
-            correct_predictions += (prediction == labels).sum().item()
+                _, prediction = torch.max(output, 1)
+                correct_predictions += (prediction == labels).sum().item()
 
-        # Calculate the accuracy for the validation set after pruning
-        accuracy_l2 = correct_predictions / len(validation_set)
-        results_l2[module][amt] = accuracy_l2
+            # Calculate the accuracy for the validation set after pruning
+            accuracy_l2 = correct_predictions / len(validation_set)
+            results_l2[module_name][i] = accuracy_l2
 
-        # Remove the pruning 
-        prune.remove(module, 'weight')
+            # Reset the model to its original state (remove pruning)
+            prune.remove(module, 'weight')
+
+
 
 # save the results
 np.save('results_l2.npy', results_l2)
