@@ -66,28 +66,25 @@ for images, labels in validation_loader:
 accuracy = correct_predictions / len(validation_set)
 
 
+## L1 Structured Pruning 
 
-## Local unstructured L2-pruning
-
-# Percentage of pruned parameters (ones with the lowest L2 norm)
+# Percentage of pruned parameters
 amounts = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 
-# Determine how many modules are prunable 
+# count the number of modules that can be pruned
 count = 0
 
 for module in model.named_modules():
     if hasattr(module, 'weight'):
         count += 1
 
-# Save the results in a vector 
-results_l2 = np.zeros(count, len(amounts))
+results_l1_structured = np.zeros(count, len(amounts))
 
-# Loop through different pruning rates
-for module_name, module in model.named_modules():
-    # Given modules have weights, we prune them according to the amounts parameter and the L2 norm
+for name, module in model.named_modules():
+    module_index = 0
     if hasattr(module, 'weight'):
-        for i, amt in enumerate(amounts):
-            prune.l2_unstructured(module, name = 'weight', amount = amt)
+        for amt in amounts:
+            prune.ln_structured(module, name = 'weight', amount = amt, n = 1, dim = 0)
 
             # Assess the accuracy and store it 
             correct_predictions = 0
@@ -104,13 +101,13 @@ for module_name, module in model.named_modules():
                 correct_predictions += (prediction == labels).sum().item()
 
             # Calculate the accuracy for the validation set after pruning
-            accuracy_l2 = correct_predictions / len(validation_set)
-            results_l2[module_name][i] = accuracy_l2
+            accuracy_l1_structured = correct_predictions / len(validation_set)
+            results_l1_structured[module_index][amt] = accuracy_l1_structured
 
-            # Reset the model to its original state (remove pruning)
+            # Remove the pruning 
             prune.remove(module, 'weight')
 
-
+        module_index += 1
 
 # save the results
-np.save('results_l2.npy', results_l2)
+np.save('results_l1_structured.npy', results_l1_structured)
