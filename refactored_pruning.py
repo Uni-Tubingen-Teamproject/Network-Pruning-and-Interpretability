@@ -228,3 +228,57 @@ for module_index, (module_name, module) in enumerate(model.named_modules()):
 
 # save the results
 np.save('results_local_structured_l1.npy', results_local_structured_l1)
+
+
+# Local-L2 Structured Pruning
+# Create an array to save the results
+results_local_structured_l2 = np.zeros(module_count, len(amounts))
+
+for module_index, (module_name, module) in enumerate(model.named_modules()):
+
+    if hasattr(module, 'weight'):
+        for i, pruning_rate in enumerate(amounts):
+            prune.ln_structured(module, name = 'weight', amount = pruning_rate, n = 2, dim = 0)
+
+            # Assess the accuracy and store it 
+            correct_predictions, total_samples = correct_pred(validation_loader, model)
+            accuracy = correct_predictions / total_samples
+
+            results_local_structured_l2[module_name][i][k] = accuracy
+
+            # Reset the model to its original state (remove pruning)
+            for module, _ in parameters_to_prune:
+                prune.remove(module, 'weight')
+
+# save the results
+np.save('results_local_structured_l2.npy', results_local_structured_l2)
+
+
+# Local-Random Structured Pruning
+# Number of runs per pruning amount to see some convergence in the accuracy value
+runs = 2  
+
+# Create an array to save the results
+results_local_structured_random = np.zeros(module_count, len(amounts))
+
+for module_index, (module_name, module) in enumerate(model.named_modules()):
+
+    if hasattr(module, 'weight'):
+        for i, pruning_rate in enumerate(amounts):
+
+            # Simulate k runs per pruning rate and module
+            for k in range(runs):
+                prune.random_structured(module, name='weight', amount=pruning_rate, dim=0)
+
+                # Assess the accuracy and store it 
+                correct_predictions, total_samples = correct_pred(validation_loader, model)
+                accuracy = correct_predictions / total_samples
+
+                results_local_structured_random[module_name][i][k] = accuracy
+
+                # Reset the model to its original state (remove pruning)
+                for module, _ in parameters_to_prune:
+                    prune.remove(module, 'weight')
+
+# save the results
+np.save('results_local_structured_random.npy', results_local_structured_random)
