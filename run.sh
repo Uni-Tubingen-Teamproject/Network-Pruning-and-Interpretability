@@ -1,1 +1,1 @@
-python3 local_unstructured_l1_pruning.py
+python3 /home/wichmann/wzz745/Network-Pruning-and-Interpretability/Global_Unstructured_Pruning.py
