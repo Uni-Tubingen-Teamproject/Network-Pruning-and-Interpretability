@@ -194,9 +194,9 @@ def localUnstructuredL1Pruning(module_count, amounts, validation_loader, model):
 
     print("\n########## Local Unstructured L1 Pruning ##########\n")
     print(f"Accuracy before: {accuracy:}")
-
+    module_idx = 0
     # Loop through different pruning rates
-    for module_idx, (module_name, module) in enumerate(model.named_modules()):
+    for module_name, module in enumerate(model.named_modules()):
         
         initial_module_state = copy.deepcopy(module.state_dict())
         # Given modules have weights, we prune them according to the amounts parameter and the l1-norm
@@ -215,6 +215,8 @@ def localUnstructuredL1Pruning(module_count, amounts, validation_loader, model):
                 prune.remove(module, 'weight')
                 
                 module.load_state_dict(initial_module_state)
+                
+            module_idx += 1
 
     model.load_state_dict(initial_state)
     # Save the results
