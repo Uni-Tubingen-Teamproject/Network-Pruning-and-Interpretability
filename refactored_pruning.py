@@ -380,7 +380,43 @@ measure_time(LocalStructuredLNPruning, module_count, amounts,
 measure_time(localStructuredRandomPruning, module_count, amounts,
              validation_loader, model, parameters_to_prune, 2)
 
+# Load the results
+results_global_unstructured_l1 = np.load('results_global_unstructured_l1.npy')
+results_local_unstructured_l1 = np.load('results_local_unstructured_l1.npy')
+results_local_unstructured_random = np.load(
+    'results_local_unstructured_random.npy')
+results_local_structured_l1 = np.load('results_local_structured_l1.npy')
+results_local_structured_l2 = np.load('results_local_structured_l2.npy')
+results_local_structured_random = np.load(
+    'results_local_structured_random.npy')
 
+
+def plot_and_save_results(amounts, results_global_unstructured_l1, results_local_unstructured_l1,
+                          results_local_unstructured_random, results_local_structured_l1,
+                          results_local_structured_l2, results_local_structured_random, filename):
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(amounts, results_global_unstructured_l1,
+             label='Global Unstructured L1')
+    plt.plot(amounts, results_local_unstructured_l1.mean(
+        axis=0), label='Local Unstructured L1')
+    plt.plot(amounts, results_local_unstructured_random.mean(
+        axis=(0, 2)), label='Local Unstructured Random')
+    plt.plot(amounts, results_local_structured_l1.mean(
+        axis=(0, 2)), label='Local Structured L1')
+    plt.plot(amounts, results_local_structured_l2.mean(
+        axis=(0, 2)), label='Local Structured L2')
+    plt.plot(amounts, results_local_structured_random.mean(
+        axis=(0, 2, 3)), label='Local Structured Random')
+    plt.xlabel('Pruning Rate')
+    plt.ylabel('Accuracy')
+    plt.title('Pruning Methods')
+    plt.legend()
+    plt.savefig(filename)
+    plt.close()
+
+
+plot_and_save_results(
     amounts,
     results_global_unstructured_l1,
     results_local_unstructured_l1,
