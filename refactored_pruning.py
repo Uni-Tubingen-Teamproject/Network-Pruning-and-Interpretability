@@ -111,7 +111,7 @@ model, validation_loader, validation_set, classes = setUpNeuralNetwork()
 # Pruning using torch.nn.utils.prune
 def setUpPruning(model):
     # Percentage of parameters to be pruned
-    amounts = [0.2, 0.7]
+    amounts = [0.2, 0.4, 0.6, 0.8]
 
     # Determining the number of prunable modules
     module_count = sum(1 for _, module in model.named_modules()
