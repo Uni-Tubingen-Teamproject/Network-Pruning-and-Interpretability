@@ -1,12 +1,9 @@
 import time
 import matplotlib.pyplot as plt
 import torch
-import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 import torch.nn.utils.prune as prune
 import numpy as np
-import warnings
-from PIL import Image
 import json
 import os
 from torchvision.datasets import ImageNet
@@ -51,9 +48,9 @@ def setUpNeuralNetwork():
         transforms.Resize(256),
         transforms.CenterCrop(224),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[
+                             0.229, 0.224, 0.225])
     ])
-
 
     # Define batch size, depending on available memory
     batch_size = 120
@@ -73,18 +70,17 @@ def setUpNeuralNetwork():
         class_idx = json.load(f)
 
     classes = {idx: label for idx, label in class_idx.items()}
-    
+
     # Get the number of images in the validation set
     validation_set_size = len(validation_set)
     print("Size of the ImageNet validation set:", validation_set_size)
-
 
     # Compute accuracy pre-pruning
     correct_predictions, total_samples = correctPred(validation_loader, model)
     accuracy = correct_predictions / total_samples
 
     print(f"Accuracy before Pruning: {accuracy}")
-    
+
     return model, validation_loader, validation_set, classes
 
 def correctPred(validation_loader, model): 
@@ -108,10 +104,9 @@ def correctPred(validation_loader, model):
 
 model, validation_loader, validation_set, classes = setUpNeuralNetwork()
 
-# Pruning using torch.nn.utils.prune
 def setUpPruning(model):
     # Percentage of parameters to be pruned
-    amounts = [0.2, 0.4, 0.6, 0.8]
+    amounts = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 
     # Determining the number of prunable modules
     module_count = sum(1 for _, module in model.named_modules()
@@ -196,11 +191,11 @@ def localUnstructuredL1Pruning(module_count, amounts, validation_loader, model):
     print(f"Accuracy before: {accuracy:}")
     module_idx = 0
     # Loop through different pruning rates
-    for module_name, module in enumerate(model.named_modules()):
+    for module_name, module in model.named_modules():
         
         initial_module_state = copy.deepcopy(module.state_dict())
         # Given modules have weights, we prune them according to the amounts parameter and the l1-norm
-        if isinstance(module, (torch.nn.Conv2d, torch.nn.Linear)) and hasattr(module, 'weight'):
+        if isinstance(module, (torch.nn.Conv2d)) and hasattr(module, 'weight'):
             for i, pruning_rate in enumerate(amounts):
                 prune.l1_unstructured(module, name = 'weight', amount = pruning_rate)
 
@@ -238,7 +233,7 @@ def localUnstructuredRandomPruning(module_count, amounts, validation_loader, mod
 
     for module_name, module in model.named_modules():
         # Given modules have weights, we prune them randomly
-        if isinstance(module, (torch.nn.Conv2d, torch.nn.Linear)) and hasattr(module, 'weight'):
+        if isinstance(module, (torch.nn.Conv2d)) and hasattr(module, 'weight'):
             initial_module_state = copy.deepcopy(module.state_dict())
             for i, pruning_rate in enumerate(amounts):
                 accuracies = np.zeros(runs)
@@ -270,7 +265,7 @@ def localUnstructuredRandomPruning(module_count, amounts, validation_loader, mod
                 
                 print(f"Module: {module_name}, Pruning Rate: {pruning_rate}, Accuracy: {accuracies.mean()}")
 
-        module_idx += 1
+            module_idx += 1
 
     model.load_state_dict(initial_state)
     # Save the pruning results
@@ -284,46 +279,30 @@ def LocalStructuredLNPruning(module_count, amounts, validation_loader, model, pa
     torch.cuda.empty_cache()
     
     # Create an array to save the results, 2 = number of dims (0 = Convolutional Layers, 1 = Linear layers)
-    results_local_structured_ln = np.zeros((module_count, len(amounts), 2))
+    results_local_structured_ln = np.zeros((module_count, len(amounts)))
 
     print(f"\n########## Local Structured L{n} Pruning ##########\n")
 
     module_index = 0
     for module_name, module in model.named_modules():
-        if hasattr(module, 'weight'):
+        if hasattr(module, 'weight') and isinstance(module, torch.nn.Conv2d):
             # Determine the appropriate dimension for pruning
-            if isinstance(module, torch.nn.Conv2d):
-                # Typically prune filters (dim=0) or channels (dim=1) (InputChannels) in Conv2d
-                dims = [0, 1]
-            elif isinstance(module, torch.nn.Linear):
-                dims = [0]  # Typically prune neurons (dim=0) in Linear layers
-            else:
-                continue  # Skip modules that are neither Conv2d nor Linear
-            
             initial_module_state = copy.deepcopy(module.state_dict())
-
-            for dim in dims:
-                for i, pruning_rate in enumerate(amounts):
-                    prune.ln_structured(
-                        module, name='weight', amount=pruning_rate, n=n, dim=dim)
-
-                    # Assess the accuracy and store it
-                    correct_predictions, total_samples = correctPred(
-                        validation_loader, model)
-                    accuracy = correct_predictions / total_samples
-
-                    results_local_structured_ln[module_index,
-                                                i, dim] = accuracy
-
-                    print(f"Module: {module_name}, Pruning Rate: {pruning_rate}, Dim: {dim}, Accuracy: {accuracy}")
-
-                    # Reset the model to its original state (remove pruning)
-                    try:
-                        prune.remove(module, 'weight')
-                    except ValueError as e:
-                        print(f"Warning: {e}")
-                        
-                    module.load_state_dict(initial_module_state)
+            
+            for i, pruning_rate in enumerate(amounts):
+                prune.ln_structured(
+                    module, name='weight', amount=pruning_rate, n=n, dim=0)
+                # Assess the accuracy and store it
+                correct_predictions, total_samples = correctPred(
+                    validation_loader, model)
+                accuracy = correct_predictions / total_samples
+                results_local_structured_ln[module_index,
+                                            i] = accuracy
+                print(f"Module: {module_name}, Pruning Rate: {pruning_rate}, Dim: {dim}, Accuracy: {accuracy}")
+                # Reset the model to its original state (remove pruning)
+                prune.remove(module, 'weight')  
+                    
+                module.load_state_dict(initial_module_state)
 
             module_index += 1
 
@@ -331,76 +310,66 @@ def LocalStructuredLNPruning(module_count, amounts, validation_loader, model, pa
     # Save the results
     np.save(f'results_local_structured_l{n}.npy', results_local_structured_ln)
 
-
 def localStructuredRandomPruning(module_count, amounts, validation_loader, model, parameters_to_prune, runs=2):
     # Load the initial state
     initial_state = copy.deepcopy(model.state_dict())
     
     # Create an array to save the results
     results_local_structured_random = np.zeros(
-        (module_count, len(amounts), 1, runs))
+        (module_count, len(amounts), runs))
 
     print("########## Local Structured Random Pruning ##########\n\n")
+    
+    module_count = 0
 
-    for module_index, (module_name, module) in enumerate(model.named_modules()):
-        if hasattr(module, 'weight'):
-            # Determine the appropriate dimension for pruning
-            if isinstance(module, torch.nn.Conv2d):
-                dims = [0, 1]  # Typically prune filters (dim=0) in Conv2d
-            elif isinstance(module, torch.nn.Linear):
-                dims = [0]  # Typically prune neurons (dim=0) in Linear layers
-            else:
-                continue  # Skip modules that are neither Conv2d nor Linear
+    for module_name, module in enumerate(model.named_modules()):
+        if hasattr(module, 'weight') and isinstance(module, torch.nn.Conv2d):
             
             initial_module_state = copy.deepcopy(module.state_dict())
             
-            for dim in dims:
-                for i, pruning_rate in enumerate(amounts):
-
-                    # Simulate k runs per pruning rate and module
-                    for k in range(runs):
-                        prune.random_structured(
-                            module, name='weight', amount=pruning_rate, dim=dim)
-
-                        # Assess the accuracy and store it
-                        correct_predictions, total_samples = correctPred(
-                            validation_loader, model)
-                        accuracy = correct_predictions / total_samples
-
-                        results_local_structured_random[module_index,
-                                                        i, 0, k] = accuracy
-
-                        # Reset the model to its original state (remove pruning)
-                        try:
-                            prune.remove(module, 'weight')
-                        except ValueError as e:
-                            print(f"Warning: {e}")
-                            
-                        module.load_state_dict(initial_module_state)
-
-                    mean = results_local_structured_random[module_index, i, 0, :].mean(
-                    )
-                    print(f"Module: {module_name}, Pruning Rate: {pruning_rate}, Dim: {dim}, Accuracy: {mean}")
+            for i, pruning_rate in enumerate(amounts):
+                # Simulate k runs per pruning rate and module
+                for k in range(runs):
+                    prune.random_structured(
+                        module, name='weight', amount=pruning_rate, dim=0)
+                    # Assess the accuracy and store it
+                    correct_predictions, total_samples = correctPred(
+                        validation_loader, model)
+                    accuracy = correct_predictions / total_samples
+                    results_local_structured_random[module_count,
+                                                    i, k] = accuracy
+                    # Reset the model to its original state (remove pruning)
+                    prune.remove(module, 'weight')
+                        
+                    module.load_state_dict(initial_module_state)
+                mean = results_local_structured_random[module_count, i, :].mean(
+                )
+                print(f"Module: {module_name}, Pruning Rate: {pruning_rate}, Accuracy: {mean}")
+            
+            module_count += 1
 
     # Save the results
     np.save('results_local_structured_random.npy',
             results_local_structured_random)
 
-
 def measure_time(pruning_function, *args):
     start_time = time.time()
     pruning_function(*args)
-    end_time = time.time()
-    print(f"{pruning_function.__name__} took {end_time - start_time:.2f} seconds")
+    elapsed_time = time.time() - start_time
+
+    hours, remainder = divmod(elapsed_time, 3600)
+    minutes, seconds = divmod(remainder, 60)
+
+    print(f"{pruning_function.__name__} took {int(hours):02}:{int(minutes):02}:{seconds:05.2f}")
 
 ######################## Test Pruning ########################
 
 # Prune the model using global unstructured L1 pruning
-measure_time(globalUnstructuredL1Pruning, amounts, validation_loader, model, parameters_to_prune)
+# measure_time(globalUnstructuredL1Pruning, amounts, validation_loader, model, parameters_to_prune)
 
 # Prune the model using local unstructured L1 pruning
 measure_time(localUnstructuredL1Pruning, module_count, amounts,
-             validation_loader, model)
+              validation_loader, model)
 
 # Prune the model using local unstructured random pruning
 measure_time(localUnstructuredRandomPruning, module_count,
@@ -408,7 +377,7 @@ measure_time(localUnstructuredRandomPruning, module_count,
 
 # Prune the model using local structured L1 pruning
 measure_time(LocalStructuredLNPruning, module_count, amounts,
-             validation_loader, model, parameters_to_prune, 1, 0)
+             validation_loader, model, parameters_to_prune, 1)
 
 # Prune the model using local structured random pruning
 measure_time(localStructuredRandomPruning, module_count, amounts,
@@ -417,12 +386,10 @@ measure_time(localStructuredRandomPruning, module_count, amounts,
 # Load the results
 results_global_unstructured_l1 = np.load('results_global_unstructured_l1.npy')
 results_local_unstructured_l1 = np.load('results_local_unstructured_l1.npy')
-results_local_unstructured_random = np.load(
-    'results_local_unstructured_random.npy')
+results_local_unstructured_random = np.load('results_local_unstructured_random.npy')
 results_local_structured_l1 = np.load('results_local_structured_l1.npy')
 results_local_structured_l2 = np.load('results_local_structured_l2.npy')
-results_local_structured_random = np.load(
-    'results_local_structured_random.npy')
+results_local_structured_random = np.load('results_local_structured_random.npy')
 
 
 def plot_and_save_results(amounts, results_global_unstructured_l1, results_local_unstructured_l1,
@@ -448,7 +415,6 @@ def plot_and_save_results(amounts, results_global_unstructured_l1, results_local
     plt.legend()
     plt.savefig(filename)
     plt.close()
-
 
 plot_and_save_results(
     amounts,
