@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.interpolate import griddata
+import torchvision.models as models
+import torch
+import seaborn as sns
 
 # Local Unstructured L1 Pruning
 
@@ -2021,18 +2024,100 @@ threshold = 0.68
 pruning_threshold = 0.8
 
 # find pruning rates
-result = find_pruning_rate_below_threshold(
-    data_local_unstructured_l1, threshold)
+#result = find_pruning_rate_below_threshold(
+#    data_local_unstructured_l1, threshold)
 
 # plot and show threshold rates
-index_module_map = plot_threshold_rates(result, threshold)
+#index_module_map = plot_threshold_rates(result, threshold)
 
 # filter out modules
-filtered_modules = filter_modules_below_pruning_threshold(
-    index_module_map, result, pruning_threshold)
-print(filtered_modules)
+#filtered_modules = filter_modules_below_pruning_threshold(
+#    index_module_map, result, pruning_threshold)
+#print(filtered_modules)
 
 
 # Output the result
 # for module, rate in result.items():
 #     print(f"Module: {module}, Pruning Rate below threshold {threshold}: {rate}")
+
+def number_weights():
+    # load the GoogleNet
+    googlenet = models.googlenet(pretrained=True)
+
+    num_weights = []
+
+    # traverse through each layer and append number of output channels
+    for name, layer in googlenet.named_modules():
+        if hasattr(layer, 'weight') and layer.weight is not None:
+            number_weights = layer.weight.numel()
+            num_weights.append({"Layer Name": name, "Number of Weights": number_weights})
+
+def number_channels():
+    # load the GoogleNet
+    googlenet = models.googlenet(weights=models.GoogLeNet_Weights.DEFAULT)
+
+    num_channel = [] 
+
+    # traverse through each layer and append number of output channels
+    for name, layer in googlenet.named_modules():
+        if isinstance(layer, torch.nn.Conv2d):
+            num_channel.append({"Layer Name": name, "Out Channels": layer.out_channels})
+
+    df = pd.DataFrame(num_channel)
+
+    return df
+
+def correlation_channel_accuracy_pruning(data):
+    # process the data
+    records = [line.split(", ") for line in data.strip().split("\n")]
+
+    # add the dim dimension
+    columns = ["Module", "Pruning Rate", "Dim", "Accuracy"]
+    df = pd.DataFrame(records, columns=columns)
+
+    # convert data types
+    df["Pruning Rate"] = df["Pruning Rate"].str.split(": ").str[1].astype(float)
+    df["Dim"] = df["Dim"].str.split(": ").str[1].astype(int)
+    df["Accuracy"] = df["Accuracy"].str.split(": ").str[1].astype(float)
+
+    # to only select convolutional layers
+    df = df[df["Dim"] == 1]
+
+    # extract the module names from the "Module" column
+    df['Module'] = df['Module'].str.split(": ").str[1]
+
+    num_channels = number_channels()
+
+    # Merge the number of channels with the provided data
+    df = df.merge(num_channels, left_on='Module', right_on='Layer Name', how='left')
+
+    # Drop rows where Out Channels is NaN (not a convolutional layer)
+    df.dropna(subset=['Out Channels'], inplace=True)
+
+    # Calculate correlation
+    correlation_matrix = df[['Out Channels', 'Pruning Rate', 'Accuracy']].corr()
+
+    return correlation_matrix
+
+def visualize_correlation_matrix(correlation_matrix):
+    # Plot heatmap of the correlation matrix
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', center=0)
+    plt.title('Correlation Matrix')
+    plt.show()
+
+def overall_correlation_score(correlation_matrix):
+    # Calculate the average absolute correlation
+    avg_abs_corr = correlation_matrix.abs().mean().mean()
+    return avg_abs_corr
+
+correlation_matrix = correlation_channel_accuracy_pruning(data_local_structured_l1)
+print(correlation_matrix)
+
+# Visualize the correlation matrix
+visualize_correlation_matrix(correlation_matrix)
+
+# Calculate overall correlation score
+overall_score = overall_correlation_score(correlation_matrix)
+# we obtain a correlation score of 0.43, which is a moderate correlation
+print(f'Overall Correlation Score: {overall_score}')
