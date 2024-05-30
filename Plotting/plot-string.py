@@ -2052,6 +2052,10 @@ def number_weights():
             number_weights = layer.weight.numel()
             num_weights.append({"Layer Name": name, "Number of Weights": number_weights})
 
+    df = pd.DataFrame(num_weights)
+
+    return df
+
 def number_channels():
     # load the GoogleNet
     googlenet = models.googlenet(weights=models.GoogLeNet_Weights.DEFAULT)
@@ -2094,8 +2098,50 @@ def correlation_channel_accuracy_pruning(data):
     # Drop rows where Out Channels is NaN (not a convolutional layer)
     df.dropna(subset=['Out Channels'], inplace=True)
 
+    # Create an interaction column
+    df['Pruning Rate * Accuracy'] = df['Pruning Rate'] * df['Accuracy']
+
     # Calculate correlation
-    correlation_matrix = df[['Out Channels', 'Pruning Rate', 'Accuracy']].corr()
+    correlation_matrix = df[['Out Channels', 'Pruning Rate * Accuracy']].corr()
+
+    return correlation_matrix
+
+def correlation_weights_accuracy_pruning(data):
+    # Process the data
+    records = [line.split(", ") for line in data.strip().split("\n")]
+
+    # Ensure each record has exactly three elements
+    records = [record for record in records if len(record) == 3]
+
+    # Debugging: Check the structure of the records list
+    for record in records:
+        print(record)
+
+    # Add the required columns
+    columns = ["Module", "Pruning Rate", "Accuracy"]
+    df = pd.DataFrame(records, columns=columns)
+
+    # Convert data types
+    df["Pruning Rate"] = df["Pruning Rate"].str.split(": ").str[1].astype(float)
+    df["Accuracy"] = df["Accuracy"].str.split(": ").str[1].astype(float)
+
+    # Extract the module names from the "Module" column
+    df['Module'] = df['Module'].str.split(": ").str[1]
+
+    # Get the number of weights in each layer
+    num_weights = number_weights()
+
+    # Merge the number of weights with the provided data
+    df = df.merge(num_weights, left_on='Module', right_on='Layer Name', how='left')
+
+    # Drop rows where Number of Weights is NaN (layers without weights)
+    df.dropna(subset=['Number of Weights'], inplace=True)
+
+    # Create an interaction column
+    df['Pruning Rate * Accuracy'] = df['Pruning Rate'] * df['Accuracy']
+
+    # Calculate correlation
+    correlation_matrix = df[['Number of Weights', 'Pruning Rate * Accuracy']].corr()
 
     return correlation_matrix
 
@@ -2111,13 +2157,15 @@ def overall_correlation_score(correlation_matrix):
     avg_abs_corr = correlation_matrix.abs().mean().mean()
     return avg_abs_corr
 
+# for local unstructured l1 pruning
 correlation_matrix = correlation_channel_accuracy_pruning(data_local_structured_l1)
 print(correlation_matrix)
 
+# for local unstructured l1 pruning
+correlation_matrix_u_l_l1 = correlation_weights_accuracy_pruning(data_local_unstructured_l1)
+print(correlation_matrix_u_l_l1)
+
 # Visualize the correlation matrix
 visualize_correlation_matrix(correlation_matrix)
+visualize_correlation_matrix(correlation_matrix_u_l_l1)
 
-# Calculate overall correlation score
-overall_score = overall_correlation_score(correlation_matrix)
-# we obtain a correlation score of 0.43, which is a moderate correlation
-print(f'Overall Correlation Score: {overall_score}')
