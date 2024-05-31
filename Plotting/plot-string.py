@@ -1,8 +1,10 @@
+import plotly.express as px
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.interpolate import griddata
+import json
 
 # Local Unstructured L1 Pruning
 
@@ -1978,28 +1980,29 @@ def find_pruning_rate_below_threshold(data, threshold):
 
     return result
 
-# plots which modules have a significant impact on the accuracy if pruned
-def plot_threshold_rates(result, threshold):
 
+# plots which modules have a significant impact on the accuracy if pruned
+
+
+def plot_threshold_rates(result, threshold):
+    # Module und zugehörige Pruning-Raten extrahieren
     modules = list(result.keys())
     pruning_rates = list(result.values())
 
-    module_indices = list(range(1, len(modules) + 1))
+    # DataFrame erstellen
+    data = {'Module': modules, 'Pruning Rate': pruning_rates,
+            'Module Index': list(range(1, len(modules) + 1))}
+    df = pd.DataFrame(data)
 
-    plt.figure(figsize=(10, 6))
-    plt.bar(module_indices, pruning_rates)
+    # Interaktives Plotly-Diagramm erstellen
+    fig = px.bar(df, x='Module Index', y='Pruning Rate', hover_name='Module',
+                 labels={'Module Index': 'Module Index',
+                         'Pruning Rate': 'Pruning Rate'},
+                 title=f'Pruning Rates for Modules below Accuracy Threshold {threshold}')
 
-    plt.xlabel('Module Index')
-    plt.ylabel('Pruning Rate')
-    plt.title(
-        f'Pruning Rates for Modules below Accuracy Threshold {threshold}')
+    fig.show()
 
-    # smaller font size to prevent overlapping
-    plt.xticks(module_indices, module_indices, fontsize=6)
-
-    plt.show()
-
-    # map the module indices onto the module names
+    # Modulnamen für jeden Index ausgeben und ein Dictionary erstellen
     index_module_map = {index: module for index,
                         module in enumerate(modules, start=1)}
     for index, module in index_module_map.items():
@@ -2008,7 +2011,12 @@ def plot_threshold_rates(result, threshold):
     return index_module_map
 
 
-def filter_modules_below_pruning_threshold(index_module_map, result, pruning_threshold):
+def load_results_from_file(input_file):
+    with open(input_file, 'r') as file:
+        result = json.load(file)
+    return result
+
+
     # filter out modules below the pruning threshold
     filtered_modules = {index: module for index, module in index_module_map.items(
     ) if result[module] < pruning_threshold}
@@ -2021,16 +2029,16 @@ threshold = 0.68
 pruning_threshold = 0.8
 
 # find pruning rates
-result = find_pruning_rate_below_threshold(
-    data_local_unstructured_l1, threshold)
+# result = find_pruning_rate_below_threshold(
+#    data_local_unstructured_l1, threshold)
 
+# Pruning-Raten aus Datei laden
+pruning_rates_local_structured = load_results_from_file("Pruning Rates/pruning_rates_local_structured_l1.json")
+pruning_rates_local_unstructured = load_results_from_file(
+    "Pruning Rates/pruning_rates_local_unstructured_l1.json")
 # plot and show threshold rates
-index_module_map = plot_threshold_rates(result, threshold)
-
-# filter out modules
-filtered_modules = filter_modules_below_pruning_threshold(
-    index_module_map, result, pruning_threshold)
-print(filtered_modules)
+index_module_map = plot_threshold_rates(pruning_rates_local_unstructured, threshold)
+index_module_map = plot_threshold_rates(pruning_rates_local_structured, threshold)
 
 
 # Output the result
