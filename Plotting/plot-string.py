@@ -1836,27 +1836,27 @@ Module: inception5b.branch4.1.conv, Pruning Rate: 0.9, Dim: 1, Accuracy: 0.68686
 
 
 def plotLocal(data):
-    # Datenverarbeitung
+    # process the data
     records = [line.split(", ") for line in data.strip().split("\n")]
 
     columns = ["Module", "Pruning Rate", "Accuracy"]
     df = pd.DataFrame(records, columns=columns)
 
-    # Datentypen konvertieren
+    # convert data types
     df["Pruning Rate"] = df["Pruning Rate"].str.split(
         ": ").str[1].astype(float)
     df["Accuracy"] = df["Accuracy"].str.split(": ").str[1].astype(float)
 
-    # Module mit numerischen Indizes versehen
+    # attribute indices to modules
     df['Module'] = df['Module'].astype('category').cat.codes
 
-    # Gitterpunkte für die Oberfläche erstellen
+    # create a grid for the surface area
     pruning_rate_grid, module_grid = np.meshgrid(
         np.linspace(df['Pruning Rate'].min(), df['Pruning Rate'].max(), 50),
         np.linspace(df['Module'].min(), df['Module'].max(), 50)
     )
 
-    # Interpolation der Accuracies
+    # interpolate the accuracies
     accuracy_grid = griddata(
         (df['Pruning Rate'], df['Module']),
         df['Accuracy'],
@@ -1864,38 +1864,35 @@ def plotLocal(data):
         method='linear'
     )
 
-    # 3D-Plot erstellen
+    # create the 3d plot
     fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(111, projection='3d')
-
-    # Daten im 3D-Raum plotten
     surf = ax.plot_surface(pruning_rate_grid, module_grid,
                            accuracy_grid, cmap='viridis', edgecolor='none')
 
-    # Achsenbeschriftungen
     ax.set_xlabel('Pruning Rate')
     ax.set_ylabel('Module Index')
     ax.set_zlabel('Accuracy')
 
-    # Farblegende für die Accuracy
+    # legend
     fig.colorbar(surf, ax=ax, shrink=0.5, aspect=5, label='Accuracy')
 
     plt.show()
 
 
 def plotGlobal(data):
-    # Datenverarbeitung
+    # process the data
     records = [line.split(", ") for line in data.strip().split("\n")]
 
     columns = ["Pruning Rate", "Accuracy"]
     df = pd.DataFrame(records, columns=columns)
 
-    # Datentypen konvertieren
+    # convert data types
     df["Pruning Rate"] = df["Pruning Rate"].str.split(
         ": ").str[1].astype(float)
     df["Accuracy"] = df["Accuracy"].str.split(": ").str[1].astype(float)
 
-    # Daten plotten
+    # plot the data
     plt.figure(figsize=(10, 6))
     plt.plot(df["Pruning Rate"], df["Accuracy"],
              marker='o', linestyle='-', color='b')
@@ -1907,32 +1904,32 @@ def plotGlobal(data):
 
 
 def plotLocalWorkAround(data):
-    # Datenverarbeitung
+    # process the data
     records = [line.split(", ") for line in data.strip().split("\n")]
 
-    # Hinzufügen der Dim-Spalte
+    # add the dim dimension
     columns = ["Module", "Pruning Rate", "Dim", "Accuracy"]
     df = pd.DataFrame(records, columns=columns)
 
-    # Datentypen konvertieren
+    # convert data types
     df["Pruning Rate"] = df["Pruning Rate"].str.split(
         ": ").str[1].astype(float)
     df["Dim"] = df["Dim"].str.split(": ").str[1].astype(int)
     df["Accuracy"] = df["Accuracy"].str.split(": ").str[1].astype(float)
 
-    # Nur Instanzen mit Dim=0 auswählen
+    # to only select convolutional layers
     df = df[df["Dim"] == 0]
 
-    # Module mit numerischen Indizes versehen
+    # attribute indices to modules
     df['Module'] = df['Module'].astype('category').cat.codes
 
-    # Gitterpunkte für die Oberfläche erstellen
+    # grid for the surface area
     pruning_rate_grid, module_grid = np.meshgrid(
         np.linspace(df['Pruning Rate'].min(), df['Pruning Rate'].max(), 50),
         np.linspace(df['Module'].min(), df['Module'].max(), 50)
     )
 
-    # Interpolation der Accuracies
+    # interpolate the accuracies
     accuracy_grid = griddata(
         (df['Pruning Rate'], df['Module']),
         df['Accuracy'],
@@ -1940,25 +1937,22 @@ def plotLocalWorkAround(data):
         method='linear'
     )
 
-    # 3D-Plot erstellen
+    # create a 3d plot
     fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(111, projection='3d')
 
-    # Daten im 3D-Raum plotten
     surf = ax.plot_surface(pruning_rate_grid, module_grid,
                            accuracy_grid, cmap='viridis', edgecolor='none')
 
-    # Achsenbeschriftungen
     ax.set_xlabel('Pruning Rate')
     ax.set_ylabel('Module Index')
     ax.set_zlabel('Accuracy')
 
-    # Farblegende für die Accuracy
     fig.colorbar(surf, ax=ax, shrink=0.5, aspect=5, label='Accuracy')
 
     plt.show()
 
-
+# examines which pruning rate makes the accuracy drop below a certain threshold 
 def find_pruning_rate_below_threshold(data, threshold):
 
     # Parsing data into a DataFrame
@@ -1984,33 +1978,28 @@ def find_pruning_rate_below_threshold(data, threshold):
 
     return result
 
-
+# plots which modules have a significant impact on the accuracy if pruned
 def plot_threshold_rates(result, threshold):
 
-    # Module und zugehörige Pruning-Raten extrahieren
     modules = list(result.keys())
     pruning_rates = list(result.values())
 
-    # Numerische Indizes für die Module
     module_indices = list(range(1, len(modules) + 1))
 
-    # Plot erstellen
     plt.figure(figsize=(10, 6))
     plt.bar(module_indices, pruning_rates)
 
-    # Achsenbeschriftungen und Titel
     plt.xlabel('Module Index')
     plt.ylabel('Pruning Rate')
     plt.title(
         f'Pruning Rates for Modules below Accuracy Threshold {threshold}')
 
-    # Anpassung der X-Achsen-Ticks
+    # smaller font size to prevent overlapping
     plt.xticks(module_indices, module_indices, fontsize=6)
 
-    # Plot anzeigen
     plt.show()
 
-    # Modulnamen für jeden Index ausgeben und ein Dictionary erstellen
+    # map the module indices onto the module names
     index_module_map = {index: module for index,
                         module in enumerate(modules, start=1)}
     for index, module in index_module_map.items():
@@ -2020,25 +2009,25 @@ def plot_threshold_rates(result, threshold):
 
 
 def filter_modules_below_pruning_threshold(index_module_map, result, pruning_threshold):
-    # Filterung der Module, die unter dem angegebenen Pruning-Wert liegen
+    # filter out modules below the pruning threshold
     filtered_modules = {index: module for index, module in index_module_map.items(
     ) if result[module] < pruning_threshold}
 
     return filtered_modules
 
 
-# Schwellenwert definieren
+# define a threshold 
 threshold = 0.68
 pruning_threshold = 0.8
 
-# Pruning-Raten finden
+# find pruning rates
 result = find_pruning_rate_below_threshold(
     data_local_unstructured_l1, threshold)
 
-# Plotten und Modulnamen anzeigen
+# plot and show threshold rates
 index_module_map = plot_threshold_rates(result, threshold)
 
-# Filterung der Module
+# filter out modules
 filtered_modules = filter_modules_below_pruning_threshold(
     index_module_map, result, pruning_threshold)
 print(filtered_modules)
