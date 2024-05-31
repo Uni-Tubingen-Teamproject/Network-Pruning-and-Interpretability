@@ -298,7 +298,7 @@ def LocalStructuredLNPruning(module_count, amounts, validation_loader, model, pa
                 accuracy = correct_predictions / total_samples
                 results_local_structured_ln[module_index,
                                             i] = accuracy
-                print(f"Module: {module_name}, Pruning Rate: {pruning_rate}, Dim: {dim}, Accuracy: {accuracy}")
+                print(f"Module: {module_name}, Pruning Rate: {pruning_rate}, Accuracy: {accuracy}")
                 # Reset the model to its original state (remove pruning)
                 prune.remove(module, 'weight')  
                     
@@ -391,38 +391,3 @@ results_local_structured_l1 = np.load('results_local_structured_l1.npy')
 results_local_structured_l2 = np.load('results_local_structured_l2.npy')
 results_local_structured_random = np.load('results_local_structured_random.npy')
 
-
-def plot_and_save_results(amounts, results_global_unstructured_l1, results_local_unstructured_l1,
-                          results_local_unstructured_random, results_local_structured_l1,
-                          results_local_structured_l2, results_local_structured_random, filename):
-
-    plt.figure(figsize=(10, 6))
-    plt.plot(amounts, results_global_unstructured_l1,
-             label='Global Unstructured L1')
-    plt.plot(amounts, results_local_unstructured_l1.mean(
-        axis=0), label='Local Unstructured L1')
-    plt.plot(amounts, results_local_unstructured_random.mean(
-        axis=(0, 2)), label='Local Unstructured Random')
-    plt.plot(amounts, results_local_structured_l1.mean(
-        axis=(0, 2)), label='Local Structured L1')
-    plt.plot(amounts, results_local_structured_l2.mean(
-        axis=(0, 2)), label='Local Structured L2')
-    plt.plot(amounts, results_local_structured_random.mean(
-        axis=(0, 2, 3)), label='Local Structured Random')
-    plt.xlabel('Pruning Rate')
-    plt.ylabel('Accuracy')
-    plt.title('Pruning Methods')
-    plt.legend()
-    plt.savefig(filename)
-    plt.close()
-
-plot_and_save_results(
-    amounts,
-    results_global_unstructured_l1,
-    results_local_unstructured_l1,
-    results_local_unstructured_random,
-    results_local_structured_l1,
-    results_local_structured_l2,
-    results_local_structured_random,
-    'pruning_methods_accuracy.png'
-)
