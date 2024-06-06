@@ -123,19 +123,20 @@ def validate(model, loader, criterion):
     return accuracy, avg_loss
 
 # function to train the model
-def train(model, loader, criterion, optimizer, scheduler, epochs=1):
-    # set model to training mode
-    model.train()
-
-    # enable auxiliary heads for training if they exist
-    if hasattr(model, 'aux1'):
-        model.aux1.training = True
-    if hasattr(model, 'aux2'):
-        model.aux2.training = True
+def train(model, train_loader, validation_loader, criterion, optimizer, scheduler, epochs=1, patience=5):
+    best_val_loss = float('inf')  # Initialize best validation loss
+    patience_counter = 0  # Initialize patience counter
 
     for epoch in range(epochs):
-        running_loss = 0.0
-        for images, labels in loader:
+        model.train()
+        # enable auxiliary heads for training if they exist
+        if hasattr(model, 'aux1'):
+            model.aux1.training = True
+        if hasattr(model, 'aux2'):
+            model.aux2.training = True
+            running_loss = 0.0
+
+        for images, labels in train_loader:
             if torch.cuda.is_available():
                 images = images.to('cuda')
                 labels = labels.to('cuda')
@@ -167,8 +168,24 @@ def train(model, loader, criterion, optimizer, scheduler, epochs=1):
         current_lr = scheduler.get_last_lr()[0]
         
         # Calculate and print training loss
-        epoch_loss = running_loss / len(loader)
+        epoch_loss = running_loss / len(train_loader)
         print(f'Epoch [{epoch+1}/{epochs}], Training Loss: {epoch_loss}, Learning Rate: {current_lr}')
+
+        # Validate the model after each epoch
+        accuracy, val_loss = validate(model, validation_loader, criterion)
+        print(f'Epoch [{epoch+1}/{epochs}], Validation Loss: {val_loss}, Validation Accuracy: {accuracy}%')
+
+        # Check for early stopping
+        if val_loss < best_val_loss:
+            best_val_loss = val_loss
+            patience_counter = 0  # reset counter
+            torch.save(model.state_dict(), 'best_model.pth')  # save best model
+        else:
+            patience_counter += 1
+        
+        if patience_counter >= patience:
+            print("Early stopping triggered")
+            break
 
 # function to prune and retrain the model
 def prune_and_retrain_sgd_exp(model, train_loader, validation_loader, amounts, criterion, initial_lr, epochs):
@@ -178,10 +195,7 @@ def prune_and_retrain_sgd_exp(model, train_loader, validation_loader, amounts, c
     results_pr_sgd_exp = np.zeros(len(amounts))
 
     initial_state = copy.deepcopy(model.state_dict())
-    best_val_loss = float('inf')  # Initialize best validation loss
-    patience = 5
-    patience_counter = 0  # Initialize patience counter
-
+    
     for i, amt in enumerate(amounts):
         print(f'Pruning Rate: {amt}')
 
@@ -203,23 +217,11 @@ def prune_and_retrain_sgd_exp(model, train_loader, validation_loader, amounts, c
         scheduler = lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
 
         # Retrain model
-        train(model, train_loader, criterion, optimizer, scheduler, epochs)
+        train(model, train_loader, validation_loader, criterion, optimizer, scheduler, epochs, patience=5)
 
         # Compute accuracy and validation loss after pruning
-        accuracy_l1_retrained, val_loss = validate(model, validation_loader, criterion)
+        accuracy_l1_retrained, _ = validate(model, validation_loader, criterion)
         print(f'Accuracy after retraining with SGD and Exponential LR: {accuracy_l1_retrained} %')
-
-        # early stopping based on validation loss
-        if val_loss < best_val_loss:
-            best_val_loss = val_loss
-            patience_counter = 0  # reset counter
-            torch.save(model.state_dict(), 'best_model.pth')  # save best model
-        else:
-            patience_counter += 1
-        if patience_counter >= patience:
-            print("Early stopping triggered")
-            break
-
 
         # Save accuracy
         results_pr_sgd_exp[i] = accuracy_l1_retrained
