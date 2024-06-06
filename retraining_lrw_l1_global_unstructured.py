@@ -16,7 +16,7 @@ from torchvision.datasets.imagenet import load_meta_file
 
 class HackyImageNet(ImageNet):
 
-    def init(self, root: str, devkit_loc="/mnt/qb/datasets/ImageNet2012/", split: str = 'train', transform=None, download=False, **kwargs):
+    def __init__(self, root: str, devkit_loc="/mnt/qb/datasets/ImageNet2012/", split: str = 'train', transform=None, download=False, **kwargs):
         if download:
             raise NotImplementedError("Automatic download of the ImageNet dataset is not supported.")
         root = self.root = os.path.expanduser(root)
@@ -25,7 +25,7 @@ class HackyImageNet(ImageNet):
 
         wnid_to_classes = load_meta_file(self.devkit_loc)[0]
 
-        super(ImageNet, self).init(self.split_folder, **kwargs)
+        super(ImageNet, self).__init__(self.split_folder, **kwargs)
         self.transform = transform
         self.root = root
         self.wnids = self.classes
@@ -34,6 +34,7 @@ class HackyImageNet(ImageNet):
         self.class_to_idx = {cls: idx
                              for idx, clss in enumerate(self.classes)
                              for cls in clss}
+
 
 # load the GoogleNet model
 model = torch.hub.load('pytorch/vision:v0.10.0', 'googlenet', weights='GoogLeNet_Weights.DEFAULT', aux_logits=True)
@@ -157,9 +158,10 @@ def train(model, loader, criterion, optimizer, scheduler, epochs=1):
             loss.backward()
             # update model parameters based on computed gradients
             optimizer.step()
-            scheduler.step()
 
             running_loss += loss.item()
+
+        scheduler.step()
 
         # get current learning rate
         current_lr = scheduler.get_last_lr()[0]
@@ -169,13 +171,16 @@ def train(model, loader, criterion, optimizer, scheduler, epochs=1):
         print(f'Epoch [{epoch+1}/{epochs}], Training Loss: {epoch_loss}, Learning Rate: {current_lr}')
 
 # function to prune and retrain the model
-def prune_and_retrain_sgd_clr(model, train_loader, validation_loader, amounts, criterion, base_lr, max_lr, step_size_up, epochs):
-    optimizer = optim.SGD(model.parameters(), lr=base_lr, momentum=0.9, weight_decay=0.0001)
-    scheduler =  lr_scheduler.CyclicLR(optimizer, base_lr=base_lr, max_lr=max_lr, step_size_up=step_size_up, mode='triangular')
+def prune_and_retrain_sgd_exp(model, train_loader, validation_loader, amounts, criterion, initial_lr, epochs):
+    optimizer = optim.SGD(model.parameters(), lr=initial_lr, momentum=0.9, weight_decay=0.0001)
+    scheduler =  lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
 
-    results_pr_sgd_clr = np.zeros(len(amounts))
+    results_pr_sgd_exp = np.zeros(len(amounts))
 
     initial_state = copy.deepcopy(model.state_dict())
+    best_val_loss = float('inf')  # Initialize best validation loss
+    patience = 5
+    patience_counter = 0  # Initialize patience counter
 
     for i, amt in enumerate(amounts):
         print(f'Pruning Rate: {amt}')
@@ -192,27 +197,39 @@ def prune_and_retrain_sgd_clr(model, train_loader, validation_loader, amounts, c
 
         # Learning rate rewinding: reset learning rate to initial state
         for param_group in optimizer.param_groups:
-            param_group['lr'] = base_lr
+            param_group['lr'] = initial_lr
 
         # Reset scheduler if needed
-        scheduler = lr_scheduler.CyclicLR(optimizer, base_lr=base_lr, max_lr=max_lr, step_size_up=step_size_up, mode='triangular')
+        scheduler = lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
 
         # Retrain model
         train(model, train_loader, criterion, optimizer, scheduler, epochs)
 
         # Compute accuracy and validation loss after pruning
-        accuracy_l1_retrained, _ = validate(model, validation_loader, criterion)
+        accuracy_l1_retrained, val_loss = validate(model, validation_loader, criterion)
         print(f'Accuracy after retraining with SGD and Exponential LR: {accuracy_l1_retrained} %')
 
+        # early stopping based on validation loss
+        if val_loss < best_val_loss:
+            best_val_loss = val_loss
+            patience_counter = 0  # reset counter
+            torch.save(model.state_dict(), 'best_model.pth')  # save best model
+        else:
+            patience_counter += 1
+        if patience_counter >= patience:
+            print("Early stopping triggered")
+            break
+
+
         # Save accuracy
-        results_pr_sgd_clr[i] = accuracy_l1_retrained
+        results_pr_sgd_exp[i] = accuracy_l1_retrained
 
         for module, _ in parameters_to_prune:
             prune.remove(module, 'weight')
         
         model.load_state_dict(initial_state)
 
-    return results_pr_sgd_clr
+    return results_pr_sgd_exp
 
 # specify criterion
 criterion = nn.CrossEntropyLoss()
@@ -225,7 +242,7 @@ print(f'Accuracy before pruning: {accuracy_before_pruning} %')
 amounts = [0.3, 0.5, 0.7]
 
 # call the prune and retrain function
-results_pr_sgd_clr = prune_and_retrain_sgd_clr(model, train_loader, validation_loader, amounts, criterion, base_lr=0.001, max_lr=0.006, step_size_up=782, epochs=4)
-np.save('results_pr_sgd_clr.npy', results_pr_sgd_clr)
+results_pr_sgd_exp = prune_and_retrain_sgd_exp(model, train_loader, validation_loader, amounts, criterion, initial_lr=0.001, epochs=10)
+np.save('results_pr_sgd_exp.npy', results_pr_sgd_exp)
 
 print('Finished pruning, retraining, and evaluation.')
