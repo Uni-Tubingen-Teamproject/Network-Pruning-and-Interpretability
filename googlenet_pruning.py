@@ -123,6 +123,12 @@ def setUpPruning(model):
 
 amounts, module_count, parameters_to_prune = setUpPruning(model)
 
+# Funktion, um die JSON-Datei zu laden
+def load_pruning_rates(file_path):
+    with open(file_path, 'r') as file:
+        pruning_rates = json.load(file)
+    return pruning_rates
+
 def globalUnstructuredL1Pruning(amounts, validation_loader, model, parameters_to_prune):
     # Array to store results, one-dimensional as we prune globally
     results_global_unstructured_l1 = np.zeros(len(amounts))
@@ -315,8 +321,7 @@ def localStructuredRandomPruning(module_count, amounts, validation_loader, model
     initial_state = copy.deepcopy(model.state_dict())
     
     # Create an array to save the results
-    results_local_structured_random = np.zeros(
-        (module_count, len(amounts), runs))
+    results_local_structured_random = np.zeros((module_count, len(amounts), runs))
 
     print("########## Local Structured Random Pruning ##########\n\n")
     
@@ -352,6 +357,99 @@ def localStructuredRandomPruning(module_count, amounts, validation_loader, model
     np.save('results_local_structured_random.npy',
             results_local_structured_random)
 
+def pruneSpecificLocalUnstructuredL1(validation_loader, model):
+    # Create an array to save the results
+    initial_state = copy.deepcopy(model.state_dict())
+    
+    # Pfad zur JSON-Datei mit den Pruning-Raten
+    pruning_rates_file = "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/Pruning_Rates/pruning_rates_local_structured_l1.json"
+    pruning_rates = load_pruning_rates(pruning_rates_file)
+
+    correct_predictions, total_samples = correctPred(validation_loader, model)
+    accuracy = correct_predictions / total_samples
+
+    print("\n########## Specific Local Unstructured L1 Pruning ##########\n")
+    print(f"Accuracy before: {accuracy:}")
+    
+    excluded_modules = ["conv1.conv", "conv2.conv", "conv3.conv"]
+    
+    # finetuning of the pruning rates
+    subtractions = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+    
+    for subtraction in subtractions:
+        print(f"Subtraction: {subtraction} \n")
+        for module_name, module in model.named_modules():
+
+            # Given modules have weights, we prune them according to the amounts parameter and the l1-norm
+            if isinstance(module, (torch.nn.Conv2d)) and hasattr(module, 'weight'):
+                
+                if module_name in excluded_modules:
+                    continue
+
+                # get pruning rate from json file
+                pruning_rate = round(pruning_rates[module_name] - subtraction, 2)
+
+                prune.l1_unstructured(
+                    module, name='weight', amount=pruning_rate)
+
+                # Assess the accuracy and store it
+                correct_predictions, total_samples = correctPred(
+                    validation_loader, model)
+                accuracy = correct_predictions / total_samples
+                
+                prune.remove(module, 'weight')
+
+                print(f"Module: {module_name}, Pruning Rate: {pruning_rate}, Accuracy: {accuracy}")
+        
+        # Reset Model
+        model.load_state_dict(initial_state)
+       
+def pruneSpecificLocalStructuredL1(validation_loader, model):
+    # Create an array to save the results
+    initial_state = copy.deepcopy(model.state_dict())
+
+    # Pfad zur JSON-Datei mit den Pruning-Raten
+    pruning_rates_file = "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/Pruning_Rates/pruning_rates_local_structured_l1.json"
+    pruning_rates = load_pruning_rates(pruning_rates_file)
+
+    correct_predictions, total_samples = correctPred(validation_loader, model)
+    accuracy = correct_predictions / total_samples
+
+    print("\n########## Specific Local Structured L1 Pruning ##########\n")
+    print(f"Accuracy before: {accuracy:}")
+    
+    excluded_modules = ["conv1.conv", "conv2.conv", "conv3.conv"]
+
+    # finetuning of the pruning rates
+    subtractions = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+    
+    for subtraction in subtractions:
+        
+        for module_name, module in model.named_modules():
+
+            # Given modules have weights, we prune them according to the amounts parameter and the l1-norm
+            if isinstance(module, (torch.nn.Conv2d)) and hasattr(module, 'weight'):
+
+                if module_name in excluded_modules:
+                    continue
+                # get pruning rate from json file
+                pruning_rate = round(pruning_rates[module_name] - subtraction, 2)
+
+                prune.ln_structured(
+                    module, name='weight', amount=pruning_rate, n=1, dim=0)
+
+                # Assess the accuracy and store it
+                correct_predictions, total_samples = correctPred(
+                    validation_loader, model)
+                accuracy = correct_predictions / total_samples
+                
+                prune.remove(module, 'weight')
+
+                print(f"Module: {module_name}, Pruning Rate: {pruning_rate}, Accuracy: {accuracy}")
+
+        # Reset Model
+        model.load_state_dict(initial_state)
+
 def measure_time(pruning_function, *args):
     start_time = time.time()
     pruning_function(*args)
@@ -362,26 +460,28 @@ def measure_time(pruning_function, *args):
 
     print(f"{pruning_function.__name__} took {int(hours):02}:{int(minutes):02}:{seconds:05.2f}")
 
+
 ######################## Test Pruning ########################
 
 # Prune the model using global unstructured L1 pruning
-# measure_time(globalUnstructuredL1Pruning, amounts, validation_loader, model, parameters_to_prune)
+#measure_time(globalUnstructuredL1Pruning, amounts, validation_loader, model, parameters_to_prune)
 
 # Prune the model using local unstructured L1 pruning
-measure_time(localUnstructuredL1Pruning, module_count, amounts,
-              validation_loader, model)
+#measure_time(localUnstructuredL1Pruning, module_count, amounts, validation_loader, model)
 
 # Prune the model using local unstructured random pruning
-measure_time(localUnstructuredRandomPruning, module_count,
-             amounts, validation_loader, model)
+#measure_time(localUnstructuredRandomPruning, module_count, amounts, validation_loader, model)
 
 # Prune the model using local structured L1 pruning
-measure_time(LocalStructuredLNPruning, module_count, amounts,
-             validation_loader, model, parameters_to_prune, 1)
+#measure_time(LocalStructuredLNPruning, module_count, amounts, validation_loader, model, parameters_to_prune, 2)
 
 # Prune the model using local structured random pruning
-measure_time(localStructuredRandomPruning, module_count, amounts,
-             validation_loader, model, parameters_to_prune, 2)
+#measure_time(localStructuredRandomPruning, module_count, amounts, validation_loader, model, parameters_to_prune, 2)
+
+# Prune the model using specific local unstructured L1 pruning
+#measure_time(pruneSpecificLocalUnstructuredL1, validation_loader, model)
+
+measure_time(pruneSpecificLocalStructuredL1, validation_loader, model)
 
 # Load the results
 results_global_unstructured_l1 = np.load('results_global_unstructured_l1.npy')
