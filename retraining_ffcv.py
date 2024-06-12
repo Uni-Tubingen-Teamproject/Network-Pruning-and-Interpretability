@@ -114,7 +114,7 @@ def train(model, loader, criterion, optimizer, scheduler, epochs=1, validation_l
         if validation_loader:
             accuracy = validate(model, validation_loader)
             print(f'Epoch [{epoch+1}/{epochs}], Training Loss: {epoch_loss}, Learning Rate: {
-                  current_lr}, Validation Accuracy: {accuracy:.2f}%')
+                  current_lr}, Validation Accuracy: {accuracy}')
         else:
             print(f'Epoch [{
                   epoch+1}/{epochs}], Training Loss: {epoch_loss}, Learning Rate: {current_lr}')
@@ -208,7 +208,6 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
                 if module_name in excluded_modules:
                     continue
                 prune.remove(module, 'weight')
-                module.load_state_dict(initial_module_states[module_name])
 
         accuracy = validate(model, validation_loader)
         print(print(f"Accuracy after retraining: {accuracy}"))
@@ -295,6 +294,6 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model):
         index += 1
 
 
-pruneSpecificLocalStructuredLNPruning(val_loader, model, 1)
-# pruneSpecificLocalUnstructuredL1(val_loader, model)
+#pruneSpecificLocalStructuredLNPruning(val_loader, model, 1)
+#pruneSpecificLocalUnstructuredL1(val_loader, model)
 print("Finished pruning, retraining, and evaluation.")
