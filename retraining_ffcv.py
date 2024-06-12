@@ -294,6 +294,13 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model):
         index += 1
 
 
+<<<<<<< HEAD
 #pruneSpecificLocalStructuredLNPruning(val_loader, model, 1)
 #pruneSpecificLocalUnstructuredL1(val_loader, model)
 print("Finished pruning, retraining, and evaluation.")
+=======
+pruneSpecificLocalStructuredLNPruning(val_loader, model, 1)
+#pruneSpecificLocalUnstructuredL1(val_loader, model)
+print("Finished pruning, retraining, and evaluation.")
+
+>>>>>>> 7debe4b (important changes to repo structure)
