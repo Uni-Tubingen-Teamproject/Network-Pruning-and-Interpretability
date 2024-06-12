@@ -234,8 +234,8 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model):
                         "conv3.conv", "aux1.conv.conv", "aux2.conv.conv"]
 
     # finetuning of the pruning rates
-    factors = [0.4, 0.53, 0.66, 0.79, 0.92]
-    avg_rates = [0.3, 0.4, 0.5, 0.6, 0.7]
+    factors = [0.13, 0.26, 0.4, 0.53, 0.66, 0.79, 0.92]
+    avg_rates = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]
 
     non_zero_params, total_params = count_nonzero_params(model)
     print(
