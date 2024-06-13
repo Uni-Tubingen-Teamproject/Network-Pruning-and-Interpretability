@@ -8,6 +8,7 @@ import torch.nn.utils.prune as prune
 import numpy as np
 import copy
 import json
+import time
 
 from ffcv_dataloaders import create_train_loader, create_test_loader
 
@@ -17,23 +18,27 @@ FFCV_PATH = "/mnt/lustre/datasets/ImageNet-ffcv"
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Create FFCV data loaders
+start_time = time.time()
 train_loader = create_train_loader(
     os.path.join(FFCV_PATH, 'train_500_0.50_90.ffcv'),
     num_workers=8,
-    batch_size=64,
+    batch_size=128,
     distributed=False,
     in_memory=False,
     device=device
 )
+print(f"Train loader created in {time.time() - start_time} seconds")
 
+start_time = time.time()
 val_loader = create_test_loader(
     os.path.join(FFCV_PATH, 'val_500_0.50_90.ffcv'),
     num_workers=8,
-    batch_size=64,
+    batch_size=128,
     distributed=False,
     in_memory=False,
     device=device
 )
+print(f"Train loader created in {time.time() - start_time} seconds")
 
 scaler = GradScaler()
 
@@ -42,13 +47,17 @@ model = torch.hub.load('pytorch/vision:v0.10.0', 'googlenet',
                        weights='GoogLeNet_Weights.DEFAULT', aux_logits=True)
 model = model.to(device)
 
+## Set Hyperparameters
+learning_rate = 0.01
+epochs = 30
+
 # Define the loss function and optimizer
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(model.parameters(), lr=0.01,
+optimizer = optim.SGD(model.parameters(), lr=learning_rate,
                       momentum=0.9, weight_decay=1e-4)
 scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
 
-# Function to validate the model
+print(f"Training for {epochs} epochs with learning rate {learning_rate} and optimizer {optimizer} and scheduler {scheduler}")
 
 
 def validate(model, loader):
@@ -113,11 +122,9 @@ def train(model, loader, criterion, optimizer, scheduler, epochs=1, validation_l
 
         if validation_loader:
             accuracy = validate(model, validation_loader)
-            print(f'Epoch [{epoch+1}/{epochs}], Training Loss: {epoch_loss}, Learning Rate: {
-                  current_lr}, Validation Accuracy: {accuracy}')
+            print(f'Epoch [{epoch+1}/{epochs}], Training Loss: {epoch_loss}, Learning Rate: {current_lr}, Validation Accuracy: {accuracy}')
         else:
-            print(f'Epoch [{
-                  epoch+1}/{epochs}], Training Loss: {epoch_loss}, Learning Rate: {current_lr}')
+            print(f'Epoch [{epoch+1}/{epochs}], Training Loss: {epoch_loss}, Learning Rate: {current_lr}')
 
 
 # Prune the model
@@ -156,7 +163,7 @@ def load_pruning_rates(file_path):
     return pruning_rates
 
 
-def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
+def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n, epochs):
     initial_state = copy.deepcopy(model.state_dict())
     pruning_rates_file = "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/Pruning_Rates/pruning_rates_local_structured_l1.json"
     pruning_rates = load_pruning_rates(pruning_rates_file)
@@ -200,7 +207,7 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
         print(f"Avg Pruning Rate: {avg_rates[index]}, Accuracy: {accuracy}")
 
         train(model, train_loader, criterion, optimizer, scheduler,
-              epochs=3, validation_loader=validation_loader)
+              epochs=epochs, validation_loader=validation_loader)
 
         # remove the pruning masks so they're not retrained again after retraining
         for module_name, module in model.named_modules():
@@ -216,7 +223,7 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
         index += 1
 
 
-def pruneSpecificLocalUnstructuredL1(validation_loader, model):
+def pruneSpecificLocalUnstructuredL1(validation_loader, model, epochs):
     # Create an array to save the results
     initial_state = copy.deepcopy(model.state_dict())
 
@@ -276,7 +283,7 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model):
 
         # retrain the model
         train(model, train_loader, criterion, optimizer,
-              scheduler, epochs=3, validation_loader=validation_loader)
+              scheduler, epochs=epochs, validation_loader=validation_loader)
 
         # after retraining, remove the pruning masks so they're not retrained again
         for module_name, module in model.named_modules():
@@ -294,13 +301,8 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model):
         index += 1
 
 
-<<<<<<< HEAD
-#pruneSpecificLocalStructuredLNPruning(val_loader, model, 1)
-#pruneSpecificLocalUnstructuredL1(val_loader, model)
-print("Finished pruning, retraining, and evaluation.")
-=======
 pruneSpecificLocalStructuredLNPruning(val_loader, model, 1)
 #pruneSpecificLocalUnstructuredL1(val_loader, model)
 print("Finished pruning, retraining, and evaluation.")
 
->>>>>>> 7debe4b (important changes to repo structure)
+
