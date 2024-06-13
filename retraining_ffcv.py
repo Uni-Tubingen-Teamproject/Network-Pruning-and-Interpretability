@@ -49,7 +49,7 @@ model = model.to(device)
 
 ## Set Hyperparameters
 learning_rate = 0.01
-epochs = 30
+epochs = 10
 
 # Define the loss function and optimizer
 criterion = nn.CrossEntropyLoss()
@@ -57,7 +57,7 @@ optimizer = optim.SGD(model.parameters(), lr=learning_rate,
                       momentum=0.9, weight_decay=1e-4)
 scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
 
-print(f"Training for {epochs} epochs with learning rate {learning_rate} and optimizer {optimizer} and scheduler {scheduler}")
+print(f"Training for {epochs} epochs with learning rate {learning_rate} and optimizer {optimizer.__class__} and scheduler {scheduler.__class__}")
 
 
 def validate(model, loader):
@@ -301,8 +301,8 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model, epochs):
         index += 1
 
 
-pruneSpecificLocalStructuredLNPruning(val_loader, model, 1)
-#pruneSpecificLocalUnstructuredL1(val_loader, model)
+pruneSpecificLocalStructuredLNPruning(val_loader, model, 1, epochs)
+#pruneSpecificLocalUnstructuredL1(val_loader, model, epochs)
 print("Finished pruning, retraining, and evaluation.")
 
 
