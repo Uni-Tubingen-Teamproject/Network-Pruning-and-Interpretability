@@ -49,7 +49,7 @@ model = model.to(device)
 
 ## Set Hyperparameters
 learning_rate = 0.01
-epochs = 10
+epochs = 30
 
 # Define the loss function and optimizer
 criterion = nn.CrossEntropyLoss()
@@ -206,6 +206,10 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n, epochs):
         accuracy = correct_predictions / total_samples
         print(f"Avg Pruning Rate: {avg_rates[index]}, Accuracy: {accuracy}")
 
+        # reset learning rate (rewinding)
+        initial_lr = 0.001  # Store the initial learning rate
+        optimizer = optim.SGD(model.parameters(), lr=initial_lr,
+                              momentum=0.9, weight_decay=0.0001)
         train(model, train_loader, criterion, optimizer, scheduler,
               epochs=epochs, validation_loader=validation_loader)
 
@@ -281,6 +285,10 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model, epochs):
         print("Average Pruning Accuracy: ",
               avg_rates[index], " Accuracy: ", accuracy)
 
+        # reset learning rate (rewinding)
+        initial_lr = 0.001  # Store the initial learning rate
+        optimizer = optim.SGD(model.parameters(), lr=initial_lr,
+                              momentum=0.9, weight_decay=0.0001)
         # retrain the model
         train(model, train_loader, criterion, optimizer,
               scheduler, epochs=epochs, validation_loader=validation_loader)

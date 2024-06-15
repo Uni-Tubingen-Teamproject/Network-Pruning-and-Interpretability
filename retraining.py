@@ -187,7 +187,7 @@ amounts = [0.3, 0.5, 0.7]
 
 # initialize results dictionary
 results_l1_unstructured_test = np.zeros(len(amounts))
-epochs = 3
+epochs = 10
 
 criterion = nn.CrossEntropyLoss()
 
@@ -386,17 +386,21 @@ def pruneSpecificLocalUnstructuredL1Successively(validation_loader, model):
 
         print("Absolute Pruning Rate: ",
               absolute_pruning_rate, " Accuracy: ", accuracy)
+        # reset learning rate (rewinding)
         
+        initial_lr = 0.001  # Store the initial learning rate
+        optimizer = optim.SGD(model.parameters(), lr=initial_lr,
+                              momentum=0.9, weight_decay=0.0001)
         # retrain the model
         train(model, train_loader, criterion, optimizer,
               scheduler, epochs, validation_loader)
 
-        # # after retraining, remove the pruning masks so they're not retrained again
-        # for module_name, module in model.named_modules():
-        #     if isinstance(module, (torch.nn.Conv2d)) and hasattr(module, 'weight'):
-        #         if module_name in excluded_modules:
-        #             continue
-        #         prune.remove(module, 'weight')
+        # after retraining, remove the pruning masks so they're not retrained again
+        for module_name, module in model.named_modules():
+            if isinstance(module, (torch.nn.Conv2d)) and hasattr(module, 'weight'):
+                if module_name in excluded_modules:
+                    continue
+                prune.remove(module, 'weight')
 
         model.eval()
         non_zero_params, total_params = count_nonzero_params(model)
@@ -461,7 +465,12 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
 
         print("Average Pruning Accuracy: ",
               avg_rates[index], " Accuracy: ", accuracy)
-
+        
+        # reset learning rate (rewinding)
+        initial_lr = 0.001  # Store the initial learning rate
+        optimizer = optim.SGD(model.parameters(), lr=initial_lr,
+                      momentum=0.9, weight_decay=0.0001)
+        
         # retrain the model
         train(model, train_loader, criterion, optimizer,
               scheduler, epochs, validation_loader)
