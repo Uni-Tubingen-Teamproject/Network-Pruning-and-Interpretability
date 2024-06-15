@@ -308,6 +308,8 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model):
 
         print("Average Pruning Accuracy: ", avg_rates[index], " Accuracy: ", accuracy)
 
+        # Rewinding learning rate before retraining
+        reset_learning_rate(optimizer, initial_lr)
         # retrain the model
         train(model, train_loader, criterion, optimizer,
               scheduler, epochs, validation_loader)
@@ -395,7 +397,7 @@ def pruneSpecificLocalUnstructuredL1Successively(validation_loader, model):
         
         # rewinding learning_rate to 0.001
         reset_learning_rate(optimizer, initial_lr)
-                              momentum=0.9, weight_decay=0.0001)
+        
         # retrain the model
         train(model, train_loader, criterion, optimizer,
               scheduler, epochs, validation_loader)
@@ -470,10 +472,9 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
         print("Average Pruning Accuracy: ",
               avg_rates[index], " Accuracy: ", accuracy)
         
-        # reset learning rate (rewinding)
-        initial_lr = 0.001  # Store the initial learning rate
-        optimizer = optim.SGD(model.parameters(), lr=initial_lr,
-                      momentum=0.9, weight_decay=0.0001)
+        
+        # Rewinding learning rate before retraining
+        reset_learning_rate(optimizer, initial_lr)              
         
         # retrain the model
         train(model, train_loader, criterion, optimizer,
@@ -575,10 +576,10 @@ def pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 
 
 #pruneSpecificLocalUnstructuredL1(validation_loader, model)
 
-#pruneSpecificLocalUnstructuredL1Successively(validation_loader, model)
+pruneSpecificLocalUnstructuredL1Successively(validation_loader, model)
 
 #pruneSpecificLocalStructuredLNPruning(validation_loader, model, 1)
 
-pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 1)
+#pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 1)
 
 print("Finished pruning, retraining, and evaluation.")
