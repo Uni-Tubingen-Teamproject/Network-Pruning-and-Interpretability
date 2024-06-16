@@ -84,7 +84,7 @@ train_transformation = transforms.Compose([
 # Beispiel zur Verwendung:
 root_path = "/scratch_local/datasets/ImageNet2012"
 
-batch_size = 256
+batch_size = 128
 
 validation_set = HackyImageNet(
     root=root_path, split='val', transform=validation_transformation)
@@ -181,16 +181,9 @@ print("Accuracy before pruning:", accuracy_before_pruning)
 
 initial_state = copy.deepcopy(model.state_dict())
 
-# pruning amount for the loop
-# amounts = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
-amounts = [0.3, 0.5, 0.7]
-
-# initialize results dictionary
-results_l1_unstructured_test = np.zeros(len(amounts))
+# Set hyperparameters
 epochs = 10
-
 criterion = nn.CrossEntropyLoss()
-
 initial_lr = 0.001  # Store the initial learning rate
 optimizer = optim.SGD(model.parameters(), lr=initial_lr,
                       momentum=0.9, weight_decay=0.0001)
@@ -220,11 +213,6 @@ def count_nonzero_params(model, excluded_modules=[]):
             total_params += module.weight.numel()
             
     return nonzero_params, total_params
-
-
-def reset_learning_rate(optimizer, lr):
-    for param_group in optimizer.param_groups:
-        param_group['lr'] = lr
 
 def correctPred(validation_loader, model):
 
@@ -309,7 +297,10 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model):
         print("Average Pruning Accuracy: ", avg_rates[index], " Accuracy: ", accuracy)
 
         # Rewinding learning rate before retraining
-        reset_learning_rate(optimizer, initial_lr)
+        # reset learning rate (rewinding)
+        optimizer = optim.SGD(model.parameters(), lr=initial_lr,
+                              momentum=0.9, weight_decay=0.0001)
+        scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
         # retrain the model
         train(model, train_loader, criterion, optimizer,
               scheduler, epochs, validation_loader)
@@ -390,24 +381,25 @@ def pruneSpecificLocalUnstructuredL1Successively(validation_loader, model):
 
         print("Absolute Pruning Rate: ",
               absolute_pruning_rate)
-        # reset learning rate (rewinding)
         non_zero_params, total_params = count_nonzero_params(model)
         print(f"Actual Pruning Rate: {1 - non_zero_params / total_params}")
         print("Accuracy: ", accuracy)
         
-        # rewinding learning_rate to 0.001
-        reset_learning_rate(optimizer, initial_lr)
+        # reset learning rate (rewinding)
+        optimizer = optim.SGD(model.parameters(), lr=initial_lr,
+                              momentum=0.9, weight_decay=0.0001)
+        scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
         
         # retrain the model
         train(model, train_loader, criterion, optimizer,
               scheduler, epochs, validation_loader)
 
-        # after retraining, remove the pruning masks so they're not retrained again
-        for module_name, module in model.named_modules():
-            if isinstance(module, (torch.nn.Conv2d)) and hasattr(module, 'weight'):
-                if module_name in excluded_modules:
-                    continue
-                prune.remove(module, 'weight')
+        # # after retraining, remove the pruning masks so they're not retrained again
+        # for module_name, module in model.named_modules():
+        #     if isinstance(module, (torch.nn.Conv2d)) and hasattr(module, 'weight'):
+        #         if module_name in excluded_modules:
+        #             continue
+        #         prune.remove(module, 'weight')
 
         model.eval()
         
@@ -474,7 +466,10 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
         
         
         # Rewinding learning rate before retraining
-        reset_learning_rate(optimizer, initial_lr)              
+        # reset learning rate (rewinding)
+        optimizer = optim.SGD(model.parameters(), lr=initial_lr,
+                              momentum=0.9, weight_decay=0.0001)
+        scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
         
         # retrain the model
         train(model, train_loader, criterion, optimizer,
@@ -553,8 +548,10 @@ def pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 
         print(f"Actual Pruning Rate: {1 - non_zero_params / total_params}")
         print("Accuracy: ", accuracy)
 
-        # Rewinding learning rate before retraining
-        reset_learning_rate(optimizer, initial_lr)
+        # reset learning rate (rewinding)
+        optimizer = optim.SGD(model.parameters(), lr=initial_lr,
+                              momentum=0.9, weight_decay=0.0001)
+        scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
         # retrain the model
         train(model, train_loader, criterion, optimizer,
               scheduler, epochs, validation_loader)
