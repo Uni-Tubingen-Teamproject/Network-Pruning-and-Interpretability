@@ -377,7 +377,7 @@ def pruneSpecificLocalUnstructuredL1Successively(validation_loader, model):
         if index == 0:
             absolute_pruning_rate = avg_rates[index]
         else:
-            absolute_pruning_rate = (1 - (1 - absolute_pruning_rate) * avg_rates[index] )
+            absolute_pruning_rate = (1 - (1 - absolute_pruning_rate) * (1- avg_rates[index]) )
 
         print("Absolute Pruning Rate: ",
               absolute_pruning_rate)
