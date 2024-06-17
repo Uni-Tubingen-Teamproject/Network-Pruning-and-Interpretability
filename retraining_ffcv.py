@@ -49,7 +49,7 @@ model = model.to(device)
 
 ## Set Hyperparameters
 learning_rate = 0.01
-epochs = 30
+epochs = 50
 
 # Define the loss function and optimizer
 criterion = nn.CrossEntropyLoss()
@@ -309,8 +309,171 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model, epochs):
         index += 1
 
 
-pruneSpecificLocalStructuredLNPruning(val_loader, model, 1, epochs)
+def pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, n):
+    # Path to JSON-File with the specific pruning rates
+    pruning_rates_file = "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/Pruning_Rates/pruning_rates_local_structured_l1.json"
+    pruning_rates = load_pruning_rates(pruning_rates_file)
+
+    correct_predictions, total_samples = correctPred(validation_loader, model)
+    accuracy = correct_predictions / total_samples
+
+    print(f"\n########## Specific Local Structured L{n} Pruning Successively ##########\n")
+    print(f"Accuracy before: {accuracy:}")
+
+    excluded_modules = ["conv1.conv", "conv2.conv",
+                        "conv3.conv", "aux1.conv.conv", "aux2.conv.conv"]
+
+    factor = 0.27
+    avg_rate = 0.1
+
+    index = 0
+    for i in range(7):
+        print("\n------------------- Pruning Modules -------------------\n")
+        for module_name, module in model.named_modules():
+            if hasattr(module, 'weight') and isinstance(module, torch.nn.Conv2d):
+
+                if module_name in excluded_modules:
+                    continue
+
+                # get pruning rate from json file and round to 2 decimal places
+                pruning_rate = round(
+                    pruning_rates[module_name] * factor, 2)
+                # Prune the module
+                prune.ln_structured(
+                    module, name='weight', amount=pruning_rate, n=n, dim=0)
+
+                print(f"Module: {module_name}, Pruning Rate: {pruning_rate}")
+
+        print("\n--------------------------------------------------------\n")
+
+        # Assess the accuracy and store it
+        correct_predictions, total_samples = correctPred(
+            validation_loader, model)
+        accuracy = correct_predictions / total_samples
+
+        print("Relative Pruning Rate: ",
+              avg_rate)
+
+        if index == 0:
+            absolute_pruning_rate = avg_rate
+        else:
+            absolute_pruning_rate = (
+                1 - (1 - absolute_pruning_rate) * (1 - avg_rate))
+
+        print("Absolute Pruning Rate: ",
+              absolute_pruning_rate)
+        non_zero_params, total_params = count_nonzero_params(model)
+        print(f"Actual Pruning Rate: {1 - non_zero_params / total_params}")
+        print("Accuracy: ", accuracy)
+
+        # reset learning rate (rewinding)
+        optimizer = optim.SGD(model.parameters(), lr=learning_rate,
+                              momentum=0.9, weight_decay=0.0001)
+        scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
+        # retrain the model
+        train(model, train_loader, criterion, optimizer,
+              scheduler, epochs, validation_loader)
+
+        # # after retraining, remove the pruning masks so they're not retrained again
+        # for module_name, module in model.named_modules():
+        #     if isinstance(module, (torch.nn.Conv2d)) and hasattr(module, 'weight'):
+        #         if module_name in excluded_modules:
+        #             continue
+        #         prune.remove(module, 'weight')
+
+        model.eval()
+        # validate accuracy after pruning
+        accuracy_retrained = validate(model, validation_loader)
+        print("Accuracy after retraining:", accuracy_retrained)
+
+        index += 1
+
+
+def globalUnstructuredL1PruningIteratively(validation_loader, model):
+    # Accuracy before pruning
+    correct_predictions, total_samples = correctPred(validation_loader, model)
+    accuracy = correct_predictions / total_samples
+
+    # Exclude the following modules from pruning
+    excluded_modules = ["conv1.conv", "conv2.conv",
+                        "conv3.conv", "aux1.conv.conv", "aux2.conv.conv"]
+
+    print("\n########## Global Unstructured L1 Pruning Iteratively ##########\n")
+    print(f"Accuracy before: {accuracy:}")
+
+    # Count non-zero trainable parameters before pruning
+    non_zero_params, total_params = count_nonzero_params(model)
+    print(
+        f"Non-zero params before Pruning: {non_zero_params}, Total params: {total_params}")
+
+    # Parameters to prune
+    parameters_to_prune = []
+    for module_name, module in model.named_modules():
+        if isinstance(module, (torch.nn.Conv2d, torch.nn.Linear)) and hasattr(module, 'weight') and module.weight is not None:
+            if module_name in excluded_modules:
+                continue
+            parameters_to_prune.append((module, 'weight'))
+
+    # Define the pruning rate
+    pruning_rate = 0.4
+
+    # Prune iteratively with pruning rate of 0.4
+    for i in range(5):
+        print(f"Relative Pruning Rate: {pruning_rate}")
+
+        # Prune the model
+        prune.global_unstructured(
+            parameters_to_prune,
+            pruning_method=prune.L1Unstructured,
+            amount=pruning_rate,
+        )
+
+        # Assess the accuracy and store it
+        correct_predictions, total_samples = correctPred(
+            validation_loader, model)
+        accuracy = correct_predictions / total_samples
+
+        print("Relative Pruning Rate: ",
+              pruning_rate)
+
+        if i == 0:
+            absolute_pruning_rate = pruning_rate
+        else:
+            absolute_pruning_rate = (
+                1 - (1 - absolute_pruning_rate) * (1 - pruning_rate))
+
+        print("Absolute Pruning Rate: ",
+              absolute_pruning_rate)
+        non_zero_params, total_params = count_nonzero_params(model)
+        print(f"Actual Pruning Rate: {1 - non_zero_params / total_params}")
+        print("Accuracy: ", accuracy)
+
+        # reset learning rate (rewinding)
+        optimizer = optim.SGD(model.parameters(), lr=learning_rate,
+                              momentum=0.9, weight_decay=0.0001)
+        scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
+
+        # retrain the model
+        train(model, train_loader, criterion, optimizer,
+              scheduler, epochs, validation_loader)
+
+        # # after retraining, remove the pruning masks so they're not retrained again
+        # for module_name, module in model.named_modules():
+        #     if isinstance(module, (torch.nn.Conv2d)) and hasattr(module, 'weight'):
+        #         if module_name in excluded_modules:
+        #             continue
+        #         prune.remove(module, 'weight')
+
+        model.eval()
+
+        # validate accuracy after pruning
+        accuracy_retrained = validate(model, validation_loader)
+        print("Accuracy after retraining:", accuracy_retrained)
+
+#pruneSpecificLocalStructuredLNPruning(val_loader, model, 1, epochs)
 #pruneSpecificLocalUnstructuredL1(val_loader, model, epochs)
+#pruneSpecificLocalStructuredLNPruningSuccessively(val_loader, model, 1)
+globalUnstructuredL1PruningIteratively(val_loader, model)
 print("Finished pruning, retraining, and evaluation.")
 
 
