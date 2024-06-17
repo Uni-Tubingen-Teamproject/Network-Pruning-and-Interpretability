@@ -185,9 +185,11 @@ initial_state = copy.deepcopy(model.state_dict())
 epochs = 10
 criterion = nn.CrossEntropyLoss()
 initial_lr = 0.001  # Store the initial learning rate
-optimizer = optim.SGD(model.parameters(), lr=initial_lr,
-                      momentum=0.9, weight_decay=0.0001)
+#optimizer = optim.SGD(model.parameters(), lr=initial_lr,
+#                      momentum=0.9, weight_decay=0.0001)
 # optimizer = optim.SGD(model.parameters(), lr=0.1)
+# Adam optimizer
+optimizer = optim.Adam(model.parameters(), lr=initial_lr, weight_decay=0.0001)
 
 # scheduler = lr_scheduler.StepLR(optimizer, step_size=30, gamma=0.1)
 # scheduler = lr_scheduler.MultiStepLR(optimizer, milestones=[30, 80], gamma=0.1)
@@ -201,6 +203,7 @@ patience_counter = 0
 
 # prune the model
 
+print(f"Training for {epochs} epochs with learning rate {initial_lr} and optimizer {optimizer.__class__} and scheduler {scheduler.__class__}")
 
 def count_nonzero_params(model, excluded_modules=[]):
     nonzero_params = 0
@@ -242,6 +245,91 @@ def load_pruning_rates(file_path):
     return pruning_rates
 
 
+def globalUnstructuredL1PruningIterative(validation_loader, model):
+    
+    # Save initial state of the model
+    initial_state = copy.deepcopy(model.state_dict())
+
+    # Accuracy before pruning
+    correct_predictions, total_samples = correctPred(validation_loader, model)
+    accuracy = correct_predictions / total_samples
+
+    # Exclude the following modules from pruning
+    excluded_modules = ["conv1.conv", "conv2.conv",
+                        "conv3.conv", "aux1.conv.conv", "aux2.conv.conv"]
+
+    print("\n########## Global Unstructured L1 Pruning Iteratively ##########\n")
+    print(f"Accuracy before: {accuracy:}")
+    
+    # Count non-zero trainable parameters before pruning
+    non_zero_params, total_params = count_nonzero_params(model)
+    print(
+        f"Non-zero params before Pruning: {non_zero_params}, Total params: {total_params}")
+    
+    # Parameters to prune
+    parameters_to_prune = []
+    for module_name, module in model.named_modules():
+        if isinstance(module, (torch.nn.Conv2d, torch.nn.Linear)) and hasattr(module, 'weight') and module.weight is not None:
+            if module_name in excluded_modules:
+                continue
+            parameters_to_prune.append((module, 'weight'))
+    
+    # Define the pruning rate
+    pruning_rate = 0.4
+    
+    # Prune iteratively with pruning rate of 0.4
+    for i in range(5):
+        print(f"Relative Pruning Rate: {pruning_rate}")
+
+        # Prune the model
+        prune.global_unstructured(
+            parameters_to_prune,
+            pruning_method=prune.L1Unstructured,
+            amount=pruning_rate,
+        )
+
+        # Assess the accuracy and store it
+        correct_predictions, total_samples = correctPred(
+            validation_loader, model)
+        accuracy = correct_predictions / total_samples
+
+        print("Relative Pruning Rate: ",
+              pruning_rate)
+
+        if i == 0:
+            absolute_pruning_rate = pruning_rate
+        else:
+            absolute_pruning_rate = (
+                1 - (1 - absolute_pruning_rate) * (1 - pruning_rate))
+
+        print("Absolute Pruning Rate: ",
+              absolute_pruning_rate)
+        non_zero_params, total_params = count_nonzero_params(model)
+        print(f"Actual Pruning Rate: {1 - non_zero_params / total_params}")
+        print("Accuracy: ", accuracy)
+        
+        # reset learning rate (rewinding)
+        optimizer = optim.Adam(
+            model.parameters(), lr=initial_lr, weight_decay=0.0001)
+        scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
+
+        # retrain the model
+        train(model, train_loader, criterion, optimizer,
+              scheduler, epochs, validation_loader)
+
+        # # after retraining, remove the pruning masks so they're not retrained again
+        # for module_name, module in model.named_modules():
+        #     if isinstance(module, (torch.nn.Conv2d)) and hasattr(module, 'weight'):
+        #         if module_name in excluded_modules:
+        #             continue
+        #         prune.remove(module, 'weight')
+
+        model.eval()
+
+        # validate accuracy after pruning
+        accuracy_retrained = validate(model, validation_loader)
+        print("Accuracy after retraining:", accuracy_retrained)
+        
 def pruneSpecificLocalUnstructuredL1(validation_loader, model):
     # Create an array to save the results
     initial_state = copy.deepcopy(model.state_dict())
@@ -320,7 +408,6 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model):
         model.load_state_dict(initial_state)
         index += 1
 
-
 def pruneSpecificLocalUnstructuredL1Successively(validation_loader, model):
 
     # Path to JSON-File with the specific pruning rates
@@ -337,15 +424,17 @@ def pruneSpecificLocalUnstructuredL1Successively(validation_loader, model):
                         "conv3.conv", "aux1.conv.conv", "aux2.conv.conv"]
 
     # finetuning of the pruning rates
-    factors = [0.4, 0.66, 0.92]
-    avg_rates = [0.3, 0.5, 0.7]
+    # factors = [0.4, 0.66, 0.92]
+    # avg_rates = [0.3, 0.5, 0.7]
+    factors = [0.53]
+    avg_rates = [0.4]
     
     non_zero_params, total_params = count_nonzero_params(model)
     print(
         f"Non-zero params before Pruning: {non_zero_params}, Total params: {total_params}")
     
     index = 0
-    for factor in factors:
+    for i in range(5):
         print("\n------------------- Pruning Modules -------------------\n")
         for module_name, module in model.named_modules():
 
@@ -357,7 +446,7 @@ def pruneSpecificLocalUnstructuredL1Successively(validation_loader, model):
 
                 # get pruning rate from json file and round to 2 decimal places
                 pruning_rate = round(
-                    pruning_rates[module_name] * factor, 2)
+                    pruning_rates[module_name] * factors[0], 2)
 
                 prune.l1_unstructured(
                     module, name='weight', amount=pruning_rate)
@@ -372,12 +461,12 @@ def pruneSpecificLocalUnstructuredL1Successively(validation_loader, model):
         accuracy = correct_predictions / total_samples
 
         print("Relative Pruning Rate: ",
-              avg_rates[index])
+              avg_rates[0])
 
         if index == 0:
-            absolute_pruning_rate = avg_rates[index]
+            absolute_pruning_rate = avg_rates[0]
         else:
-            absolute_pruning_rate = (1 - (1 - absolute_pruning_rate) * (1- avg_rates[index]) )
+            absolute_pruning_rate = (1 - (1 - absolute_pruning_rate) * (1- avg_rates[0]) )
 
         print("Absolute Pruning Rate: ",
               absolute_pruning_rate)
@@ -408,7 +497,6 @@ def pruneSpecificLocalUnstructuredL1Successively(validation_loader, model):
         print("Accuracy after retraining:", accuracy_retrained)
 
         index += 1
-
 
 def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
     
@@ -489,7 +577,6 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
 
         model.load_state_dict(initial_state)
         index += 1
-
     
 def pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, n):
     # Path to JSON-File with the specific pruning rates
@@ -573,10 +660,12 @@ def pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 
 
 #pruneSpecificLocalUnstructuredL1(validation_loader, model)
 
-pruneSpecificLocalUnstructuredL1Successively(validation_loader, model)
+#pruneSpecificLocalUnstructuredL1Successively(validation_loader, model)
 
 #pruneSpecificLocalStructuredLNPruning(validation_loader, model, 1)
 
 #pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 1)
+
+globalUnstructuredL1PruningIterative(validation_loader, model)
 
 print("Finished pruning, retraining, and evaluation.")
