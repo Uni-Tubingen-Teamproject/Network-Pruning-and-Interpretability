@@ -154,22 +154,6 @@ def count_nonzero_params(model, excluded_modules=[]):
             total_params += module.weight.numel()
     return nonzero_params, total_params
 
-
-def correctPred(validation_loader, model):
-    correct_predictions = 0
-    total_samples = 0
-    for images, labels in validation_loader:
-        images, labels = images.to(device), labels.to(device)
-        with torch.no_grad():
-            outputs = model(images)
-            if isinstance(outputs, tuple):
-                outputs = outputs[0]
-        _, predicted = torch.max(outputs, 1)
-        correct_predictions += (predicted == labels).sum().item()
-        total_samples += labels.size(0)
-    return correct_predictions, total_samples
-
-
 def load_pruning_rates(file_path):
     with open(file_path, 'r') as file:
         pruning_rates = json.load(file)
@@ -214,9 +198,8 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n, epochs):
         non_zero_params, total_params = count_nonzero_params(model)
         print(f"Actual Pruning Rate: {1 - non_zero_params / total_params}")
 
-        correct_predictions, total_samples = correctPred(
-            validation_loader, model)
-        accuracy = correct_predictions / total_samples
+        accuracy = validate(model, validation_loader)
+        
         print(f"Avg Pruning Rate: {avg_rates[index]}, Accuracy: {accuracy}")
 
         # reset learning rate (rewinding)
@@ -248,8 +231,7 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model, epochs):
     pruning_rates_file = "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/Pruning_Rates/pruning_rates_local_unstructured_l1.json"
     pruning_rates = load_pruning_rates(pruning_rates_file)
 
-    correct_predictions, total_samples = correctPred(validation_loader, model)
-    accuracy = correct_predictions / total_samples
+    accuracy = validate(model, validation_loader)
 
     print("\n########## Specific Local Unstructured L1 Pruning ##########\n")
     print(f"Accuracy before: {accuracy:}")
@@ -291,9 +273,7 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model, epochs):
 
         print(f"Actual Pruning Rate: {1 - non_zero_params / total_params}")
         # Assess the accuracy and store it
-        correct_predictions, total_samples = correctPred(
-            validation_loader, model)
-        accuracy = correct_predictions / total_samples
+        accuracy = validate(model, validation_loader)
 
         print("Average Pruning Accuracy: ",
               avg_rates[index], " Accuracy: ", accuracy)
@@ -327,8 +307,7 @@ def pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 
     pruning_rates_file = "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/Pruning_Rates/pruning_rates_local_structured_l1.json"
     pruning_rates = load_pruning_rates(pruning_rates_file)
 
-    correct_predictions, total_samples = correctPred(validation_loader, model)
-    accuracy = correct_predictions / total_samples
+    accuracy = validate(model, validation_loader)
 
     print(f"\n########## Specific Local Structured L{n} Pruning Successively ##########\n")
     print(f"Accuracy before: {accuracy:}")
@@ -360,9 +339,7 @@ def pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 
         print("\n--------------------------------------------------------\n")
 
         # Assess the accuracy and store it
-        correct_predictions, total_samples = correctPred(
-            validation_loader, model)
-        accuracy = correct_predictions / total_samples
+        accuracy = validate(model, validation_loader)
 
         print("Relative Pruning Rate: ",
               avg_rate)
@@ -404,8 +381,7 @@ def pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 
 
 def globalUnstructuredL1PruningIteratively(validation_loader, model):
     # Accuracy before pruning
-    correct_predictions, total_samples = correctPred(validation_loader, model)
-    accuracy = correct_predictions / total_samples
+    accuracy = validate(model, validation_loader)
 
     # Exclude the following modules from pruning
     excluded_modules = ["conv1.conv", "conv2.conv",
@@ -442,9 +418,7 @@ def globalUnstructuredL1PruningIteratively(validation_loader, model):
         )
 
         # Assess the accuracy and store it
-        correct_predictions, total_samples = correctPred(
-            validation_loader, model)
-        accuracy = correct_predictions / total_samples
+        accuracy = validate(model, validation_loader)
 
         print("Relative Pruning Rate: ",
               pruning_rate)

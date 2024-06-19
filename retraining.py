@@ -14,8 +14,18 @@ import os
 from torchvision.datasets.utils import verify_str_arg
 from torchvision.datasets.imagenet import load_meta_file
 import json
+import wandb
 
-
+wandb.login()
+run = wandb.init(
+    # Set the project where this run will be logged
+    project="my-awesome-project",
+    # Track hyperparameters and run metadata
+    config={
+        "learning_rate": 0.01,
+        "epochs": 10,
+    },
+)
 class HackyImageNet(ImageNet):
 
     def init(self, root: str, devkit_loc="/mnt/qb/datasets/ImageNet2012/", split: str = 'train', transform=None, download=False, **kwargs):
@@ -118,7 +128,7 @@ def validate(model, loader):
             correct_predictions += (predicted == labels).sum().item()
             total_samples += labels.size(0)
 
-    accuracy = (correct_predictions / total_samples) * 100
+    accuracy = (correct_predictions / total_samples)
     return accuracy
 
 # function to train the model
@@ -169,6 +179,7 @@ def train(model, loader, criterion, optimizer, scheduler, epochs=1, validation_l
         # Calculate and print training loss
         epoch_loss = running_loss / len(loader)
         print(f'Epoch [{epoch+1}/{epochs}], Training Loss: {epoch_loss}, Learning Rate: {current_lr}')
+        
 
 
 # calculate accuracy for the validation set before pruning
@@ -203,7 +214,7 @@ patience_counter = 0
 
 # prune the model
 
-print(f"Training for {epochs} epochs with learning rate {initial_lr} and optimizer {optimizer.__class__} and scheduler {scheduler.__class__}")
+print(f"Training for {epochs} epochs with learning rate {initial_lr} and optimizer {optimizer.__class__} and scheduler {scheduler.__class__}", flush=True)
 
 def count_nonzero_params(model, excluded_modules=[]):
     nonzero_params = 0
@@ -216,25 +227,6 @@ def count_nonzero_params(model, excluded_modules=[]):
             total_params += module.weight.numel()
             
     return nonzero_params, total_params
-
-def correctPred(validation_loader, model):
-
-    correct_predictions = 0
-    total_samples = 0
-
-    for images, labels in validation_loader:
-        if torch.cuda.is_available():
-            images = images.to('cuda')
-            labels = labels.to('cuda')
-
-        with torch.no_grad():
-            output = model(images)
-
-        _, prediction = torch.max(output, 1)
-        correct_predictions += (prediction == labels).sum().item()
-        total_samples += labels.size(0)
-
-    return correct_predictions, total_samples
 
 # Funktion, um die JSON-Datei zu laden
 
@@ -251,7 +243,7 @@ def globalUnstructuredL1PruningIterative(validation_loader, model):
     initial_state = copy.deepcopy(model.state_dict())
 
     # Accuracy before pruning
-    correct_predictions, total_samples = correctPred(validation_loader, model)
+    correct_predictions, total_samples = validate(model, validation_loader)
     accuracy = correct_predictions / total_samples
 
     # Exclude the following modules from pruning
@@ -289,9 +281,7 @@ def globalUnstructuredL1PruningIterative(validation_loader, model):
         )
 
         # Assess the accuracy and store it
-        correct_predictions, total_samples = correctPred(
-            validation_loader, model)
-        accuracy = correct_predictions / total_samples
+        accuracy = validate(model, validation_loader)
 
         print("Relative Pruning Rate: ",
               pruning_rate)
@@ -338,8 +328,7 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model):
     pruning_rates_file = "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/Pruning_Rates/pruning_rates_local_unstructured_l1.json"
     pruning_rates = load_pruning_rates(pruning_rates_file)
 
-    correct_predictions, total_samples = correctPred(validation_loader, model)
-    accuracy = correct_predictions / total_samples
+    accuracy = validate(model, validation_loader)
 
     print("\n########## Specific Local Unstructured L1 Pruning ##########\n")
     print(f"Accuracy before: {accuracy:}")
@@ -378,9 +367,7 @@ def pruneSpecificLocalUnstructuredL1(validation_loader, model):
         
         print(f"Actual Pruning Rate: {1 - non_zero_params / total_params}")
         # Assess the accuracy and store it
-        correct_predictions, total_samples = correctPred(
-            validation_loader, model)
-        accuracy = correct_predictions / total_samples
+        accuracy = validate(model, validation_loader)
 
         print("Average Pruning Accuracy: ", avg_rates[index], " Accuracy: ", accuracy)
 
@@ -414,8 +401,7 @@ def pruneSpecificLocalUnstructuredL1Successively(validation_loader, model):
     pruning_rates_file = "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/Pruning_Rates/pruning_rates_local_unstructured_l1.json"
     pruning_rates = load_pruning_rates(pruning_rates_file)
 
-    correct_predictions, total_samples = correctPred(validation_loader, model)
-    accuracy = correct_predictions / total_samples
+    accuracy = validate(model, validation_loader)
 
     print("\n########## Specific Local Unstructured L1 Pruning Successively ##########\n")
     print(f"Accuracy before: {accuracy:}")
@@ -456,9 +442,7 @@ def pruneSpecificLocalUnstructuredL1Successively(validation_loader, model):
         print("\n--------------------------------------------------------\n")
         
         # Assess the accuracy and store it
-        correct_predictions, total_samples = correctPred(
-            validation_loader, model)
-        accuracy = correct_predictions / total_samples
+        accuracy = validate(model, validation_loader)
 
         print("Relative Pruning Rate: ",
               avg_rates[0])
@@ -507,8 +491,7 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
     pruning_rates_file = "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/Pruning_Rates/pruning_rates_local_structured_l1.json"
     pruning_rates = load_pruning_rates(pruning_rates_file)
 
-    correct_predictions, total_samples = correctPred(validation_loader, model)
-    accuracy = correct_predictions / total_samples
+    accuracy = validate(model, validation_loader)
 
     print(f"\n########## Specific Local Structured L{n} Pruning ##########\n")
     print(f"Accuracy before: {accuracy:}")
@@ -545,9 +528,7 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
 
         print(f"Actual Pruning Rate: {1 - non_zero_params / total_params}")
         # Assess the accuracy and store it
-        correct_predictions, total_samples = correctPred(
-            validation_loader, model)
-        accuracy = correct_predictions / total_samples
+        accuracy = validate(model, validation_loader)
 
         print("Average Pruning Accuracy: ",
               avg_rates[index], " Accuracy: ", accuracy)
@@ -583,8 +564,7 @@ def pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 
     pruning_rates_file = "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/Pruning_Rates/pruning_rates_local_structured_l1.json"
     pruning_rates = load_pruning_rates(pruning_rates_file)
 
-    correct_predictions, total_samples = correctPred(validation_loader, model)
-    accuracy = correct_predictions / total_samples
+    accuracy = validate(model, validation_loader)
 
     print(f"\n########## Specific Local Structured L{n} Pruning Successively ##########\n")
     print(f"Accuracy before: {accuracy:}")
@@ -616,9 +596,7 @@ def pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 
         print("\n--------------------------------------------------------\n")
     
         # Assess the accuracy and store it
-        correct_predictions, total_samples = correctPred(
-            validation_loader, model)
-        accuracy = correct_predictions / total_samples
+        validate(model, validation_loader)
 
         print("Relative Pruning Rate: ",
               avg_rate)
