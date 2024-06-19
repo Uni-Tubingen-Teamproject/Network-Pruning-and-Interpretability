@@ -11,6 +11,18 @@ import json
 import time
 
 from ffcv_dataloaders import create_train_loader, create_test_loader
+import wandb
+
+wandb.login()
+run = wandb.init(
+    # Set the project where this run will be logged
+    project="my-awesome-project",
+    # Track hyperparameters and run metadata
+    config={
+        "learning_rate": 0.01,
+        "epochs": 10,
+    },
+)
 
 FFCV_PATH = "/mnt/lustre/datasets/ImageNet-ffcv"
 
@@ -27,7 +39,7 @@ train_loader = create_train_loader(
     in_memory=False,
     device=device
 )
-print(f"Train loader created in {time.time() - start_time} seconds")
+print(f"Train loader created in {time.time() - start_time} seconds", flush=True)
 
 start_time = time.time()
 val_loader = create_test_loader(
@@ -123,6 +135,7 @@ def train(model, loader, criterion, optimizer, scheduler, epochs=1, validation_l
         if validation_loader:
             accuracy = validate(model, validation_loader)
             print(f'Epoch [{epoch+1}/{epochs}], Training Loss: {epoch_loss}, Learning Rate: {current_lr}, Validation Accuracy: {accuracy}')
+            wandb.log({"accuracy": accuracy, "loss": loss})
         else:
             print(f'Epoch [{epoch+1}/{epochs}], Training Loss: {epoch_loss}, Learning Rate: {current_lr}')
 
