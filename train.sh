@@ -1,1 +1,1 @@
-python3 ./training_ffcv.py
+python3 ./retraining_ffcv.py
