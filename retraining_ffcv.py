@@ -29,8 +29,7 @@ train_loader = create_train_loader(
     in_memory=False,
     device=device
 )
-print(f"Train loader created in {
-      time.time() - start_time} seconds", flush=True)
+print(f"Train loader created in {time.time() - start_time} seconds", flush=True)
 
 start_time = time.time()
 val_loader = create_test_loader(
@@ -63,8 +62,7 @@ optimizer = optim.Adam(
     model.parameters(), lr=learning_rate, weight_decay=0.0001)
 scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
 
-print(f"Training for {epochs} epochs with learning rate {learning_rate} and optimizer {
-      optimizer.__class__.__name__} and scheduler {scheduler.__class__.__name__}")
+print(f"Training for {epochs} epochs with learning rate {learning_rate} and optimizer {optimizer.__class__.__name__} and scheduler {scheduler.__class__.__name__}")
 
 wandb.login(key="ea551b0198dda65a9f311d0ea5d6eaa6f41b1d4a")
 run = wandb.init(
@@ -147,13 +145,11 @@ def train(model, loader, criterion, optimizer, scheduler, epochs=1, validation_l
 
         if validation_loader:
             accuracy = validate(model, validation_loader)
-            print(f'Epoch [{epoch+1}/{epochs}], Training Loss: {epoch_loss}, Training Loss w/o Aux: {
-                  epoch_loss_without_aux}, Learning Rate: {current_lr}, Validation Accuracy: {accuracy}', flush=True)
+            print(f'Epoch [{epoch+1}/{epochs}], Training Loss: {epoch_loss}, Training Loss w/o Aux: {epoch_loss_without_aux}, Learning Rate: {current_lr}, Validation Accuracy: {accuracy}', flush=True)
             wandb.log({"accuracy": accuracy, "training loss": epoch_loss, "training loss w/o aux": {
                       epoch_loss_without_aux}, "learning rate": current_lr, "epoch": epoch+1})
         else:
-            print(f'Epoch [{
-                  epoch+1}/{epochs}], Training Loss: {epoch_loss}, Learning Rate: {current_lr}')
+            print(f'Epoch [{epoch+1}/{epochs}], Training Loss: {epoch_loss}, Learning Rate: {current_lr}')
 
 
 # Prune the model
@@ -201,7 +197,7 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
     excluded_modules = ["conv1.conv", "conv2.conv",
                         "conv3.conv", "aux1.conv.conv", "aux2.conv.conv"]
 
-    rates = [0.8]
+    rates = [0.4]
     epochen = [50]
     for epochs in epochen:
 
@@ -209,8 +205,7 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
             accuracy = validate(model, validation_loader)
             print("Accuracy before: ", accuracy)
 
-            print(
-                f"\n------------------- Pruning Modules with {rate} -------------------\n")
+            print(f"\n------------------- Pruning Modules with {rate} -------------------\n")
             for module_name, module in model.named_modules():
                 if hasattr(module, 'weight') and isinstance(module, torch.nn.Conv2d):
 
@@ -228,13 +223,12 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
 
             # Assess the accuracy and store it
             accuracy = validate(model, validation_loader)
-            print(f"Accuracy after pruning every module with {
-                  rate}: ", accuracy)
+            print(f"Accuracy after pruning every module with {rate}: ", accuracy)
 
             # Reset learning rate (rewinding) and use Adam optimizer
-            optimizer = optim.Adam(
-                model.parameters(), lr=learning_rate, weight_decay=0.0001)
-            # optimizer = optim.SGD(model.parameters(), lr=learning_rate, momentum=0.9, weight_decay=1e-4)
+            # optimizer = optim.Adam(
+            #     model.parameters(), lr=learning_rate, weight_decay=0.0001)
+            optimizer = optim.SGD(model.parameters(), lr=learning_rate, momentum=0.9, weight_decay=1e-4)
             scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
             train(model, train_loader, criterion, optimizer,
                   scheduler, epochs, validation_loader)
@@ -246,10 +240,8 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
 
             # Save the final pruned and retrained model
             optimizer_name = optimizer.__class__.__name__
-            torch.save(model, f'pruned_{rate}_local_structured_{
-                       optimizer_name}_retrained_{epochs}_epochs_model.pth')
-            print(f"Final pruned and retrained model saved as pruned_{
-                  rate}_local_structured_{optimizer_name}_retrained_{epochs}_epochs_model.pth")
+            torch.save(model, f'pruned_{rate}_local_structured_{optimizer_name}_retrained_{epochs}_epochs_model.pth')
+            print(f"Final pruned and retrained model saved as pruned_{rate}_local_structured_{optimizer_name}_retrained_{epochs}_epochs_model.pth")
 
             print("\nResetting the model to the initial state ...")
             model.load_state_dict(initial_state)
@@ -344,8 +336,7 @@ def pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 
 
     accuracy = validate(model, validation_loader)
 
-    print(f"\n########## Specific Local Structured L{
-          n} Pruning Successively ##########\n")
+    print(f"\n########## Specific Local Structured L{n} Pruning Successively ##########\n")
     print(f"Accuracy before: {accuracy:}")
 
     excluded_modules = ["conv1.conv", "conv2.conv",
@@ -432,8 +423,7 @@ def pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 
             absolute_pruning_rate = (
                 1 - (1 - absolute_pruning_rate) * (1 - avg_rate))
 
-        print("Absolute Pruning Rate: ",
-              absolute_pruning_rate)
+        print("Absolute Pruning Rate: ",absolute_pruning_rate)
         non_zero_params, total_params = count_nonzero_params(model)
         print(f"Actual Pruning Rate: {1 - non_zero_params / total_params}")
         print("Accuracy: ", accuracy)
@@ -508,8 +498,7 @@ def pruneSpecificLocalStructuredLNPruningSuccessively(validation_loader, model, 
             absolute_pruning_rate = (
                 1 - (1 - absolute_pruning_rate) * (1 - avg_rate))
 
-        print("Absolute Pruning Rate: ",
-              absolute_pruning_rate)
+        print("Absolute Pruning Rate: ",absolute_pruning_rate)
         non_zero_params, total_params = count_nonzero_params(model)
         print(f"Actual Pruning Rate: {1 - non_zero_params / total_params}")
         print("Accuracy: ", accuracy)
@@ -662,19 +651,16 @@ def prune_specific_local_connection_sparsity(validation_loader, model):
                     # Prune the selected input channels
                     prune_channels(module, channels_to_prune)
 
-                    print(f"Module: {module_name}, Pruned Input Channels: {
-                          len(channels_to_prune) / num_input_channels}")
+                    print(f"Module: {module_name}, Pruned Input Channels: {len(channels_to_prune) / num_input_channels}")
 
             print("\n--------------------------------------------------------\n")
 
             non_zero_params, total_params = count_nonzero_params(model)
-            print(f"Actual Pruning Rate: {
-                  1 - non_zero_params / total_params:.4f}")
+            print(f"Actual Pruning Rate: {1 - non_zero_params / total_params:.4f}")
 
             # Assess the accuracy and store it
             accuracy = validate(model, validation_loader)
-            print(f"Accuracy after pruning every module with {
-                  rate}: {accuracy:.4f}")
+            print(f"Accuracy after pruning every module with {rate}: {accuracy:.4f}")
 
             # Reset learning rate (rewinding) and use Adam optimizer
             # optimizer = optim.Adam(
@@ -692,8 +678,7 @@ def prune_specific_local_connection_sparsity(validation_loader, model):
             # Save the final pruned and retrained model
             # Save the final pruned and retrained model
             optimizer_name = optimizer.__class__.__name__
-            torch.save(model, f'pruned_{rate}_connection_sparsity_{
-                       optimizer_name}_retrained_{epochs}_epochs_model.pth')
+            torch.save(model, f'pruned_{rate}_connection_sparsity_{optimizer_name}_retrained_{epochs}_epochs_model.pth')
 
             print("\nResetting the model to the initial state ...")
             model.load_state_dict(initial_state)
