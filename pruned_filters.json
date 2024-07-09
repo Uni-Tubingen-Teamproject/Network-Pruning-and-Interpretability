@@ -1,0 +1,5582 @@
+[
+    {
+        "layer": "inception3a.branch1.conv",
+        "filter_index": 1
+    },
+    {
+        "layer": "inception3a.branch1.conv",
+        "filter_index": 2
+    },
+    {
+        "layer": "inception3a.branch1.conv",
+        "filter_index": 4
+    },
+    {
+        "layer": "inception3a.branch1.conv",
+        "filter_index": 13
+    },
+    {
+        "layer": "inception3a.branch1.conv",
+        "filter_index": 16
+    },
+    {
+        "layer": "inception3a.branch1.conv",
+        "filter_index": 27
+    },
+    {
+        "layer": "inception3a.branch1.conv",
+        "filter_index": 30
+    },
+    {
+        "layer": "inception3a.branch1.conv",
+        "filter_index": 41
+    },
+    {
+        "layer": "inception3a.branch1.conv",
+        "filter_index": 43
+    },
+    {
+        "layer": "inception3a.branch1.conv",
+        "filter_index": 45
+    },
+    {
+        "layer": "inception3a_branch1_conv",
+        "filter_index": 46
+    },
+    {
+        "layer": "inception3a.branch1.conv",
+        "filter_index": 50
+    },
+    {
+        "layer": "inception3a.branch1.conv",
+        "filter_index": 61
+    },
+    {
+        "layer": "inception3a_branch2_0_conv",
+        "filter_index": 2
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 4
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 9
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 17
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 18
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 24
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 34
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 43
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 45
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 56
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 58
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 62
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 67
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 73
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 84
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 90
+    },
+    {
+        "layer": "inception3a.branch2.0.conv",
+        "filter_index": 94
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 5
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 6
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 8
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 18
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 31
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 38
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 60
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 62
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 65
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 69
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 73
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 76
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 77
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 87
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 89
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 93
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 96
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 98
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 103
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 111
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 112
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 113
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 121
+    },
+    {
+        "layer": "inception3a.branch2.1.conv",
+        "filter_index": 127
+    },
+    {
+        "layer": "inception3a.branch3.0.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception3a.branch3.0.conv",
+        "filter_index": 8
+    },
+    {
+        "layer": "inception3a.branch3.0.conv",
+        "filter_index": 14
+    },
+    {
+        "layer": "inception3a.branch3.1.conv",
+        "filter_index": 12
+    },
+    {
+        "layer": "inception3a.branch3.1.conv",
+        "filter_index": 14
+    },
+    {
+        "layer": "inception3a.branch3.1.conv",
+        "filter_index": 16
+    },
+    {
+        "layer": "inception3a.branch3.1.conv",
+        "filter_index": 24
+    },
+    {
+        "layer": "inception3a.branch3.1.conv",
+        "filter_index": 29
+    },
+    {
+        "layer": "inception3a.branch3.1.conv",
+        "filter_index": 30
+    },
+    {
+        "layer": "inception3a.branch4.1.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception3a.branch4.1.conv",
+        "filter_index": 14
+    },
+    {
+        "layer": "inception3a.branch4.1.conv",
+        "filter_index": 19
+    },
+    {
+        "layer": "inception3a.branch4.1.conv",
+        "filter_index": 24
+    },
+    {
+        "layer": "inception3a.branch4.1.conv",
+        "filter_index": 29
+    },
+    {
+        "layer": "inception3a.branch4.1.conv",
+        "filter_index": 31
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 4
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 10
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 17
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 20
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 30
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 34
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 39
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 40
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 41
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 46
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 54
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 56
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 59
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 66
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 70
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 75
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 95
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 101
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 107
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 122
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 125
+    },
+    {
+        "layer": "inception3b.branch1.conv",
+        "filter_index": 126
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 15
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 16
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 23
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 29
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 47
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 49
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 53
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 55
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 57
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 63
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 67
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 74
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 75
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 80
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 81
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 93
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 96
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 97
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 100
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 101
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 102
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 105
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 112
+    },
+    {
+        "layer": "inception3b.branch2.0.conv",
+        "filter_index": 113
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 15
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 22
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 23
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 35
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 37
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 41
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 44
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 45
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 49
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 52
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 55
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 56
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 58
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 70
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 75
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 79
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 81
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 101
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 102
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 105
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 106
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 126
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 127
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 133
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 135
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 137
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 146
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 148
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 149
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 154
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 161
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 176
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 184
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 185
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 187
+    },
+    {
+        "layer": "inception3b.branch2.1.conv",
+        "filter_index": 189
+    },
+    {
+        "layer": "inception3b.branch3.0.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception3b.branch3.0.conv",
+        "filter_index": 14
+    },
+    {
+        "layer": "inception3b.branch3.0.conv",
+        "filter_index": 18
+    },
+    {
+        "layer": "inception3b.branch3.0.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception3b.branch3.0.conv",
+        "filter_index": 23
+    },
+    {
+        "layer": "inception3b.branch3.0.conv",
+        "filter_index": 29
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 12
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 13
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 15
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 35
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 39
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 41
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 56
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 59
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 62
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 66
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 67
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 68
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 69
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 74
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 76
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 90
+    },
+    {
+        "layer": "inception3b.branch3.1.conv",
+        "filter_index": 95
+    },
+    {
+        "layer": "inception3b.branch4.1.conv",
+        "filter_index": 1
+    },
+    {
+        "layer": "inception3b.branch4.1.conv",
+        "filter_index": 2
+    },
+    {
+        "layer": "inception3b.branch4.1.conv",
+        "filter_index": 10
+    },
+    {
+        "layer": "inception3b.branch4.1.conv",
+        "filter_index": 14
+    },
+    {
+        "layer": "inception3b.branch4.1.conv",
+        "filter_index": 20
+    },
+    {
+        "layer": "inception3b.branch4.1.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception3b.branch4.1.conv",
+        "filter_index": 24
+    },
+    {
+        "layer": "inception3b.branch4.1.conv",
+        "filter_index": 41
+    },
+    {
+        "layer": "inception3b.branch4.1.conv",
+        "filter_index": 43
+    },
+    {
+        "layer": "inception3b.branch4.1.conv",
+        "filter_index": 44
+    },
+    {
+        "layer": "inception3b.branch4.1.conv",
+        "filter_index": 46
+    },
+    {
+        "layer": "inception3b.branch4.1.conv",
+        "filter_index": 48
+    },
+    {
+        "layer": "inception3b.branch4.1.conv",
+        "filter_index": 52
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 1
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 9
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 14
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 30
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 36
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 48
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 64
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 71
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 72
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 82
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 85
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 90
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 94
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 99
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 102
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 105
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 107
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 114
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 115
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 120
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 139
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 143
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 146
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 152
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 153
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 160
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 171
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 172
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 173
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 174
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 179
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 182
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 184
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 186
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 188
+    },
+    {
+        "layer": "inception4a.branch1.conv",
+        "filter_index": 191
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 12
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 19
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 42
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 44
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 48
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 52
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 53
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 56
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 62
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 67
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 71
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 79
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 85
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 89
+    },
+    {
+        "layer": "inception4a.branch2.0.conv",
+        "filter_index": 95
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 2
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 5
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 8
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 9
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 16
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 36
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 44
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 52
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 59
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 62
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 65
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 75
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 79
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 81
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 82
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 85
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 86
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 88
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 93
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 97
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 100
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 120
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 123
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 124
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 127
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 128
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 129
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 130
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 154
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 156
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 160
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 163
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 164
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 171
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 194
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 195
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 203
+    },
+    {
+        "layer": "inception4a.branch2.1.conv",
+        "filter_index": 206
+    },
+    {
+        "layer": "inception4a.branch3.0.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception4a.branch3.0.conv",
+        "filter_index": 4
+    },
+    {
+        "layer": "inception4a.branch3.0.conv",
+        "filter_index": 14
+    },
+    {
+        "layer": "inception4a.branch3.1.conv",
+        "filter_index": 4
+    },
+    {
+        "layer": "inception4a.branch3.1.conv",
+        "filter_index": 7
+    },
+    {
+        "layer": "inception4a.branch3.1.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception4a.branch3.1.conv",
+        "filter_index": 12
+    },
+    {
+        "layer": "inception4a.branch3.1.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception4a.branch3.1.conv",
+        "filter_index": 23
+    },
+    {
+        "layer": "inception4a.branch3.1.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception4a.branch3.1.conv",
+        "filter_index": 30
+    },
+    {
+        "layer": "inception4a.branch3.1.conv",
+        "filter_index": 33
+    },
+    {
+        "layer": "inception4a.branch3.1.conv",
+        "filter_index": 46
+    },
+    {
+        "layer": "inception4a.branch4.1.conv",
+        "filter_index": 9
+    },
+    {
+        "layer": "inception4a.branch4.1.conv",
+        "filter_index": 10
+    },
+    {
+        "layer": "inception4a.branch4.1.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception4a.branch4.1.conv",
+        "filter_index": 12
+    },
+    {
+        "layer": "inception4a.branch4.1.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception4a.branch4.1.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception4a.branch4.1.conv",
+        "filter_index": 37
+    },
+    {
+        "layer": "inception4a.branch4.1.conv",
+        "filter_index": 38
+    },
+    {
+        "layer": "inception4a.branch4.1.conv",
+        "filter_index": 44
+    },
+    {
+        "layer": "inception4a.branch4.1.conv",
+        "filter_index": 52
+    },
+    {
+        "layer": "inception4a.branch4.1.conv",
+        "filter_index": 53
+    },
+    {
+        "layer": "inception4a.branch4.1.conv",
+        "filter_index": 55
+    },
+    {
+        "layer": "inception4a.branch4.1.conv",
+        "filter_index": 57
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 1
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 5
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 7
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 12
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 13
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 14
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 16
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 29
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 44
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 47
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 51
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 55
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 64
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 65
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 66
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 71
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 72
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 78
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 79
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 80
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 88
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 91
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 93
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 100
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 102
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 114
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 125
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 126
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 131
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 135
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 145
+    },
+    {
+        "layer": "inception4b.branch1.conv",
+        "filter_index": 155
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 0
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 7
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 12
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 16
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 17
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 23
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 27
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 31
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 46
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 48
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 52
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 53
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 58
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 74
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 85
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 87
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 98
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 102
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 106
+    },
+    {
+        "layer": "inception4b.branch2.0.conv",
+        "filter_index": 109
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 1
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 5
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 7
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 9
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 48
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 53
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 55
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 60
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 64
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 66
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 67
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 80
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 82
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 86
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 92
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 93
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 96
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 97
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 100
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 103
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 112
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 120
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 132
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 133
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 136
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 143
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 144
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 150
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 155
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 157
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 158
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 159
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 166
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 167
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 168
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 173
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 174
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 192
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 194
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 200
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 201
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 202
+    },
+    {
+        "layer": "inception4b.branch2.1.conv",
+        "filter_index": 207
+    },
+    {
+        "layer": "inception4b.branch3.0.conv",
+        "filter_index": 0
+    },
+    {
+        "layer": "inception4b.branch3.0.conv",
+        "filter_index": 7
+    },
+    {
+        "layer": "inception4b.branch3.0.conv",
+        "filter_index": 8
+    },
+    {
+        "layer": "inception4b.branch3.0.conv",
+        "filter_index": 17
+    },
+    {
+        "layer": "inception4b.branch3.0.conv",
+        "filter_index": 18
+    },
+    {
+        "layer": "inception4b.branch3.1.conv",
+        "filter_index": 10
+    },
+    {
+        "layer": "inception4b.branch3.1.conv",
+        "filter_index": 17
+    },
+    {
+        "layer": "inception4b.branch3.1.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception4b.branch3.1.conv",
+        "filter_index": 24
+    },
+    {
+        "layer": "inception4b.branch3.1.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception4b.branch3.1.conv",
+        "filter_index": 36
+    },
+    {
+        "layer": "inception4b.branch3.1.conv",
+        "filter_index": 38
+    },
+    {
+        "layer": "inception4b.branch3.1.conv",
+        "filter_index": 41
+    },
+    {
+        "layer": "inception4b.branch3.1.conv",
+        "filter_index": 52
+    },
+    {
+        "layer": "inception4b.branch3.1.conv",
+        "filter_index": 54
+    },
+    {
+        "layer": "inception4b.branch3.1.conv",
+        "filter_index": 55
+    },
+    {
+        "layer": "inception4b.branch3.1.conv",
+        "filter_index": 60
+    },
+    {
+        "layer": "inception4b.branch3.1.conv",
+        "filter_index": 62
+    },
+    {
+        "layer": "inception4b.branch4.1.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception4b.branch4.1.conv",
+        "filter_index": 13
+    },
+    {
+        "layer": "inception4b.branch4.1.conv",
+        "filter_index": 19
+    },
+    {
+        "layer": "inception4b.branch4.1.conv",
+        "filter_index": 20
+    },
+    {
+        "layer": "inception4b.branch4.1.conv",
+        "filter_index": 31
+    },
+    {
+        "layer": "inception4b.branch4.1.conv",
+        "filter_index": 34
+    },
+    {
+        "layer": "inception4b.branch4.1.conv",
+        "filter_index": 39
+    },
+    {
+        "layer": "inception4b.branch4.1.conv",
+        "filter_index": 40
+    },
+    {
+        "layer": "inception4b.branch4.1.conv",
+        "filter_index": 45
+    },
+    {
+        "layer": "inception4b.branch4.1.conv",
+        "filter_index": 51
+    },
+    {
+        "layer": "inception4b.branch4.1.conv",
+        "filter_index": 52
+    },
+    {
+        "layer": "inception4b.branch4.1.conv",
+        "filter_index": 61
+    },
+    {
+        "layer": "inception4b.branch4.1.conv",
+        "filter_index": 63
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 17
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 19
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 23
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 24
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 32
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 39
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 40
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 47
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 50
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 56
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 58
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 82
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 85
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 87
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 88
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 98
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 105
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 107
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 109
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 110
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 111
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 114
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 117
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 119
+    },
+    {
+        "layer": "inception4c.branch1.conv",
+        "filter_index": 124
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 1
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 5
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 8
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 9
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 12
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 15
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 18
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 37
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 53
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 55
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 56
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 64
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 95
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 96
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 98
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 105
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 111
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 112
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 114
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 115
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 119
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 120
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 122
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 124
+    },
+    {
+        "layer": "inception4c.branch2.0.conv",
+        "filter_index": 126
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 1
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 10
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 34
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 35
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 36
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 38
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 48
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 51
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 64
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 81
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 87
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 88
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 92
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 96
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 100
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 101
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 109
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 111
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 114
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 117
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 126
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 127
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 132
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 149
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 150
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 151
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 155
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 160
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 161
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 168
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 169
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 171
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 173
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 177
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 179
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 190
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 196
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 199
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 209
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 211
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 225
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 226
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 228
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 231
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 236
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 237
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 245
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 247
+    },
+    {
+        "layer": "inception4c.branch2.1.conv",
+        "filter_index": 253
+    },
+    {
+        "layer": "inception4c.branch3.0.conv",
+        "filter_index": 1
+    },
+    {
+        "layer": "inception4c.branch3.0.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception4c.branch3.0.conv",
+        "filter_index": 5
+    },
+    {
+        "layer": "inception4c.branch3.0.conv",
+        "filter_index": 8
+    },
+    {
+        "layer": "inception4c.branch3.0.conv",
+        "filter_index": 9
+    },
+    {
+        "layer": "inception4c.branch3.1.conv",
+        "filter_index": 4
+    },
+    {
+        "layer": "inception4c.branch3.1.conv",
+        "filter_index": 5
+    },
+    {
+        "layer": "inception4c.branch3.1.conv",
+        "filter_index": 27
+    },
+    {
+        "layer": "inception4c.branch3.1.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception4c.branch3.1.conv",
+        "filter_index": 32
+    },
+    {
+        "layer": "inception4c.branch3.1.conv",
+        "filter_index": 42
+    },
+    {
+        "layer": "inception4c.branch3.1.conv",
+        "filter_index": 47
+    },
+    {
+        "layer": "inception4c.branch3.1.conv",
+        "filter_index": 51
+    },
+    {
+        "layer": "inception4c.branch3.1.conv",
+        "filter_index": 53
+    },
+    {
+        "layer": "inception4c.branch3.1.conv",
+        "filter_index": 55
+    },
+    {
+        "layer": "inception4c.branch3.1.conv",
+        "filter_index": 56
+    },
+    {
+        "layer": "inception4c.branch3.1.conv",
+        "filter_index": 60
+    },
+    {
+        "layer": "inception4c.branch3.1.conv",
+        "filter_index": 61
+    },
+    {
+        "layer": "inception4c.branch4.1.conv",
+        "filter_index": 0
+    },
+    {
+        "layer": "inception4c.branch4.1.conv",
+        "filter_index": 5
+    },
+    {
+        "layer": "inception4c.branch4.1.conv",
+        "filter_index": 6
+    },
+    {
+        "layer": "inception4c.branch4.1.conv",
+        "filter_index": 16
+    },
+    {
+        "layer": "inception4c.branch4.1.conv",
+        "filter_index": 22
+    },
+    {
+        "layer": "inception4c.branch4.1.conv",
+        "filter_index": 24
+    },
+    {
+        "layer": "inception4c.branch4.1.conv",
+        "filter_index": 29
+    },
+    {
+        "layer": "inception4c.branch4.1.conv",
+        "filter_index": 31
+    },
+    {
+        "layer": "inception4c.branch4.1.conv",
+        "filter_index": 34
+    },
+    {
+        "layer": "inception4c.branch4.1.conv",
+        "filter_index": 35
+    },
+    {
+        "layer": "inception4c.branch4.1.conv",
+        "filter_index": 49
+    },
+    {
+        "layer": "inception4c.branch4.1.conv",
+        "filter_index": 51
+    },
+    {
+        "layer": "inception4c.branch4.1.conv",
+        "filter_index": 60
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 1
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 7
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 8
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 13
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 30
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 35
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 36
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 39
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 43
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 57
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 68
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 79
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 85
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 87
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 89
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 92
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 97
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 100
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 102
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 103
+    },
+    {
+        "layer": "inception4d.branch1.conv",
+        "filter_index": 109
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 5
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 7
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 14
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 17
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 23
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 27
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 29
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 30
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 38
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 45
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 48
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 51
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 53
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 62
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 66
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 69
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 72
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 76
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 77
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 81
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 88
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 100
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 104
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 105
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 108
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 109
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 117
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 136
+    },
+    {
+        "layer": "inception4d.branch2.0.conv",
+        "filter_index": 141
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 8
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 9
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 12
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 13
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 22
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 23
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 31
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 34
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 35
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 47
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 59
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 63
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 68
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 71
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 80
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 83
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 91
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 125
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 130
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 132
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 134
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 136
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 138
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 139
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 141
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 146
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 152
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 159
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 162
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 163
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 164
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 167
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 168
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 172
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 179
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 181
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 199
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 203
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 206
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 207
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 213
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 214
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 217
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 220
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 221
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 229
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 238
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 242
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 243
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 254
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 261
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 267
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 268
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 269
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 281
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 283
+    },
+    {
+        "layer": "inception4d.branch2.1.conv",
+        "filter_index": 287
+    },
+    {
+        "layer": "inception4d.branch3.0.conv",
+        "filter_index": 0
+    },
+    {
+        "layer": "inception4d.branch3.0.conv",
+        "filter_index": 2
+    },
+    {
+        "layer": "inception4d.branch3.0.conv",
+        "filter_index": 5
+    },
+    {
+        "layer": "inception4d.branch3.0.conv",
+        "filter_index": 20
+    },
+    {
+        "layer": "inception4d.branch3.0.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception4d.branch3.0.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception4d.branch3.1.conv",
+        "filter_index": 4
+    },
+    {
+        "layer": "inception4d.branch3.1.conv",
+        "filter_index": 9
+    },
+    {
+        "layer": "inception4d.branch3.1.conv",
+        "filter_index": 14
+    },
+    {
+        "layer": "inception4d.branch3.1.conv",
+        "filter_index": 16
+    },
+    {
+        "layer": "inception4d.branch3.1.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception4d.branch3.1.conv",
+        "filter_index": 24
+    },
+    {
+        "layer": "inception4d.branch3.1.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception4d.branch3.1.conv",
+        "filter_index": 33
+    },
+    {
+        "layer": "inception4d.branch3.1.conv",
+        "filter_index": 39
+    },
+    {
+        "layer": "inception4d.branch3.1.conv",
+        "filter_index": 40
+    },
+    {
+        "layer": "inception4d.branch3.1.conv",
+        "filter_index": 48
+    },
+    {
+        "layer": "inception4d.branch3.1.conv",
+        "filter_index": 58
+    },
+    {
+        "layer": "inception4d.branch3.1.conv",
+        "filter_index": 63
+    },
+    {
+        "layer": "inception4d.branch4.1.conv",
+        "filter_index": 0
+    },
+    {
+        "layer": "inception4d.branch4.1.conv",
+        "filter_index": 9
+    },
+    {
+        "layer": "inception4d.branch4.1.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception4d.branch4.1.conv",
+        "filter_index": 23
+    },
+    {
+        "layer": "inception4d.branch4.1.conv",
+        "filter_index": 24
+    },
+    {
+        "layer": "inception4d.branch4.1.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception4d.branch4.1.conv",
+        "filter_index": 31
+    },
+    {
+        "layer": "inception4d.branch4.1.conv",
+        "filter_index": 37
+    },
+    {
+        "layer": "inception4d.branch4.1.conv",
+        "filter_index": 40
+    },
+    {
+        "layer": "inception4d.branch4.1.conv",
+        "filter_index": 52
+    },
+    {
+        "layer": "inception4d.branch4.1.conv",
+        "filter_index": 56
+    },
+    {
+        "layer": "inception4d.branch4.1.conv",
+        "filter_index": 58
+    },
+    {
+        "layer": "inception4d.branch4.1.conv",
+        "filter_index": 59
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 2
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 12
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 13
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 15
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 20
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 27
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 33
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 36
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 44
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 47
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 72
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 73
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 82
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 83
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 90
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 94
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 99
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 105
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 106
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 108
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 111
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 112
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 115
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 116
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 120
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 121
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 130
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 132
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 136
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 138
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 148
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 152
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 154
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 155
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 159
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 160
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 162
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 165
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 167
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 176
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 180
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 188
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 196
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 198
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 207
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 209
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 214
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 216
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 222
+    },
+    {
+        "layer": "inception4e.branch1.conv",
+        "filter_index": 234
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 8
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 16
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 27
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 49
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 51
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 58
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 60
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 61
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 62
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 64
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 68
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 77
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 80
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 83
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 86
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 91
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 95
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 96
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 121
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 123
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 124
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 127
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 133
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 136
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 143
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 146
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 152
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 153
+    },
+    {
+        "layer": "inception4e.branch2.0.conv",
+        "filter_index": 158
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 7
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 17
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 22
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 29
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 31
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 32
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 40
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 68
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 71
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 88
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 90
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 95
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 99
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 100
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 102
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 103
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 107
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 109
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 110
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 117
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 121
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 129
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 137
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 141
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 142
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 144
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 149
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 151
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 154
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 156
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 164
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 180
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 188
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 193
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 196
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 202
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 209
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 217
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 219
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 222
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 226
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 229
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 234
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 236
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 238
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 240
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 242
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 244
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 245
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 246
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 250
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 255
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 261
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 264
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 278
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 279
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 280
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 281
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 295
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 304
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 307
+    },
+    {
+        "layer": "inception4e.branch2.1.conv",
+        "filter_index": 316
+    },
+    {
+        "layer": "inception4e.branch3.0.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception4e.branch3.0.conv",
+        "filter_index": 4
+    },
+    {
+        "layer": "inception4e.branch3.0.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception4e.branch3.0.conv",
+        "filter_index": 12
+    },
+    {
+        "layer": "inception4e.branch3.0.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception4e.branch3.0.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 8
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 13
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 15
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 18
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 39
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 48
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 57
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 66
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 73
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 74
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 77
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 80
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 83
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 84
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 85
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 88
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 89
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 94
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 95
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 99
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 102
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 104
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 105
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 117
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 122
+    },
+    {
+        "layer": "inception4e.branch3.1.conv",
+        "filter_index": 126
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 6
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 10
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 18
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 37
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 41
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 43
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 57
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 58
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 60
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 68
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 79
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 81
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 83
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 86
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 88
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 90
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 93
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 95
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 96
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 98
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 102
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 124
+    },
+    {
+        "layer": "inception4e.branch4.1.conv",
+        "filter_index": 126
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 3
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 6
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 18
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 23
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 29
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 34
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 38
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 47
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 51
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 52
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 53
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 54
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 60
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 61
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 62
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 64
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 71
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 74
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 79
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 85
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 86
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 97
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 109
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 114
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 117
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 118
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 121
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 128
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 136
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 138
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 142
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 145
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 148
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 157
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 166
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 168
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 169
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 174
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 191
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 198
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 201
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 202
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 206
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 212
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 213
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 223
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 231
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 235
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 254
+    },
+    {
+        "layer": "inception5a.branch1.conv",
+        "filter_index": 255
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 4
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 14
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 22
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 24
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 29
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 31
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 35
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 38
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 41
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 43
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 64
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 69
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 75
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 82
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 85
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 90
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 96
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 99
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 108
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 112
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 113
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 117
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 119
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 120
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 122
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 124
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 125
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 135
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 138
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 150
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 158
+    },
+    {
+        "layer": "inception5a.branch2.0.conv",
+        "filter_index": 159
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 5
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 14
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 23
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 27
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 32
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 33
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 39
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 41
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 45
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 61
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 73
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 82
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 87
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 88
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 98
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 100
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 106
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 111
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 119
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 124
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 126
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 131
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 132
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 137
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 139
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 141
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 143
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 145
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 169
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 170
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 172
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 173
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 186
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 193
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 198
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 201
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 202
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 204
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 205
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 214
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 216
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 217
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 223
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 224
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 225
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 231
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 233
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 237
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 243
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 249
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 262
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 265
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 280
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 285
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 288
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 290
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 294
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 298
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 302
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 306
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 308
+    },
+    {
+        "layer": "inception5a.branch2.1.conv",
+        "filter_index": 315
+    },
+    {
+        "layer": "inception5a.branch3.0.conv",
+        "filter_index": 1
+    },
+    {
+        "layer": "inception5a.branch3.0.conv",
+        "filter_index": 8
+    },
+    {
+        "layer": "inception5a.branch3.0.conv",
+        "filter_index": 15
+    },
+    {
+        "layer": "inception5a.branch3.0.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception5a.branch3.0.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception5a.branch3.0.conv",
+        "filter_index": 30
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 10
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 22
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 23
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 27
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 33
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 38
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 44
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 47
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 49
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 52
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 53
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 54
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 55
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 56
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 58
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 75
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 79
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 80
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 90
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 99
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 100
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 104
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 114
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 115
+    },
+    {
+        "layer": "inception5a.branch3.1.conv",
+        "filter_index": 127
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 7
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 8
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 11
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 12
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 18
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 24
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 34
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 42
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 43
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 47
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 60
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 63
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 87
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 88
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 91
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 94
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 95
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 96
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 99
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 107
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 112
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 113
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 115
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 122
+    },
+    {
+        "layer": "inception5a.branch4.1.conv",
+        "filter_index": 123
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 1
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 10
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 12
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 13
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 14
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 16
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 22
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 30
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 32
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 33
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 35
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 36
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 55
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 61
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 68
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 69
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 77
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 88
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 95
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 99
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 102
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 103
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 104
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 107
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 109
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 112
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 115
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 117
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 118
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 128
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 136
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 145
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 150
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 154
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 158
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 168
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 170
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 173
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 174
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 175
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 181
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 190
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 198
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 213
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 216
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 222
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 225
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 233
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 236
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 252
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 263
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 265
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 266
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 267
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 268
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 273
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 278
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 310
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 312
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 313
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 315
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 317
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 321
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 326
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 329
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 330
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 334
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 342
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 345
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 357
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 360
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 364
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 367
+    },
+    {
+        "layer": "inception5b.branch1.conv",
+        "filter_index": 377
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 1
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 13
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 22
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 28
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 29
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 33
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 36
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 38
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 39
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 41
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 57
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 64
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 71
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 79
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 85
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 86
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 88
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 90
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 97
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 100
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 101
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 104
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 114
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 144
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 146
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 147
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 150
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 153
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 158
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 159
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 173
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 174
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 175
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 177
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 183
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 185
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 186
+    },
+    {
+        "layer": "inception5b.branch2.0.conv",
+        "filter_index": 190
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 15
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 17
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 31
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 32
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 41
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 42
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 43
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 51
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 55
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 62
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 69
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 72
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 76
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 78
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 84
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 85
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 86
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 92
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 97
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 102
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 104
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 111
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 117
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 118
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 119
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 134
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 137
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 140
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 151
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 153
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 155
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 159
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 160
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 164
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 165
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 175
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 185
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 189
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 191
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 193
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 202
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 210
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 215
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 219
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 236
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 239
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 242
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 245
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 246
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 259
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 261
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 268
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 270
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 278
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 281
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 283
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 284
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 288
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 295
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 296
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 306
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 318
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 323
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 326
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 334
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 337
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 341
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 342
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 345
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 349
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 354
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 356
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 361
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 369
+    },
+    {
+        "layer": "inception5b.branch2.1.conv",
+        "filter_index": 372
+    },
+    {
+        "layer": "inception5b.branch3.0.conv",
+        "filter_index": 1
+    },
+    {
+        "layer": "inception5b.branch3.0.conv",
+        "filter_index": 13
+    },
+    {
+        "layer": "inception5b.branch3.0.conv",
+        "filter_index": 15
+    },
+    {
+        "layer": "inception5b.branch3.0.conv",
+        "filter_index": 17
+    },
+    {
+        "layer": "inception5b.branch3.0.conv",
+        "filter_index": 22
+    },
+    {
+        "layer": "inception5b.branch3.0.conv",
+        "filter_index": 25
+    },
+    {
+        "layer": "inception5b.branch3.0.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception5b.branch3.0.conv",
+        "filter_index": 27
+    },
+    {
+        "layer": "inception5b.branch3.0.conv",
+        "filter_index": 34
+    },
+    {
+        "layer": "inception5b.branch3.0.conv",
+        "filter_index": 42
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 2
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 8
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 13
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 20
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 24
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 26
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 29
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 30
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 35
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 37
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 38
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 59
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 62
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 63
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 65
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 68
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 69
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 84
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 89
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 91
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 94
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 95
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 105
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 109
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 117
+    },
+    {
+        "layer": "inception5b.branch3.1.conv",
+        "filter_index": 125
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 10
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 13
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 16
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 21
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 22
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 31
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 35
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 37
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 48
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 60
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 62
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 75
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 87
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 88
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 92
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 93
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 95
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 96
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 103
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 104
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 113
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 116
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 117
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 119
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 120
+    },
+    {
+        "layer": "inception5b.branch4.1.conv",
+        "filter_index": 125
+    }
+]
