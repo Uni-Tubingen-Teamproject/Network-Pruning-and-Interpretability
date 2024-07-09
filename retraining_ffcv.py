@@ -50,8 +50,8 @@ model = torch.hub.load('pytorch/vision:v0.10.0', 'googlenet',
 model = model.to(device)
 
 # Set Hyperparameters
-learning_rate = 0.001
-epochs = 10
+learning_rate = 0.01
+epochs = 60
 
 # Define the loss function and optimizer
 criterion = nn.CrossEntropyLoss()
@@ -197,8 +197,8 @@ def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
     excluded_modules = ["conv1.conv", "conv2.conv",
                         "conv3.conv", "aux1.conv.conv", "aux2.conv.conv"]
 
-    rates = [0.4]
-    epochen = [50]
+    rates = [0.8]
+    epochen = [60]
     for epochs in epochen:
 
         for rate in rates:
@@ -552,13 +552,17 @@ def globalUnstructuredL1Pruning(validation_loader, model):
     # Parameters to prune
     parameters_to_prune = []
     for module_name, module in model.named_modules():
-        if isinstance(module, (torch.nn.Conv2d, torch.nn.Linear)) and hasattr(module, 'weight') and module.weight is not None:
+        if isinstance(module, (torch.nn.Conv2d, torch.nn.Linear)):
             if module_name in excluded_modules:
                 continue
-            parameters_to_prune.append((module, 'weight'))
+            if hasattr(module, 'weight') and module.weight is not None:
+                parameters_to_prune.append((module, 'weight'))
+            if hasattr(module, 'bias') and module.bias is not None:
+                parameters_to_prune.append((module, 'bias'))
+
 
     # Define the pruning rate
-    rates = [0.2, 0.4, 0.6, 0.8]
+    rates = [0.99]
 
     # Prune iteratively with pruning rate of 0.4
     for rate in rates:
@@ -581,7 +585,7 @@ def globalUnstructuredL1Pruning(validation_loader, model):
 
         non_zero_params, total_params = count_nonzero_params(model)
         print(f"Actual Pruning Rate: {1 - non_zero_params / total_params}")
-        print("Accuracy: ", accuracy)
+        print("Accuracy after pruning: ", accuracy)
 
         # reset learning rate (rewinding)
         optimizer = optim.SGD(model.parameters(), lr=learning_rate,
@@ -591,17 +595,20 @@ def globalUnstructuredL1Pruning(validation_loader, model):
         # retrain the model
         train(model, train_loader, criterion, optimizer,
               scheduler, epochs, validation_loader)
-
+        
+        accuracy_retrained = validate(model, validation_loader)
+        print("Accuracy after retraining:", accuracy_retrained)
+        print("Removing pruning masks ...")
         removePruningMasks(model, excluded_modules)
 
-        model.eval()
 
         # validate accuracy after pruning
         accuracy_retrained = validate(model, validation_loader)
         print("Accuracy after retraining:", accuracy_retrained)
 
-        # Reset
-        model.load_state_dict(initial_state)
+        optimizer_name = optimizer.__class__.__name__
+        torch.save(model, f'pruned_{rate}_global_unstructured_{optimizer_name}_retrained_{epochs}_epochs_model.pth')
+        print(f"Final pruned and retrained model saved as pruned_{rate}_global_unstructured_{optimizer_name}_retrained_{epochs}_epochs_model.pth")
 
 
 def prune_channels(module, channels_to_prune):
@@ -688,5 +695,5 @@ def prune_specific_local_connection_sparsity(validation_loader, model):
 # prune_specific_local_connection_sparsity(val_loader, model)
 pruneSpecificLocalStructuredLNPruning(val_loader, model, 1)
 # pruneSpecificLocalStructuredLNPruningSuccessively(val_loader, model, 1)
-# globalUnstructuredL1PruningIteratively(val_loader, model)
+#globalUnstructuredL1Pruning(val_loader, model)
 print("Finished pruning, retraining, and evaluation.")
