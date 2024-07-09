@@ -1,0 +1,188 @@
+JobId=462935 JobName=name
+   UserId=wzz745(4834) GroupId=wichmann(4014) MCS_label=N/A
+   Priority=79480 Nice=0 Account=wichmann QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:01 TimeLimit=3-00:00:00 TimeMin=N/A
+   SubmitTime=2024-07-02T16:42:55 EligibleTime=2024-07-02T16:42:55
+   AccrueTime=2024-07-02T16:42:55
+   StartTime=2024-07-02T16:42:55 EndTime=2024-07-05T16:42:55 Deadline=N/A
+   PreemptEligibleTime=2024-07-02T16:43:55 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-07-02T16:42:55 Scheduler=Backfill
+   Partition=2080-galvani AllocNode:Sid=galvani-slurmctl:2864316
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=galvani-cn111
+   BatchHost=galvani-cn111
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1
+   AllocTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1,gres/gpu:rtx2080ti=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=40G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/ffcv.sh
+   WorkDir=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability
+   StdErr=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-462935.out
+   StdIn=/dev/null
+   StdOut=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-462935.out
+   Power=
+   TresPerNode=gres:gpu:1
+   MailUser=jonathan.sakouhi@gmail.com MailType=BEGIN,END,FAIL
+   
+
+/usr/local/lib/python3.10/dist-packages/numba/np/ufunc/parallel.py:371: NumbaWarning: The TBB threading layer requires TBB version 2021 update 6 or later i.e., TBB_INTERFACE_VERSION >= 12060. Found TBB_INTERFACE_VERSION = 12050. The TBB threading layer is disabled.
+  warnings.warn(problem)
+Train loader created in 14.35607099533081 seconds
+Using cache found in /home/wichmann/wzz745/.cache/torch/hub/pytorch_vision_v0.10.0
+/usr/local/lib/python3.10/dist-packages/torchvision/models/googlenet.py:341: UserWarning: auxiliary heads in the pretrained googlenet model are NOT pretrained, so make sure to train them
+  warnings.warn(
+wandb: Currently logged in as: jonathan-vonrad (jonathan-von-rad). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /home/wichmann/wzz745/.netrc
+wandb: Tracking run with wandb version 0.15.11
+wandb: Run data is saved locally in /home/wichmann/wzz745/Network-Pruning-and-Interpretability/wandb/run-20240702_164338-d83dbrxv
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run silver-microwave-5
+wandb: ⭐️ View project at https://wandb.ai/jonathan-von-rad/epic
+wandb: 🚀 View run at https://wandb.ai/jonathan-von-rad/epic/runs/d83dbrxv
+Train loader created in 0.31358909606933594 seconds
+Training for 10 epochs with learning rate 0.001 and optimizer Adam and scheduler ExponentialLR
+
+########## Specific Local Connection Sparsity Pruning ##########
+
+Accuracy before: 0.6994
+Accuracy before: 0.6994
+
+------------------- Pruning Input Channels of Modules with 0.8 -------------------
+
+Module: inception3a.branch1.conv, Pruned Input Channels: 0.796875
+Module: inception3a.branch2.0.conv, Pruned Input Channels: 0.796875
+Module: inception3a.branch2.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception3a.branch3.0.conv, Pruned Input Channels: 0.796875
+Module: inception3a.branch3.1.conv, Pruned Input Channels: 0.75
+Module: inception3a.branch4.1.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch1.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch2.0.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch2.1.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch3.0.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch3.1.conv, Pruned Input Channels: 0.78125
+Module: inception3b.branch4.1.conv, Pruned Input Channels: 0.796875
+Module: inception4a.branch1.conv, Pruned Input Channels: 0.8
+Module: inception4a.branch2.0.conv, Pruned Input Channels: 0.8
+Module: inception4a.branch2.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception4a.branch3.0.conv, Pruned Input Channels: 0.8
+Module: inception4a.branch3.1.conv, Pruned Input Channels: 0.75
+Module: inception4a.branch4.1.conv, Pruned Input Channels: 0.8
+Module: inception4b.branch1.conv, Pruned Input Channels: 0.798828125
+Module: inception4b.branch2.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4b.branch2.1.conv, Pruned Input Channels: 0.7946428571428571
+Module: inception4b.branch3.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4b.branch3.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception4b.branch4.1.conv, Pruned Input Channels: 0.798828125
+Module: inception4c.branch1.conv, Pruned Input Channels: 0.798828125
+Module: inception4c.branch2.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4c.branch2.1.conv, Pruned Input Channels: 0.796875
+Module: inception4c.branch3.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4c.branch3.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception4c.branch4.1.conv, Pruned Input Channels: 0.798828125
+Module: inception4d.branch1.conv, Pruned Input Channels: 0.798828125
+Module: inception4d.branch2.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4d.branch2.1.conv, Pruned Input Channels: 0.7986111111111112
+Module: inception4d.branch3.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4d.branch3.1.conv, Pruned Input Channels: 0.78125
+Module: inception4d.branch4.1.conv, Pruned Input Channels: 0.798828125
+Module: inception4e.branch1.conv, Pruned Input Channels: 0.7992424242424242
+Module: inception4e.branch2.0.conv, Pruned Input Channels: 0.7992424242424242
+Module: inception4e.branch2.1.conv, Pruned Input Channels: 0.8
+Module: inception4e.branch3.0.conv, Pruned Input Channels: 0.7992424242424242
+Module: inception4e.branch3.1.conv, Pruned Input Channels: 0.78125
+Module: inception4e.branch4.1.conv, Pruned Input Channels: 0.7992424242424242
+Module: inception5a.branch1.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5a.branch2.0.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5a.branch2.1.conv, Pruned Input Channels: 0.8
+Module: inception5a.branch3.0.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5a.branch3.1.conv, Pruned Input Channels: 0.78125
+Module: inception5a.branch4.1.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5b.branch1.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5b.branch2.0.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5b.branch2.1.conv, Pruned Input Channels: 0.796875
+Module: inception5b.branch3.0.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5b.branch3.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception5b.branch4.1.conv, Pruned Input Channels: 0.7992788461538461
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.7617
+Accuracy after pruning every module with 0.8: 0.0010
+Epoch [1/50], Training Loss: 8.291621086944982, Training Loss w/o Aux: 4.241606671918056, Learning Rate: 0.0009000000000000001, Validation Accuracy: 0.24382
+Epoch [2/50], Training Loss: 6.896396027541277, Training Loss w/o Aux: 3.236693311254513, Learning Rate: 0.0008100000000000001, Validation Accuracy: 0.33796
+Epoch [3/50], Training Loss: 6.215512383411738, Training Loss w/o Aux: 2.8737469223046093, Learning Rate: 0.000729, Validation Accuracy: 0.40312
+Epoch [4/50], Training Loss: 5.780997218517815, Training Loss w/o Aux: 2.666069366724916, Learning Rate: 0.0006561000000000001, Validation Accuracy: 0.44084
+Epoch [5/50], Training Loss: 5.471821335910596, Training Loss w/o Aux: 2.521117986802848, Learning Rate: 0.00059049, Validation Accuracy: 0.47508
+Epoch [6/50], Training Loss: 5.252495752537164, Training Loss w/o Aux: 2.424242036601549, Learning Rate: 0.000531441, Validation Accuracy: 0.49766
+Epoch [7/50], Training Loss: 5.076190338445384, Training Loss w/o Aux: 2.344346121803651, Learning Rate: 0.0004782969, Validation Accuracy: 0.51518
+Epoch [8/50], Training Loss: 4.937116811201401, Training Loss w/o Aux: 2.280706806704052, Learning Rate: 0.00043046721, Validation Accuracy: 0.5318
+Epoch [9/50], Training Loss: 4.826353624777213, Training Loss w/o Aux: 2.231758569382397, Learning Rate: 0.000387420489, Validation Accuracy: 0.54252
+Epoch [10/50], Training Loss: 4.7362450505246265, Training Loss w/o Aux: 2.1916059948416877, Learning Rate: 0.0003486784401, Validation Accuracy: 0.55136
+Epoch [11/50], Training Loss: 4.6535452453153265, Training Loss w/o Aux: 2.1532578638043245, Learning Rate: 0.00031381059609000004, Validation Accuracy: 0.5628
+Epoch [12/50], Training Loss: 4.587502475194086, Training Loss w/o Aux: 2.1222658535021384, Learning Rate: 0.00028242953648100003, Validation Accuracy: 0.57034
+Epoch [13/50], Training Loss: 4.526722335115109, Training Loss w/o Aux: 2.0926841003266663, Learning Rate: 0.00025418658283290005, Validation Accuracy: 0.5819
+Epoch [14/50], Training Loss: 4.477120751945845, Training Loss w/o Aux: 2.0693700829756607, Learning Rate: 0.00022876792454961005, Validation Accuracy: 0.5791
+Epoch [15/50], Training Loss: 4.432430984257151, Training Loss w/o Aux: 2.0482524344465904, Learning Rate: 0.00020589113209464906, Validation Accuracy: 0.58944
+Epoch [16/50], Training Loss: 4.396147740591131, Training Loss w/o Aux: 2.0316078987187325, Learning Rate: 0.00018530201888518417, Validation Accuracy: 0.59884
+Epoch [17/50], Training Loss: 4.361460897398229, Training Loss w/o Aux: 2.015490060229439, Learning Rate: 0.00016677181699666576, Validation Accuracy: 0.60034
+Epoch [18/50], Training Loss: 4.328529001199374, Training Loss w/o Aux: 1.998588794653846, Learning Rate: 0.0001500946352969992, Validation Accuracy: 0.60424
+Epoch [19/50], Training Loss: 4.306113877321698, Training Loss w/o Aux: 1.9890680344076896, Learning Rate: 0.0001350851717672993, Validation Accuracy: 0.6081
+Epoch [20/50], Training Loss: 4.282877546290988, Training Loss w/o Aux: 1.9769106469962823, Learning Rate: 0.00012157665459056936, Validation Accuracy: 0.6108
+Epoch [21/50], Training Loss: 4.256354208318417, Training Loss w/o Aux: 1.9637911322710218, Learning Rate: 0.00010941898913151243, Validation Accuracy: 0.61376
+Epoch [22/50], Training Loss: 4.238104413541622, Training Loss w/o Aux: 1.9546268473782493, Learning Rate: 9.847709021836118e-05, Validation Accuracy: 0.61726
+Epoch [23/50], Training Loss: 4.219909413447567, Training Loss w/o Aux: 1.9454297043248387, Learning Rate: 8.862938119652506e-05, Validation Accuracy: 0.61784
+Epoch [24/50], Training Loss: 4.210390838951197, Training Loss w/o Aux: 1.941052332221241, Learning Rate: 7.976644307687256e-05, Validation Accuracy: 0.61954
+Epoch [25/50], Training Loss: 4.189210915091464, Training Loss w/o Aux: 1.9291675037312952, Learning Rate: 7.17897987691853e-05, Validation Accuracy: 0.62464
+Epoch [26/50], Training Loss: 4.178353164636454, Training Loss w/o Aux: 1.924301613924303, Learning Rate: 6.461081889226677e-05, Validation Accuracy: 0.62272
+Epoch [27/50], Training Loss: 4.168279313316997, Training Loss w/o Aux: 1.9198097063714015, Learning Rate: 5.81497370030401e-05, Validation Accuracy: 0.6241
+Epoch [28/50], Training Loss: 4.158438786460822, Training Loss w/o Aux: 1.9146634506433682, Learning Rate: 5.233476330273609e-05, Validation Accuracy: 0.62692
+Epoch [29/50], Training Loss: 4.149831234152256, Training Loss w/o Aux: 1.90954160201989, Learning Rate: 4.7101286972462485e-05, Validation Accuracy: 0.62966
+Epoch [30/50], Training Loss: 4.143517949743363, Training Loss w/o Aux: 1.9073100090503263, Learning Rate: 4.239115827521624e-05, Validation Accuracy: 0.63022
+Epoch [31/50], Training Loss: 4.134426142955258, Training Loss w/o Aux: 1.9013523663754157, Learning Rate: 3.8152042447694614e-05, Validation Accuracy: 0.63016
+Epoch [32/50], Training Loss: 4.127771595115368, Training Loss w/o Aux: 1.8979249080705027, Learning Rate: 3.433683820292515e-05, Validation Accuracy: 0.63032
+Epoch [33/50], Training Loss: 4.117877638486492, Training Loss w/o Aux: 1.89301204596834, Learning Rate: 3.090315438263264e-05, Validation Accuracy: 0.63246
+Epoch [34/50], Training Loss: 4.116625017738209, Training Loss w/o Aux: 1.8923000708625848, Learning Rate: 2.7812838944369376e-05, Validation Accuracy: 0.63244
+Epoch [35/50], Training Loss: 4.112528468574221, Training Loss w/o Aux: 1.8909155084532046, Learning Rate: 2.503155504993244e-05, Validation Accuracy: 0.6333
+Epoch [36/50], Training Loss: 4.106479272462233, Training Loss w/o Aux: 1.886981595442695, Learning Rate: 2.2528399544939195e-05, Validation Accuracy: 0.63224
+Epoch [37/50], Training Loss: 4.103375415152181, Training Loss w/o Aux: 1.8857525435226734, Learning Rate: 2.0275559590445276e-05, Validation Accuracy: 0.6324
+Epoch [38/50], Training Loss: 4.096709440299735, Training Loss w/o Aux: 1.8816837815331322, Learning Rate: 1.8248003631400748e-05, Validation Accuracy: 0.633
+Epoch [39/50], Training Loss: 4.093777564941842, Training Loss w/o Aux: 1.8809480564210046, Learning Rate: 1.6423203268260675e-05, Validation Accuracy: 0.6342
+Epoch [40/50], Training Loss: 4.092201182815814, Training Loss w/o Aux: 1.8797513633379868, Learning Rate: 1.4780882941434607e-05, Validation Accuracy: 0.6348
+Epoch [41/50], Training Loss: 4.089956569676395, Training Loss w/o Aux: 1.8784823690883787, Learning Rate: 1.3302794647291146e-05, Validation Accuracy: 0.6337
+Epoch [42/50], Training Loss: 4.08723143712304, Training Loss w/o Aux: 1.8764815632667393, Learning Rate: 1.1972515182562031e-05, Validation Accuracy: 0.63466
+Epoch [43/50], Training Loss: 4.0847994618773615, Training Loss w/o Aux: 1.8761247289039025, Learning Rate: 1.0775263664305828e-05, Validation Accuracy: 0.63456
+Epoch [44/50], Training Loss: 4.0852560093500765, Training Loss w/o Aux: 1.8759655349558795, Learning Rate: 9.697737297875246e-06, Validation Accuracy: 0.63572
+Epoch [45/50], Training Loss: 4.0799851252704205, Training Loss w/o Aux: 1.8729553241712587, Learning Rate: 8.727963568087722e-06, Validation Accuracy: 0.63568
+Epoch [46/50], Training Loss: 4.081444708090203, Training Loss w/o Aux: 1.8743635159604068, Learning Rate: 7.85516721127895e-06, Validation Accuracy: 0.636
+Epoch [47/50], Training Loss: 4.077156380919122, Training Loss w/o Aux: 1.8717410881472392, Learning Rate: 7.069650490151056e-06, Validation Accuracy: 0.6365
+Epoch [48/50], Training Loss: 4.076354302087022, Training Loss w/o Aux: 1.8714440807689736, Learning Rate: 6.362685441135951e-06, Validation Accuracy: 0.63634
+Epoch [49/50], Training Loss: 4.0752600490874205, Training Loss w/o Aux: 1.8706540574631094, Learning Rate: 5.7264168970223554e-06, Validation Accuracy: 0.63732
+Epoch [50/50], Training Loss: 4.072370546873376, Training Loss w/o Aux: 1.8692985521542917, Learning Rate: 5.15377520732012e-06, Validation Accuracy: 0.6359
+Accuracy after retraining: 0.6359
+Removing pruning masks ...
+
+Resetting the model to the initial state ...
+Finished pruning, retraining, and evaluation.
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: \ 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: | 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: / 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: - 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: \ 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb:      accuracy ▁▃▄▅▆▆▆▆▇▇▇▇▇▇▇▇████████████████████████
+wandb:         epoch ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb: learning rate █▇▇▆▅▅▄▄▃▃▃▃▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: training loss █▆▅▄▃▃▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb:      accuracy 0.6359
+wandb:         epoch 50
+wandb: learning rate 1e-05
+wandb: training loss 4.07237
+wandb: 
+wandb: 🚀 View run silver-microwave-5 at: https://wandb.ai/jonathan-von-rad/epic/runs/d83dbrxv
+wandb: ️⚡ View job at https://wandb.ai/jonathan-von-rad/epic/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjIzOTI0NjUwOQ==/version_details/v0
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240702_164338-d83dbrxv/logs

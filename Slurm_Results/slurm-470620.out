@@ -1,0 +1,148 @@
+JobId=470620 JobName=name
+   UserId=wzz745(4834) GroupId=wichmann(4014) MCS_label=N/A
+   Priority=69952 Nice=0 Account=wichmann QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:00 TimeLimit=3-00:00:00 TimeMin=N/A
+   SubmitTime=2024-07-08T12:00:15 EligibleTime=2024-07-08T12:00:15
+   AccrueTime=2024-07-08T12:00:15
+   StartTime=2024-07-08T12:00:39 EndTime=2024-07-11T12:00:39 Deadline=N/A
+   PreemptEligibleTime=2024-07-08T12:01:39 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-07-08T12:00:39 Scheduler=Backfill
+   Partition=2080-galvani AllocNode:Sid=galvani-slurmctl:743899
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=galvani-cn105
+   BatchHost=galvani-cn105
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1
+   AllocTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1,gres/gpu:rtx2080ti=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=40G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/ffcv.sh
+   WorkDir=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability
+   StdErr=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-470620.out
+   StdIn=/dev/null
+   StdOut=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-470620.out
+   Power=
+   TresPerNode=gres:gpu:1
+   MailUser=jonathan.sakouhi@gmail.com MailType=BEGIN,END,FAIL
+   
+
+/usr/local/lib/python3.10/dist-packages/numba/np/ufunc/parallel.py:371: NumbaWarning: The TBB threading layer requires TBB version 2021 update 6 or later i.e., TBB_INTERFACE_VERSION >= 12060. Found TBB_INTERFACE_VERSION = 12050. The TBB threading layer is disabled.
+  warnings.warn(problem)
+Train loader created in 73.33754849433899 seconds
+Using cache found in /home/wichmann/wzz745/.cache/torch/hub/pytorch_vision_v0.10.0
+/usr/local/lib/python3.10/dist-packages/torchvision/models/googlenet.py:341: UserWarning: auxiliary heads in the pretrained googlenet model are NOT pretrained, so make sure to train them
+  warnings.warn(
+wandb: Currently logged in as: jonathan-vonrad (jonathan-von-rad). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /home/wichmann/wzz745/.netrc
+wandb: wandb version 0.17.4 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.11
+wandb: Run data is saved locally in /home/wichmann/wzz745/Network-Pruning-and-Interpretability/wandb/run-20240708_120227-3ldb6pid
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run firm-frost-22
+wandb: ⭐️ View project at https://wandb.ai/jonathan-von-rad/epic
+wandb: 🚀 View run at https://wandb.ai/jonathan-von-rad/epic/runs/3ldb6pid
+Train loader created in 0.2743265628814697 seconds
+Training for 60 epochs with learning rate 0.01 and optimizer Adam and scheduler ExponentialLR
+
+########## Global Unstructured L1 Pruning Iteratively ##########
+
+Accuracy before: 0.69938
+Non-zero params before Pruning: 5718464, Total params: 5718464
+Accuracy before: 0.69938
+Pruning Rate: 0.922
+
+------------------- Pruning Globally with 0.922 -------------------
+
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.8442620256068762
+Accuracy after pruning:  0.00186
+Epoch [1/60], Training Loss: 6.586991188540208, Training Loss w/o Aux: 2.4421596443370834, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.4493
+Epoch [2/60], Training Loss: 6.325782200711056, Training Loss w/o Aux: 2.181250572669088, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.48216
+Epoch [3/60], Training Loss: 6.267119946614621, Training Loss w/o Aux: 2.1227645405833093, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.51376
+Epoch [4/60], Training Loss: 6.236848007561932, Training Loss w/o Aux: 2.0925954513848035, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.50666
+Epoch [5/60], Training Loss: 6.214523798555437, Training Loss w/o Aux: 2.0703460278955537, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.52704
+Epoch [6/60], Training Loss: 6.190224197363684, Training Loss w/o Aux: 2.0461085652576148, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.54264
+Epoch [7/60], Training Loss: 6.1765622546210945, Training Loss w/o Aux: 2.0324820090226328, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.55242
+Epoch [8/60], Training Loss: 6.162206474080859, Training Loss w/o Aux: 2.018167714649105, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.55932
+Epoch [9/60], Training Loss: 6.1465613815569835, Training Loss w/o Aux: 2.0025547192949245, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.56516
+Epoch [10/60], Training Loss: 6.137582740341585, Training Loss w/o Aux: 1.9936012274879047, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.57436
+Epoch [11/60], Training Loss: 6.12726531575188, Training Loss w/o Aux: 1.9833082749610396, Learning Rate: 0.003138105960900002, Validation Accuracy: 0.58906
+Epoch [12/60], Training Loss: 6.116620140054722, Training Loss w/o Aux: 1.972679996790616, Learning Rate: 0.0028242953648100018, Validation Accuracy: 0.5873
+Epoch [13/60], Training Loss: 6.107399562317742, Training Loss w/o Aux: 1.9634821515946088, Learning Rate: 0.0025418658283290017, Validation Accuracy: 0.59694
+Epoch [14/60], Training Loss: 6.100694866039403, Training Loss w/o Aux: 1.9567895908910253, Learning Rate: 0.0022876792454961017, Validation Accuracy: 0.60288
+Epoch [15/60], Training Loss: 6.092182099158166, Training Loss w/o Aux: 1.9482884400611944, Learning Rate: 0.0020589113209464917, Validation Accuracy: 0.60224
+Epoch [16/60], Training Loss: 6.083195341992347, Training Loss w/o Aux: 1.9393181329674387, Learning Rate: 0.0018530201888518425, Validation Accuracy: 0.61566
+Epoch [17/60], Training Loss: 6.075199501797183, Training Loss w/o Aux: 1.9313312901854098, Learning Rate: 0.0016677181699666583, Validation Accuracy: 0.6164
+Epoch [18/60], Training Loss: 6.071914932922903, Training Loss w/o Aux: 1.928052689838819, Learning Rate: 0.0015009463529699924, Validation Accuracy: 0.62184
+Epoch [19/60], Training Loss: 6.065510911033494, Training Loss w/o Aux: 1.921658717558117, Learning Rate: 0.0013508517176729932, Validation Accuracy: 0.62438
+Epoch [20/60], Training Loss: 6.057796085472766, Training Loss w/o Aux: 1.9139519723839236, Learning Rate: 0.001215766545905694, Validation Accuracy: 0.62348
+Epoch [21/60], Training Loss: 6.052563624420608, Training Loss w/o Aux: 1.908723981817091, Learning Rate: 0.0010941898913151245, Validation Accuracy: 0.63302
+Epoch [22/60], Training Loss: 6.046758892986608, Training Loss w/o Aux: 1.9029231000725522, Learning Rate: 0.0009847709021836122, Validation Accuracy: 0.63656
+Epoch [23/60], Training Loss: 6.041873857803261, Training Loss w/o Aux: 1.8980386820643655, Learning Rate: 0.0008862938119652509, Validation Accuracy: 0.63552
+Epoch [24/60], Training Loss: 6.037904340387856, Training Loss w/o Aux: 1.894055660221886, Learning Rate: 0.0007976644307687258, Validation Accuracy: 0.64102
+Epoch [25/60], Training Loss: 6.033786302037334, Training Loss w/o Aux: 1.8899399693975296, Learning Rate: 0.0007178979876918532, Validation Accuracy: 0.64452
+Epoch [26/60], Training Loss: 6.029306723457174, Training Loss w/o Aux: 1.8854515897202222, Learning Rate: 0.0006461081889226679, Validation Accuracy: 0.64358
+Epoch [27/60], Training Loss: 6.026049844534298, Training Loss w/o Aux: 1.8821832188503262, Learning Rate: 0.0005814973700304011, Validation Accuracy: 0.64754
+Epoch [28/60], Training Loss: 6.022247046235201, Training Loss w/o Aux: 1.87835902985022, Learning Rate: 0.0005233476330273611, Validation Accuracy: 0.64642
+Epoch [29/60], Training Loss: 6.0184657373846635, Training Loss w/o Aux: 1.8745664304662195, Learning Rate: 0.000471012869724625, Validation Accuracy: 0.6499
+Epoch [30/60], Training Loss: 6.015355757988587, Training Loss w/o Aux: 1.8714304103373958, Learning Rate: 0.0004239115827521625, Validation Accuracy: 0.65092
+Epoch [31/60], Training Loss: 6.011800216692336, Training Loss w/o Aux: 1.8678504559933955, Learning Rate: 0.00038152042447694626, Validation Accuracy: 0.65168
+Epoch [32/60], Training Loss: 6.011434999638021, Training Loss w/o Aux: 1.8674560737533639, Learning Rate: 0.00034336838202925164, Validation Accuracy: 0.65278
+Epoch [33/60], Training Loss: 6.008460194262511, Training Loss w/o Aux: 1.8644707429562668, Learning Rate: 0.0003090315438263265, Validation Accuracy: 0.65512
+Epoch [34/60], Training Loss: 6.007892163391296, Training Loss w/o Aux: 1.8638784159360107, Learning Rate: 0.00027812838944369386, Validation Accuracy: 0.6521
+Epoch [35/60], Training Loss: 6.002386567213638, Training Loss w/o Aux: 1.8583740476056976, Learning Rate: 0.0002503155504993245, Validation Accuracy: 0.65736
+Epoch [36/60], Training Loss: 6.003115480626686, Training Loss w/o Aux: 1.8590647626892647, Learning Rate: 0.00022528399544939206, Validation Accuracy: 0.65708
+Epoch [37/60], Training Loss: 5.9987104779679, Training Loss w/o Aux: 1.854644925340166, Learning Rate: 0.00020275559590445286, Validation Accuracy: 0.65676
+Epoch [38/60], Training Loss: 5.9990341311533, Training Loss w/o Aux: 1.8549397608083091, Learning Rate: 0.00018248003631400757, Validation Accuracy: 0.65726
+Epoch [39/60], Training Loss: 5.999078853085797, Training Loss w/o Aux: 1.8549786338511731, Learning Rate: 0.00016423203268260683, Validation Accuracy: 0.65882
+Epoch [40/60], Training Loss: 5.996284688766073, Training Loss w/o Aux: 1.8521518561018016, Learning Rate: 0.00014780882941434616, Validation Accuracy: 0.66024
+Epoch [41/60], Training Loss: 5.99516342450646, Training Loss w/o Aux: 1.851022339234022, Learning Rate: 0.00013302794647291155, Validation Accuracy: 0.65856
+Epoch [42/60], Training Loss: 5.994050155237178, Training Loss w/o Aux: 1.8498999596666368, Learning Rate: 0.00011972515182562039, Validation Accuracy: 0.66158
+Epoch [43/60], Training Loss: 5.9926539593636665, Training Loss w/o Aux: 1.8484927932274473, Learning Rate: 0.00010775263664305835, Validation Accuracy: 0.6616
+Epoch [44/60], Training Loss: 5.991366426241315, Training Loss w/o Aux: 1.8472053537908069, Learning Rate: 9.697737297875251e-05, Validation Accuracy: 0.66198
+Epoch [45/60], Training Loss: 5.992467203225059, Training Loss w/o Aux: 1.8482931225982766, Learning Rate: 8.727963568087727e-05, Validation Accuracy: 0.663
+Epoch [46/60], Training Loss: 5.9911405296756355, Training Loss w/o Aux: 1.8469635820112478, Learning Rate: 7.855167211278955e-05, Validation Accuracy: 0.66152
+Epoch [47/60], Training Loss: 5.989048418959176, Training Loss w/o Aux: 1.8448657987953625, Learning Rate: 7.06965049015106e-05, Validation Accuracy: 0.65982
+Epoch [48/60], Training Loss: 5.987206506781531, Training Loss w/o Aux: 1.8430206391441917, Learning Rate: 6.362685441135955e-05, Validation Accuracy: 0.66346
+Epoch [49/60], Training Loss: 5.987009495475907, Training Loss w/o Aux: 1.842813967443606, Learning Rate: 5.7264168970223595e-05, Validation Accuracy: 0.6623
+Epoch [50/60], Training Loss: 5.987371202019714, Training Loss w/o Aux: 1.8431684065798872, Learning Rate: 5.153775207320124e-05, Validation Accuracy: 0.66364
+Epoch [51/60], Training Loss: 5.986578964308099, Training Loss w/o Aux: 1.8423740804606306, Learning Rate: 4.6383976865881114e-05, Validation Accuracy: 0.66104
+Epoch [52/60], Training Loss: 5.986177762222404, Training Loss w/o Aux: 1.8419667460104006, Learning Rate: 4.1745579179293e-05, Validation Accuracy: 0.66392
+Epoch [53/60], Training Loss: 5.984691670753463, Training Loss w/o Aux: 1.8404857314112946, Learning Rate: 3.75710212613637e-05, Validation Accuracy: 0.66092
+Epoch [54/60], Training Loss: 5.985645203528937, Training Loss w/o Aux: 1.841425158317921, Learning Rate: 3.381391913522733e-05, Validation Accuracy: 0.6623
+Epoch [55/60], Training Loss: 5.982902973821821, Training Loss w/o Aux: 1.8386896914899356, Learning Rate: 3.0432527221704597e-05, Validation Accuracy: 0.66334
+Epoch [56/60], Training Loss: 5.9834044709740635, Training Loss w/o Aux: 1.8391855923680949, Learning Rate: 2.7389274499534138e-05, Validation Accuracy: 0.66392
+Epoch [57/60], Training Loss: 5.983424275080299, Training Loss w/o Aux: 1.8391904680268463, Learning Rate: 2.4650347049580723e-05, Validation Accuracy: 0.66386
+Epoch [58/60], Training Loss: 5.983340436207663, Training Loss w/o Aux: 1.8391081876289785, Learning Rate: 2.218531234462265e-05, Validation Accuracy: 0.66394
+Epoch [59/60], Training Loss: 5.98417864185028, Training Loss w/o Aux: 1.8399442964910757, Learning Rate: 1.9966781110160387e-05, Validation Accuracy: 0.66314
+Epoch [60/60], Training Loss: 5.984027606812804, Training Loss w/o Aux: 1.839792758723646, Learning Rate: 1.797010299914435e-05, Validation Accuracy: 0.66324
+Accuracy after retraining: 0.66324
+Removing pruning masks ...
+Accuracy after retraining: 0.66324
+Final pruned and retrained model saved as pruned_0.922_global_unstructured_SGD_retrained_60_epochs_model.pth
+Finished pruning, retraining, and evaluation.
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: \ 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: | 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: / 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: - 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: \ 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: | 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb:      accuracy ▁▂▃▄▄▅▅▆▆▆▆▆▇▇▇▇▇▇▇█████████████████████
+wandb:         epoch ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb: learning rate █▇▆▆▅▄▄▃▃▃▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: training loss █▅▄▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb:      accuracy 0.66324
+wandb:         epoch 60
+wandb: learning rate 2e-05
+wandb: training loss 5.98403
+wandb: 
+wandb: 🚀 View run firm-frost-22 at: https://wandb.ai/jonathan-von-rad/epic/runs/3ldb6pid
+wandb: ️⚡ View job at https://wandb.ai/jonathan-von-rad/epic/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjIzOTI0NjUwOQ==/version_details/v5
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240708_120227-3ldb6pid/logs

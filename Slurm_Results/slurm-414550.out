@@ -1,0 +1,352 @@
+JobId=414550 JobName=name
+   UserId=wzz745(4834) GroupId=wichmann(4014) MCS_label=N/A
+   Priority=84286 Nice=0 Account=wichmann QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:00 TimeLimit=06:00:00 TimeMin=N/A
+   SubmitTime=2024-06-11T23:45:05 EligibleTime=2024-06-11T23:45:05
+   AccrueTime=2024-06-11T23:45:06
+   StartTime=2024-06-11T23:45:06 EndTime=2024-06-12T05:45:06 Deadline=N/A
+   PreemptEligibleTime=2024-06-11T23:46:06 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-06-11T23:45:06 Scheduler=Main
+   Partition=2080-galvani AllocNode:Sid=galvani-slurmctl:2801826
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=galvani-cn115
+   BatchHost=galvani-cn115
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1
+   AllocTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1,gres/gpu:rtx2080ti=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=40G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/ffcv.sh
+   WorkDir=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability
+   StdErr=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-414550.out
+   StdIn=/dev/null
+   StdOut=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-414550.out
+   Power=
+   TresPerNode=gres:gpu:1
+   
+
+/usr/local/lib/python3.10/dist-packages/numba/np/ufunc/parallel.py:371: NumbaWarning: The TBB threading layer requires TBB version 2021 update 6 or later i.e., TBB_INTERFACE_VERSION >= 12060. Found TBB_INTERFACE_VERSION = 12050. The TBB threading layer is disabled.
+  warnings.warn(problem)
+Using cache found in /home/wichmann/wzz745/.cache/torch/hub/pytorch_vision_v0.10.0
+/usr/local/lib/python3.10/dist-packages/torchvision/models/googlenet.py:341: UserWarning: auxiliary heads in the pretrained googlenet model are NOT pretrained, so make sure to train them
+  warnings.warn(
+
+########## Specific Local Structured L1 Pruning ##########
+
+Accuracy before: 69.94%
+
+------------------- Pruning Modules -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.05
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.05
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.08
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.03
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.14
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.03
+Module: inception3b.branch1.conv, Pruning Rate: 0.05
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.05
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.05
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.08
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.19
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.08
+Module: inception4a.branch1.conv, Pruning Rate: 0.08
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.11
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.11
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.16
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.03
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.05
+Module: inception4b.branch1.conv, Pruning Rate: 0.08
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.08
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.11
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.24
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.11
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.11
+Module: inception4c.branch1.conv, Pruning Rate: 0.05
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.05
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.05
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.24
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.24
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.05
+Module: inception4d.branch1.conv, Pruning Rate: 0.05
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.05
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.08
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.19
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.19
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.05
+Module: inception4e.branch1.conv, Pruning Rate: 0.08
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.08
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.08
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.14
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.19
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.14
+Module: inception5a.branch1.conv, Pruning Rate: 0.08
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.03
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.05
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.16
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.16
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.11
+Module: inception5b.branch1.conv, Pruning Rate: 0.19
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.03
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.16
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.05
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.24
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.24
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.09391612852682119
+Avg Pruning Rate: 0.1, Accuracy: 0.35%
+Epoch [1/3], Training Loss: 316.592794804988, Learning Rate: 0.009000000000000001, Validation Accuracy: 38.58%
+Epoch [2/3], Training Loss: 271.6668622042347, Learning Rate: 0.008100000000000001, Validation Accuracy: 42.36%
+Epoch [3/3], Training Loss: 258.0424134034069, Learning Rate: 0.007290000000000001, Validation Accuracy: 44.40%
+Accuracy after retraining: 44.40%
+None
+
+------------------- Pruning Modules -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.11
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.11
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.17
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.06
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.28
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.06
+Module: inception3b.branch1.conv, Pruning Rate: 0.11
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.11
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.11
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.17
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.39
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.17
+Module: inception4a.branch1.conv, Pruning Rate: 0.17
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.22
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.22
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.33
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.06
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.11
+Module: inception4b.branch1.conv, Pruning Rate: 0.17
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.17
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.22
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.5
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.22
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.22
+Module: inception4c.branch1.conv, Pruning Rate: 0.11
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.11
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.11
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.5
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.5
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.11
+Module: inception4d.branch1.conv, Pruning Rate: 0.11
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.11
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.17
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.39
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.39
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.11
+Module: inception4e.branch1.conv, Pruning Rate: 0.17
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.17
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.17
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.28
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.39
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.28
+Module: inception5a.branch1.conv, Pruning Rate: 0.17
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.06
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.11
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.33
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.33
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.22
+Module: inception5b.branch1.conv, Pruning Rate: 0.39
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.06
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.33
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.11
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.5
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.5
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.19623451332385755
+Avg Pruning Rate: 0.2, Accuracy: 0.01%
+Epoch [1/3], Training Loss: 333.4386576281786, Learning Rate: 0.006561000000000002, Validation Accuracy: 37.88%
+Epoch [2/3], Training Loss: 281.67764140294975, Learning Rate: 0.005904900000000002, Validation Accuracy: 41.94%
+Epoch [3/3], Training Loss: 266.33793728710566, Learning Rate: 0.005314410000000002, Validation Accuracy: 44.90%
+Accuracy after retraining: 44.90%
+None
+
+------------------- Pruning Modules -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.16
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.16
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.25
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.08
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.41
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.08
+Module: inception3b.branch1.conv, Pruning Rate: 0.16
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.16
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.16
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.25
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.57
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.25
+Module: inception4a.branch1.conv, Pruning Rate: 0.25
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.33
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.33
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.49
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.08
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.16
+Module: inception4b.branch1.conv, Pruning Rate: 0.25
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.25
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.33
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.74
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.33
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.33
+Module: inception4c.branch1.conv, Pruning Rate: 0.16
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.16
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.16
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.74
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.74
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.16
+Module: inception4d.branch1.conv, Pruning Rate: 0.16
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.16
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.25
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.57
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.57
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.16
+Module: inception4e.branch1.conv, Pruning Rate: 0.25
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.25
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.25
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.41
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.57
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.41
+Module: inception5a.branch1.conv, Pruning Rate: 0.25
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.08
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.16
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.49
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.49
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.33
+Module: inception5b.branch1.conv, Pruning Rate: 0.57
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.08
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.49
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.16
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.74
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.74
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.28871808933307963
+Avg Pruning Rate: 0.3, Accuracy: 0.00%
+Epoch [1/3], Training Loss: 358.23883889783616, Learning Rate: 0.004782969000000002, Validation Accuracy: 36.12%
+Epoch [2/3], Training Loss: 296.65210193272344, Learning Rate: 0.004304672100000002, Validation Accuracy: 42.63%
+Epoch [3/3], Training Loss: 278.9790144558374, Learning Rate: 0.003874204890000002, Validation Accuracy: 46.31%
+Accuracy after retraining: 46.31%
+None
+
+------------------- Pruning Modules -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.22
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.22
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.33
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.11
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.55
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.11
+Module: inception3b.branch1.conv, Pruning Rate: 0.22
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.22
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.22
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.33
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.77
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.33
+Module: inception4a.branch1.conv, Pruning Rate: 0.33
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.44
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.44
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.66
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.11
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.22
+Module: inception4b.branch1.conv, Pruning Rate: 0.33
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.33
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.44
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.99
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.44
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.44
+Module: inception4c.branch1.conv, Pruning Rate: 0.22
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.22
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.22
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.99
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.99
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.22
+Module: inception4d.branch1.conv, Pruning Rate: 0.22
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.22
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.33
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.77
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.77
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.22
+Module: inception4e.branch1.conv, Pruning Rate: 0.33
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.33
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.33
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.55
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.77
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.55
+Module: inception5a.branch1.conv, Pruning Rate: 0.33
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.11
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.22
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.66
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.66
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.44
+Module: inception5b.branch1.conv, Pruning Rate: 0.77
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.11
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.66
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.22
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.99
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.99
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.38773348927264384
+Avg Pruning Rate: 0.4, Accuracy: 0.00%
+Epoch [1/3], Training Loss: 405.56326408740676, Learning Rate: 0.003486784401000002, Validation Accuracy: 31.97%
+Epoch [2/3], Training Loss: 325.61043051061176, Learning Rate: 0.003138105960900002, Validation Accuracy: 39.37%
+Epoch [3/3], Training Loss: 304.0265653909223, Learning Rate: 0.0028242953648100018, Validation Accuracy: 43.28%
+Accuracy after retraining: 43.28%
+None
+
+------------------- Pruning Modules -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.27
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.27
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.41
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.14
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.69
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.14
+Module: inception3b.branch1.conv, Pruning Rate: 0.27
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.27
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.27
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.41
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.96
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.41
+Module: inception4a.branch1.conv, Pruning Rate: 0.41
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.55
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.55
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.82
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.14
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.27
+Module: inception4b.branch1.conv, Pruning Rate: 0.41
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.41
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.55
+Traceback (most recent call last):
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/retraining_ffcv.py", line 211, in <module>
+    pruneSpecificLocalStructuredLNPruning(val_loader, model, 1)
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/retraining_ffcv.py", line 181, in pruneSpecificLocalStructuredLNPruning
+    prune.ln_structured(module, name='weight',
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/utils/prune.py", line 1010, in ln_structured
+    LnStructured.apply(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/utils/prune.py", line 786, in apply
+    return super(LnStructured, cls).apply(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/utils/prune.py", line 147, in apply
+    method = _get_composite_method(cls, module, name, *args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/utils/prune.py", line 125, in _get_composite_method
+    method = cls(*args, **kwargs)  # new pruning
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/utils/prune.py", line 688, in __init__
+    _validate_pruning_amount_init(amount)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/utils/prune.py", line 1257, in _validate_pruning_amount_init
+    raise ValueError(
+ValueError: amount=1.23 should either be a float in the range [0, 1] or a non-negative integer
+srun: error: galvani-cn115: task 0: Exited with exit code 1
+srun: Terminating StepId=414550.0

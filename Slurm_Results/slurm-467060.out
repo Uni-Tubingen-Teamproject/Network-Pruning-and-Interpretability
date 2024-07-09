@@ -1,0 +1,36 @@
+JobId=467060 JobName=name
+   UserId=wzz745(4834) GroupId=wichmann(4014) MCS_label=N/A
+   Priority=74268 Nice=0 Account=wichmann QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:01 TimeLimit=1-10:00:00 TimeMin=N/A
+   SubmitTime=2024-07-05T12:06:59 EligibleTime=2024-07-05T12:06:59
+   AccrueTime=2024-07-05T12:07:00
+   StartTime=2024-07-05T12:07:00 EndTime=2024-07-06T22:07:00 Deadline=N/A
+   PreemptEligibleTime=2024-07-05T12:08:00 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-07-05T12:07:00 Scheduler=Main
+   Partition=2080-galvani AllocNode:Sid=galvani-slurmctl:945118
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=galvani-cn115
+   BatchHost=galvani-cn115
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1
+   AllocTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1,gres/gpu:rtx2080ti=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=40G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/ffcv.sh
+   WorkDir=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability
+   StdErr=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-467060.out
+   StdIn=/dev/null
+   StdOut=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-467060.out
+   Power=
+   TresPerNode=gres:gpu:1
+   MailUser=jonathan.sakouhi@gmail.com MailType=BEGIN,END,FAIL
+   
+
+WARNING: skipping mount of /mnt/lustre/datasets: stat /mnt/lustre/datasets: no such file or directory
+FATAL:   container creation failed: mount /mnt/lustre/datasets->/mnt/lustre/datasets/ error: while mounting /mnt/lustre/datasets: mount source /mnt/lustre/datasets doesn't exist
+srun: error: galvani-cn115: task 0: Exited with exit code 255
+srun: Terminating StepId=467060.0

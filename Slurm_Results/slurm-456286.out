@@ -1,0 +1,168 @@
+JobId=456286 JobName=name
+   UserId=wzz745(4834) GroupId=wichmann(4014) MCS_label=N/A
+   Priority=78580 Nice=0 Account=wichmann QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:01 TimeLimit=3-00:00:00 TimeMin=N/A
+   SubmitTime=2024-06-28T15:32:14 EligibleTime=2024-06-28T15:32:14
+   AccrueTime=2024-06-28T15:32:15
+   StartTime=2024-06-28T15:32:15 EndTime=2024-07-01T15:32:15 Deadline=N/A
+   PreemptEligibleTime=2024-06-28T15:33:15 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-06-28T15:32:15 Scheduler=Main
+   Partition=2080-galvani AllocNode:Sid=galvani-slurmctl:3578282
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=galvani-cn120
+   BatchHost=galvani-cn120
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1
+   AllocTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1,gres/gpu:rtx2080ti=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=40G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/ffcv.sh
+   WorkDir=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability
+   StdErr=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-456286.out
+   StdIn=/dev/null
+   StdOut=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-456286.out
+   Power=
+   TresPerNode=gres:gpu:1
+   MailUser=jonathan.sakouhi@gmail.com MailType=BEGIN,END,FAIL
+   
+
+/usr/local/lib/python3.10/dist-packages/numba/np/ufunc/parallel.py:371: NumbaWarning: The TBB threading layer requires TBB version 2021 update 6 or later i.e., TBB_INTERFACE_VERSION >= 12060. Found TBB_INTERFACE_VERSION = 12050. The TBB threading layer is disabled.
+  warnings.warn(problem)
+Train loader created in 11.278727769851685 seconds
+Using cache found in /home/wichmann/wzz745/.cache/torch/hub/pytorch_vision_v0.10.0
+/usr/local/lib/python3.10/dist-packages/torchvision/models/googlenet.py:341: UserWarning: auxiliary heads in the pretrained googlenet model are NOT pretrained, so make sure to train them
+  warnings.warn(
+wandb: Currently logged in as: jonathan-vonrad (jonathan-von-rad). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /home/wichmann/wzz745/.netrc
+wandb: wandb version 0.17.3 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.11
+wandb: Run data is saved locally in /home/wichmann/wzz745/Network-Pruning-and-Interpretability/wandb/run-20240628_153240-3r4excaj
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run magic-dust-11
+wandb: ⭐️ View project at https://wandb.ai/jonathan-von-rad/my-awesome-project
+wandb: 🚀 View run at https://wandb.ai/jonathan-von-rad/my-awesome-project/runs/3r4excaj
+Train loader created in 0.20391273498535156 seconds
+Training for 10 epochs with learning rate 0.01 and optimizer <class 'torch.optim.sgd.SGD'> and scheduler <class 'torch.optim.lr_scheduler.ExponentialLR'>
+
+########## Specific Local Connection Sparsity Pruning ##########
+
+Accuracy before: 0.6994
+
+------------------- Pruning Input Channels of Modules with 0.2 -------------------
+
+Module: inception3a.branch1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3a.branch2.0.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3a.branch2.1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3a.branch3.0.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3a.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception3a.branch4.1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3b.branch1.conv, Pruned Input Channels: 0.19921875
+Module: inception3b.branch2.0.conv, Pruned Input Channels: 0.19921875
+Module: inception3b.branch2.1.conv, Pruned Input Channels: 0.1953125
+Module: inception3b.branch3.0.conv, Pruned Input Channels: 0.19921875
+Module: inception3b.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception3b.branch4.1.conv, Pruned Input Channels: 0.19921875
+Module: inception4a.branch1.conv, Pruned Input Channels: 0.2
+Module: inception4a.branch2.0.conv, Pruned Input Channels: 0.2
+Module: inception4a.branch2.1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception4a.branch3.0.conv, Pruned Input Channels: 0.2
+Module: inception4a.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception4a.branch4.1.conv, Pruned Input Channels: 0.2
+Module: inception4b.branch1.conv, Pruned Input Channels: 0.19921875
+Module: inception4b.branch2.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4b.branch2.1.conv, Pruned Input Channels: 0.19642857142857142
+Module: inception4b.branch3.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4b.branch3.1.conv, Pruned Input Channels: 0.16666666666666666
+Module: inception4b.branch4.1.conv, Pruned Input Channels: 0.19921875
+Module: inception4c.branch1.conv, Pruned Input Channels: 0.19921875
+Module: inception4c.branch2.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4c.branch2.1.conv, Pruned Input Channels: 0.1953125
+Module: inception4c.branch3.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4c.branch3.1.conv, Pruned Input Channels: 0.16666666666666666
+Module: inception4c.branch4.1.conv, Pruned Input Channels: 0.19921875
+Module: inception4d.branch1.conv, Pruned Input Channels: 0.19921875
+Module: inception4d.branch2.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4d.branch2.1.conv, Pruned Input Channels: 0.19444444444444445
+Module: inception4d.branch3.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4d.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception4d.branch4.1.conv, Pruned Input Channels: 0.19921875
+Module: inception4e.branch1.conv, Pruned Input Channels: 0.19886363636363635
+Module: inception4e.branch2.0.conv, Pruned Input Channels: 0.19886363636363635
+Module: inception4e.branch2.1.conv, Pruned Input Channels: 0.2
+Module: inception4e.branch3.0.conv, Pruned Input Channels: 0.19886363636363635
+Module: inception4e.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception4e.branch4.1.conv, Pruned Input Channels: 0.19886363636363635
+Module: inception5a.branch1.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5a.branch2.0.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5a.branch2.1.conv, Pruned Input Channels: 0.2
+Module: inception5a.branch3.0.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5a.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception5a.branch4.1.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5b.branch1.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5b.branch2.0.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5b.branch2.1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception5b.branch3.0.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5b.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception5b.branch4.1.conv, Pruned Input Channels: 0.19951923076923078
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.1889
+Accuracy after pruning every module with 0.2: 0.0011
+Epoch [1/10], Training Loss: 9.39737625867173, Training Loss w/o Aux: 5.763217962470632, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.00782
+Epoch [2/10], Training Loss: 9.060757112403007, Training Loss w/o Aux: 5.552905722328542, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.01438
+Epoch [3/10], Training Loss: 8.5034681495604, Training Loss w/o Aux: 5.039716543023648, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.01798
+Epoch [4/10], Training Loss: 8.780969393790476, Training Loss w/o Aux: 5.317542220033815, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.02036
+Epoch [5/10], Training Loss: 8.598351849698796, Training Loss w/o Aux: 5.1756240743442135, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.01774
+Epoch [6/10], Training Loss: 8.228308202122484, Training Loss w/o Aux: 4.937780611545297, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.02262
+Epoch [7/10], Training Loss: 8.473227615062978, Training Loss w/o Aux: 5.234294662300267, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.02452
+Epoch [8/10], Training Loss: 8.337076279842861, Training Loss w/o Aux: 5.127684307498572, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.02086
+Epoch [9/10], Training Loss: 8.041728768628346, Training Loss w/o Aux: 4.883444148065661, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.02452
+Epoch [10/10], Training Loss: 8.307859277710927, Training Loss w/o Aux: 5.153305416353004, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.0334
+Accuracy after retraining: 0.0334
+Removing pruning masks ...
+Traceback (most recent call last):
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/./retraining_ffcv.py", line 692, in <module>
+    prune_specific_local_connection_sparsity(val_loader, model)
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/./retraining_ffcv.py", line 680, in prune_specific_local_connection_sparsity
+    removePruningMasks(model, excluded_modules)
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/./retraining_ffcv.py", line 161, in removePruningMasks
+    prune.remove(module, 'weight')
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/utils/prune.py", line 1197, in remove
+    raise ValueError(
+ValueError: Parameter 'weight' of module Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False) has to be pruned before pruning can be removed
+Traceback (most recent call last):
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/./retraining_ffcv.py", line 692, in <module>
+    prune_specific_local_connection_sparsity(val_loader, model)
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/./retraining_ffcv.py", line 680, in prune_specific_local_connection_sparsity
+    removePruningMasks(model, excluded_modules)
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/./retraining_ffcv.py", line 161, in removePruningMasks
+    prune.remove(module, 'weight')
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/utils/prune.py", line 1197, in remove
+    raise ValueError(
+ValueError: Parameter 'weight' of module Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False) has to be pruned before pruning can be removed
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb: 
+wandb: Run history:
+wandb:      accuracy ▁▃▄▄▄▅▆▅▆█
+wandb:         epoch ▁▂▃▃▄▅▆▆▇█
+wandb: learning rate █▇▆▅▄▃▃▂▁▁
+wandb: training loss █▆▃▅▄▂▃▃▁▂
+wandb: 
+wandb: Run summary:
+wandb:      accuracy 0.0334
+wandb:         epoch 10
+wandb: learning rate 0.00349
+wandb: training loss 8.30786
+wandb: 
+wandb: 🚀 View run magic-dust-11 at: https://wandb.ai/jonathan-von-rad/my-awesome-project/runs/3r4excaj
+wandb: ️⚡ View job at https://wandb.ai/jonathan-von-rad/my-awesome-project/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjIzMjI4NTA4OQ==/version_details/v3
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240628_153240-3r4excaj/logs
+srun: error: galvani-cn120: task 0: Exited with exit code 1
+srun: Terminating StepId=456286.0

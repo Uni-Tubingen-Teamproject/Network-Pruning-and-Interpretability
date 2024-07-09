@@ -1,0 +1,430 @@
+JobId=456254 JobName=name
+   UserId=wzz745(4834) GroupId=wichmann(4014) MCS_label=N/A
+   Priority=78580 Nice=0 Account=wichmann QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:01 TimeLimit=3-00:00:00 TimeMin=N/A
+   SubmitTime=2024-06-28T15:16:11 EligibleTime=2024-06-28T15:16:11
+   AccrueTime=2024-06-28T15:16:11
+   StartTime=2024-06-28T15:16:11 EndTime=2024-07-01T15:16:11 Deadline=N/A
+   PreemptEligibleTime=2024-06-28T15:17:11 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-06-28T15:16:11 Scheduler=Main
+   Partition=2080-galvani AllocNode:Sid=galvani-slurmctl:3578282
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=galvani-cn120
+   BatchHost=galvani-cn120
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1
+   AllocTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1,gres/gpu:rtx2080ti=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=40G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/ffcv.sh
+   WorkDir=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability
+   StdErr=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-456254.out
+   StdIn=/dev/null
+   StdOut=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-456254.out
+   Power=
+   TresPerNode=gres:gpu:1
+   MailUser=jonathan.sakouhi@gmail.com MailType=BEGIN,END,FAIL
+   
+
+/usr/local/lib/python3.10/dist-packages/numba/np/ufunc/parallel.py:371: NumbaWarning: The TBB threading layer requires TBB version 2021 update 6 or later i.e., TBB_INTERFACE_VERSION >= 12060. Found TBB_INTERFACE_VERSION = 12050. The TBB threading layer is disabled.
+  warnings.warn(problem)
+Train loader created in 11.110776662826538 seconds
+Using cache found in /home/wichmann/wzz745/.cache/torch/hub/pytorch_vision_v0.10.0
+/usr/local/lib/python3.10/dist-packages/torchvision/models/googlenet.py:341: UserWarning: auxiliary heads in the pretrained googlenet model are NOT pretrained, so make sure to train them
+  warnings.warn(
+wandb: Currently logged in as: jonathan-vonrad (jonathan-von-rad). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /home/wichmann/wzz745/.netrc
+wandb: wandb version 0.17.3 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.11
+wandb: Run data is saved locally in /home/wichmann/wzz745/Network-Pruning-and-Interpretability/wandb/run-20240628_151634-25vfwdav
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run major-plant-9
+wandb: ⭐️ View project at https://wandb.ai/jonathan-von-rad/my-awesome-project
+wandb: 🚀 View run at https://wandb.ai/jonathan-von-rad/my-awesome-project/runs/25vfwdav
+Train loader created in 0.19643712043762207 seconds
+Training for 10 epochs with learning rate 0.01 and optimizer <class 'torch.optim.sgd.SGD'> and scheduler <class 'torch.optim.lr_scheduler.ExponentialLR'>
+
+########## Specific Local Structured L1 Pruning ##########
+
+Accuracy before: 0.69938
+
+------------------- Pruning Modules with 0.2 -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.2
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.2
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.2
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.2
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.2
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.2
+Module: inception3b.branch1.conv, Pruning Rate: 0.2
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.2
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.2
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.2
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.2
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4a.branch1.conv, Pruning Rate: 0.2
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4b.branch1.conv, Pruning Rate: 0.2
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4c.branch1.conv, Pruning Rate: 0.2
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4d.branch1.conv, Pruning Rate: 0.2
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4e.branch1.conv, Pruning Rate: 0.2
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.2
+Module: inception5a.branch1.conv, Pruning Rate: 0.2
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.2
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.2
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.2
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.2
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.2
+Module: inception5b.branch1.conv, Pruning Rate: 0.2
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.2
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.2
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.2
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.2
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.2
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.19134368949424185
+Accuracy after pruning every module with 0.2:  0.00368
+Epoch [1/10], Training Loss: 9.424654768115694, Training Loss w/o Aux: 5.7760712128322025, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.01084
+Epoch [2/10], Training Loss: 9.065264931853232, Training Loss w/o Aux: 5.548907728220916, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.01154
+Epoch [3/10], Training Loss: 8.596012988592173, Training Loss w/o Aux: 5.1238555198354625, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.0163
+Epoch [4/10], Training Loss: 8.915931348593897, Training Loss w/o Aux: 5.442131008274346, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.01576
+Epoch [5/10], Training Loss: 8.724730361435771, Training Loss w/o Aux: 5.296609598793032, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.01578
+Epoch [6/10], Training Loss: 8.370320956182237, Training Loss w/o Aux: 5.061709101377089, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.02116
+Epoch [7/10], Training Loss: 8.595495097607877, Training Loss w/o Aux: 5.313288726010086, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.02414
+Epoch [8/10], Training Loss: 8.435375010434868, Training Loss w/o Aux: 5.189097331113088, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.01854
+Epoch [9/10], Training Loss: 8.193949445619106, Training Loss w/o Aux: 5.003148413261866, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.022
+Epoch [10/10], Training Loss: 8.446899075336134, Training Loss w/o Aux: 5.2620293594571494, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.02494
+Accuracy after retraining: 0.02494
+removing pruning masks ...
+Final pruned and retrained model saved as pruned_0.2_local_structured_retrained_10_epochs_model.pth
+
+Resetting the model to the initial state ...
+
+------------------- Pruning Modules with 0.4 -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.4
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.4
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.4
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.4
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.4
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.4
+Module: inception3b.branch1.conv, Pruning Rate: 0.4
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.4
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.4
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.4
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.4
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.4
+Module: inception4a.branch1.conv, Pruning Rate: 0.4
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.4
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.4
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.4
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.4
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.4
+Module: inception4b.branch1.conv, Pruning Rate: 0.4
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.4
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.4
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.4
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.4
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.4
+Module: inception4c.branch1.conv, Pruning Rate: 0.4
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.4
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.4
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.4
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.4
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.4
+Module: inception4d.branch1.conv, Pruning Rate: 0.4
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.4
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.4
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.4
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.4
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.4
+Module: inception4e.branch1.conv, Pruning Rate: 0.4
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.4
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.4
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.4
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.4
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.4
+Module: inception5a.branch1.conv, Pruning Rate: 0.4
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.4
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.4
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.4
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.4
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.4
+Module: inception5b.branch1.conv, Pruning Rate: 0.4
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.4
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.4
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.4
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.4
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.4
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.3822005349688308
+Accuracy after pruning every module with 0.4:  0.001
+Epoch [1/10], Training Loss: 9.001327098696272, Training Loss w/o Aux: 5.473627865618194, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.013
+Epoch [2/10], Training Loss: 8.627668790829647, Training Loss w/o Aux: 5.205962709190009, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.02046
+Epoch [3/10], Training Loss: 8.22239812769391, Training Loss w/o Aux: 4.854505349139327, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.0164
+Epoch [4/10], Training Loss: 8.469655273653599, Training Loss w/o Aux: 5.100753860738516, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.02588
+Epoch [5/10], Training Loss: 8.275637700872377, Training Loss w/o Aux: 4.960066690872761, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.024
+Epoch [6/10], Training Loss: 7.986480123335242, Training Loss w/o Aux: 4.7391064021003535, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.02532
+Epoch [7/10], Training Loss: 8.23864064977438, Training Loss w/o Aux: 4.992592085538085, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.03472
+Epoch [8/10], Training Loss: 8.085275293432733, Training Loss w/o Aux: 4.877760345517297, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.03002
+Epoch [9/10], Training Loss: 7.835203141000843, Training Loss w/o Aux: 4.688215970635736, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.0367
+Epoch [10/10], Training Loss: 7.999709644569171, Training Loss w/o Aux: 4.889081811700051, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.03126
+Accuracy after retraining: 0.03126
+removing pruning masks ...
+Final pruned and retrained model saved as pruned_0.4_local_structured_retrained_10_epochs_model.pth
+
+Resetting the model to the initial state ...
+
+------------------- Pruning Modules with 0.6 -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.6
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.6
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.6
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.6
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.6
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.6
+Module: inception3b.branch1.conv, Pruning Rate: 0.6
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.6
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.6
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.6
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.6
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.6
+Module: inception4a.branch1.conv, Pruning Rate: 0.6
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.6
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.6
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.6
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.6
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.6
+Module: inception4b.branch1.conv, Pruning Rate: 0.6
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.6
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.6
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.6
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.6
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.6
+Module: inception4c.branch1.conv, Pruning Rate: 0.6
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.6
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.6
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.6
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.6
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.6
+Module: inception4d.branch1.conv, Pruning Rate: 0.6
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.6
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.6
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.6
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.6
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.6
+Module: inception4e.branch1.conv, Pruning Rate: 0.6
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.6
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.6
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.6
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.6
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.6
+Module: inception5a.branch1.conv, Pruning Rate: 0.6
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.6
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.6
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.6
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.6
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.6
+Module: inception5b.branch1.conv, Pruning Rate: 0.6
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.6
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.6
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.6
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.6
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.6
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.5728195543418653
+Accuracy after pruning every module with 0.6:  0.001
+Epoch [1/10], Training Loss: 9.416946973723482, Training Loss w/o Aux: 5.75706895689517, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.0102
+Epoch [2/10], Training Loss: 8.946228370357792, Training Loss w/o Aux: 5.416769243332398, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.0135
+Epoch [3/10], Training Loss: 8.560034771663037, Training Loss w/o Aux: 5.08233754772301, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.01674
+Epoch [4/10], Training Loss: 8.828446780424017, Training Loss w/o Aux: 5.367194696291663, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.01938
+Epoch [5/10], Training Loss: 8.648564109531646, Training Loss w/o Aux: 5.239142547109671, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.0149
+Epoch [6/10], Training Loss: 8.324114772820641, Training Loss w/o Aux: 5.009809621791285, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.02362
+Epoch [7/10], Training Loss: 8.547793661110504, Training Loss w/o Aux: 5.258050188578524, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.02034
+Epoch [8/10], Training Loss: 8.449986293844939, Training Loss w/o Aux: 5.198953685232637, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.0202
+Epoch [9/10], Training Loss: 8.168397412455896, Training Loss w/o Aux: 4.963962598665931, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.0267
+Epoch [10/10], Training Loss: 8.378739609538718, Training Loss w/o Aux: 5.196108811432123, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.02732
+Accuracy after retraining: 0.02732
+removing pruning masks ...
+Final pruned and retrained model saved as pruned_0.6_local_structured_retrained_10_epochs_model.pth
+
+Resetting the model to the initial state ...
+
+------------------- Pruning Modules with 0.8 -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.8
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.8
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.8
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.8
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.8
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.8
+Module: inception3b.branch1.conv, Pruning Rate: 0.8
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.8
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.8
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.8
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.8
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.8
+Module: inception4a.branch1.conv, Pruning Rate: 0.8
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.8
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.8
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.8
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.8
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.8
+Module: inception4b.branch1.conv, Pruning Rate: 0.8
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.8
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.8
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.8
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.8
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.8
+Module: inception4c.branch1.conv, Pruning Rate: 0.8
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.8
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.8
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.8
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.8
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.8
+Module: inception4d.branch1.conv, Pruning Rate: 0.8
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.8
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.8
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.8
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.8
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.8
+Module: inception4e.branch1.conv, Pruning Rate: 0.8
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.8
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.8
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.8
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.8
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.8
+Module: inception5a.branch1.conv, Pruning Rate: 0.8
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.8
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.8
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.8
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.8
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.8
+Module: inception5b.branch1.conv, Pruning Rate: 0.8
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.8
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.8
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.8
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.8
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.8
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.7636763998164542
+Accuracy after pruning every module with 0.8:  0.001
+Epoch [1/10], Training Loss: 9.158506520443094, Training Loss w/o Aux: 5.597296421172223, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.01274
+Epoch [2/10], Training Loss: 8.767739865076937, Training Loss w/o Aux: 5.3082257055095265, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.01992
+Epoch [3/10], Training Loss: 8.425070290608843, Training Loss w/o Aux: 5.0133147497422, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.01998
+Epoch [4/10], Training Loss: 8.684669404063671, Training Loss w/o Aux: 5.284361728577124, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.0205
+Epoch [5/10], Training Loss: 8.502409582741194, Training Loss w/o Aux: 5.127328077745624, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.0155
+Epoch [6/10], Training Loss: 8.2261868877146, Training Loss w/o Aux: 4.946020507231282, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.02244
+Epoch [7/10], Training Loss: 8.446576165490747, Training Loss w/o Aux: 5.204852965342819, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.02814
+Epoch [8/10], Training Loss: 8.310047085057226, Training Loss w/o Aux: 5.088570856621649, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.02616
+Epoch [9/10], Training Loss: 8.08058409100587, Training Loss w/o Aux: 4.918160417480347, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.03168
+Epoch [10/10], Training Loss: 8.27750986455406, Training Loss w/o Aux: 5.119858344388016, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.03442
+Accuracy after retraining: 0.03442
+removing pruning masks ...
+Final pruned and retrained model saved as pruned_0.8_local_structured_retrained_10_epochs_model.pth
+
+Resetting the model to the initial state ...
+
+------------------- Pruning Modules with 0.2 -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.2
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.2
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.2
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.2
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.2
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.2
+Module: inception3b.branch1.conv, Pruning Rate: 0.2
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.2
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.2
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.2
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.2
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4a.branch1.conv, Pruning Rate: 0.2
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4b.branch1.conv, Pruning Rate: 0.2
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4c.branch1.conv, Pruning Rate: 0.2
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4d.branch1.conv, Pruning Rate: 0.2
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4e.branch1.conv, Pruning Rate: 0.2
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.2
+Module: inception5a.branch1.conv, Pruning Rate: 0.2
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.2
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.2
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.2
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.2
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.2
+Module: inception5b.branch1.conv, Pruning Rate: 0.2
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.2
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.2
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.2
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.2
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.2
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.19134368949424185
+Accuracy after pruning every module with 0.2:  0.00368
+Epoch [1/50], Training Loss: 9.223080732972726, Training Loss w/o Aux: 5.6047003161289055, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.01534
+Epoch [2/50], Training Loss: 8.864409324469916, Training Loss w/o Aux: 5.363311134145529, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.01994
+Epoch [3/50], Training Loss: 8.402257524607172, Training Loss w/o Aux: 4.940859644881542, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.022
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 456254.0 ON galvani-cn120 CANCELLED AT 2024-06-29T16:20:53 ***
+slurmstepd: error: *** JOB 456254 ON galvani-cn120 CANCELLED AT 2024-06-29T16:20:53 ***

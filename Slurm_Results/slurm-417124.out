@@ -1,0 +1,185 @@
+JobId=417124 JobName=name
+   UserId=wzz745(4834) GroupId=wichmann(4014) MCS_label=N/A
+   Priority=83371 Nice=0 Account=wichmann QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:00 TimeLimit=06:00:00 TimeMin=N/A
+   SubmitTime=2024-06-13T09:11:01 EligibleTime=2024-06-13T09:11:01
+   AccrueTime=2024-06-13T09:11:02
+   StartTime=2024-06-13T09:11:02 EndTime=2024-06-13T15:11:02 Deadline=N/A
+   PreemptEligibleTime=2024-06-13T09:12:02 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-06-13T09:11:02 Scheduler=Main
+   Partition=2080-galvani AllocNode:Sid=galvani-slurmctl:3375437
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=galvani-cn125
+   BatchHost=galvani-cn125
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1
+   AllocTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1,gres/gpu:rtx2080ti=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=40G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/ffcv.sh
+   WorkDir=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability
+   StdErr=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-417124.out
+   StdIn=/dev/null
+   StdOut=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-417124.out
+   Power=
+   TresPerNode=gres:gpu:1
+   
+
+/usr/local/lib/python3.10/dist-packages/numba/np/ufunc/parallel.py:371: NumbaWarning: The TBB threading layer requires TBB version 2021 update 6 or later i.e., TBB_INTERFACE_VERSION >= 12060. Found TBB_INTERFACE_VERSION = 12050. The TBB threading layer is disabled.
+  warnings.warn(problem)
+Using cache found in /home/wichmann/wzz745/.cache/torch/hub/pytorch_vision_v0.10.0
+/usr/local/lib/python3.10/dist-packages/torchvision/models/googlenet.py:341: UserWarning: auxiliary heads in the pretrained googlenet model are NOT pretrained, so make sure to train them
+  warnings.warn(
+Train loader created in 11.473496437072754 seconds
+Train loader created in 0.24811697006225586 seconds
+
+########## Specific Local Structured L1 Pruning ##########
+
+Accuracy before: 0.69938
+
+------------------- Pruning Modules -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.05
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.05
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.08
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.03
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.14
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.03
+Module: inception3b.branch1.conv, Pruning Rate: 0.05
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.05
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.05
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.08
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.19
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.08
+Module: inception4a.branch1.conv, Pruning Rate: 0.08
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.11
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.11
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.16
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.03
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.05
+Module: inception4b.branch1.conv, Pruning Rate: 0.08
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.08
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.11
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.24
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.11
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.11
+Module: inception4c.branch1.conv, Pruning Rate: 0.05
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.05
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.05
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.24
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.24
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.05
+Module: inception4d.branch1.conv, Pruning Rate: 0.05
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.05
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.08
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.19
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.19
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.05
+Module: inception4e.branch1.conv, Pruning Rate: 0.08
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.08
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.08
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.14
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.19
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.14
+Module: inception5a.branch1.conv, Pruning Rate: 0.08
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.03
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.05
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.16
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.16
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.11
+Module: inception5b.branch1.conv, Pruning Rate: 0.19
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.03
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.16
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.05
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.24
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.24
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.09391612852682119
+Avg Pruning Rate: 0.1, Accuracy: 0.3519
+Epoch [1/10], Training Loss: 634.2048860249408, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.46852
+Epoch [2/10], Training Loss: 531.9115147990344, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.50924
+Epoch [3/10], Training Loss: 501.33944873198107, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.52916
+Epoch [4/10], Training Loss: 483.1329316737495, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.53008
+Epoch [5/10], Training Loss: 470.6221072269089, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.54888
+Epoch [6/10], Training Loss: 460.55167698619584, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.56344
+Epoch [7/10], Training Loss: 453.0318903050731, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.56846
+Epoch [8/10], Training Loss: 446.17331563763025, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.5846
+Epoch [9/10], Training Loss: 440.33115560375546, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.60656
+Epoch [10/10], Training Loss: 435.1955327150145, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.61602
+Accuracy after retraining: 0.61602
+None
+
+------------------- Pruning Modules -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.11
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.11
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.17
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.06
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.28
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.06
+Module: inception3b.branch1.conv, Pruning Rate: 0.11
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.11
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.11
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.17
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.39
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.17
+Module: inception4a.branch1.conv, Pruning Rate: 0.17
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.22
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.22
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.33
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.06
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.11
+Module: inception4b.branch1.conv, Pruning Rate: 0.17
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.17
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.22
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.5
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.22
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.22
+Module: inception4c.branch1.conv, Pruning Rate: 0.11
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.11
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.11
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.5
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.5
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.11
+Module: inception4d.branch1.conv, Pruning Rate: 0.11
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.11
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.17
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.39
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.39
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.11
+Module: inception4e.branch1.conv, Pruning Rate: 0.17
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.17
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.17
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.28
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.39
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.28
+Module: inception5a.branch1.conv, Pruning Rate: 0.17
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.06
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.11
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.33
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.33
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.22
+Module: inception5b.branch1.conv, Pruning Rate: 0.39
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.06
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.33
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.11
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.5
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.5
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.19623451332385755
+Avg Pruning Rate: 0.2, Accuracy: 0.01476
+Epoch [1/10], Training Loss: 731.6362244073108, Learning Rate: 0.003138105960900002, Validation Accuracy: 0.55136
+Epoch [2/10], Training Loss: 602.8547677238191, Learning Rate: 0.0028242953648100018, Validation Accuracy: 0.57418
+Epoch [3/10], Training Loss: 555.61250633707, Learning Rate: 0.0025418658283290017, Validation Accuracy: 0.59176
+Epoch [4/10], Training Loss: 529.8877322756931, Learning Rate: 0.0022876792454961017, Validation Accuracy: 0.60296
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 417124 ON galvani-cn125 CANCELLED AT 2024-06-13T15:11:04 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 417124.0 ON galvani-cn125 CANCELLED AT 2024-06-13T15:11:04 DUE TO TIME LIMIT ***

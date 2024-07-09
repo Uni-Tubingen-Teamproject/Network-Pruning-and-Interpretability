@@ -1,0 +1,801 @@
+JobId=457446 JobName=name
+   UserId=wzz745(4834) GroupId=wichmann(4014) MCS_label=N/A
+   Priority=78580 Nice=0 Account=wichmann QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:01 TimeLimit=3-00:00:00 TimeMin=N/A
+   SubmitTime=2024-06-29T16:30:04 EligibleTime=2024-06-29T16:30:04
+   AccrueTime=2024-06-29T16:30:04
+   StartTime=2024-06-29T16:30:04 EndTime=2024-07-02T16:30:04 Deadline=N/A
+   PreemptEligibleTime=2024-06-29T16:31:04 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-06-29T16:30:04 Scheduler=Main
+   Partition=2080-galvani AllocNode:Sid=galvani-slurmctl:3737606
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=galvani-cn126
+   BatchHost=galvani-cn126
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1
+   AllocTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1,gres/gpu:rtx2080ti=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=40G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/ffcv.sh
+   WorkDir=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability
+   StdErr=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-457446.out
+   StdIn=/dev/null
+   StdOut=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-457446.out
+   Power=
+   TresPerNode=gres:gpu:1
+   MailUser=jonathan.sakouhi@gmail.com MailType=BEGIN,END,FAIL
+   
+
+/usr/local/lib/python3.10/dist-packages/numba/np/ufunc/parallel.py:371: NumbaWarning: The TBB threading layer requires TBB version 2021 update 6 or later i.e., TBB_INTERFACE_VERSION >= 12060. Found TBB_INTERFACE_VERSION = 12050. The TBB threading layer is disabled.
+  warnings.warn(problem)
+Train loader created in 26.77294898033142 seconds
+Using cache found in /home/wichmann/wzz745/.cache/torch/hub/pytorch_vision_v0.10.0
+/usr/local/lib/python3.10/dist-packages/torchvision/models/googlenet.py:341: UserWarning: auxiliary heads in the pretrained googlenet model are NOT pretrained, so make sure to train them
+  warnings.warn(
+wandb: Currently logged in as: jonathan-vonrad (jonathan-von-rad). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /home/wichmann/wzz745/.netrc
+wandb: wandb version 0.17.3 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.11
+wandb: Run data is saved locally in /home/wichmann/wzz745/Network-Pruning-and-Interpretability/wandb/run-20240629_163104-t27gx5hu
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run happy-rain-3
+wandb: ⭐️ View project at https://wandb.ai/jonathan-von-rad/epic
+wandb: 🚀 View run at https://wandb.ai/jonathan-von-rad/epic/runs/t27gx5hu
+Train loader created in 0.2456040382385254 seconds
+Training for 10 epochs with learning rate 0.01 and optimizer SGD and scheduler ExponentialLR
+
+########## Specific Local Connection Sparsity Pruning ##########
+
+Accuracy before: 0.6994
+Accuracy before: 0.6994
+
+------------------- Pruning Input Channels of Modules with 0.2 -------------------
+
+Module: inception3a.branch1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3a.branch2.0.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3a.branch2.1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3a.branch3.0.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3a.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception3a.branch4.1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3b.branch1.conv, Pruned Input Channels: 0.19921875
+Module: inception3b.branch2.0.conv, Pruned Input Channels: 0.19921875
+Module: inception3b.branch2.1.conv, Pruned Input Channels: 0.1953125
+Module: inception3b.branch3.0.conv, Pruned Input Channels: 0.19921875
+Module: inception3b.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception3b.branch4.1.conv, Pruned Input Channels: 0.19921875
+Module: inception4a.branch1.conv, Pruned Input Channels: 0.2
+Module: inception4a.branch2.0.conv, Pruned Input Channels: 0.2
+Module: inception4a.branch2.1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception4a.branch3.0.conv, Pruned Input Channels: 0.2
+Module: inception4a.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception4a.branch4.1.conv, Pruned Input Channels: 0.2
+Module: inception4b.branch1.conv, Pruned Input Channels: 0.19921875
+Module: inception4b.branch2.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4b.branch2.1.conv, Pruned Input Channels: 0.19642857142857142
+Module: inception4b.branch3.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4b.branch3.1.conv, Pruned Input Channels: 0.16666666666666666
+Module: inception4b.branch4.1.conv, Pruned Input Channels: 0.19921875
+Module: inception4c.branch1.conv, Pruned Input Channels: 0.19921875
+Module: inception4c.branch2.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4c.branch2.1.conv, Pruned Input Channels: 0.1953125
+Module: inception4c.branch3.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4c.branch3.1.conv, Pruned Input Channels: 0.16666666666666666
+Module: inception4c.branch4.1.conv, Pruned Input Channels: 0.19921875
+Module: inception4d.branch1.conv, Pruned Input Channels: 0.19921875
+Module: inception4d.branch2.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4d.branch2.1.conv, Pruned Input Channels: 0.19444444444444445
+Module: inception4d.branch3.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4d.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception4d.branch4.1.conv, Pruned Input Channels: 0.19921875
+Module: inception4e.branch1.conv, Pruned Input Channels: 0.19886363636363635
+Module: inception4e.branch2.0.conv, Pruned Input Channels: 0.19886363636363635
+Module: inception4e.branch2.1.conv, Pruned Input Channels: 0.2
+Module: inception4e.branch3.0.conv, Pruned Input Channels: 0.19886363636363635
+Module: inception4e.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception4e.branch4.1.conv, Pruned Input Channels: 0.19886363636363635
+Module: inception5a.branch1.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5a.branch2.0.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5a.branch2.1.conv, Pruned Input Channels: 0.2
+Module: inception5a.branch3.0.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5a.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception5a.branch4.1.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5b.branch1.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5b.branch2.0.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5b.branch2.1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception5b.branch3.0.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5b.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception5b.branch4.1.conv, Pruned Input Channels: 0.19951923076923078
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.1889
+Accuracy after pruning every module with 0.2: 0.0017
+Epoch [1/10], Training Loss: 5.020762431632271, Training Loss w/o Aux: 1.8785425012363446, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.47892
+Epoch [2/10], Training Loss: 4.117685576802022, Training Loss w/o Aux: 1.721571799936751, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.5169
+Epoch [3/10], Training Loss: 3.8564406118975114, Training Loss w/o Aux: 1.67678774668032, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.5462
+Epoch [4/10], Training Loss: 3.702700317960029, Training Loss w/o Aux: 1.643285610397351, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.54914
+Epoch [5/10], Training Loss: 3.596015827223928, Training Loss w/o Aux: 1.6173365440910805, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.57276
+Epoch [6/10], Training Loss: 3.5191192797269126, Training Loss w/o Aux: 1.5984508134301862, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.58436
+Epoch [7/10], Training Loss: 3.4589236192810917, Training Loss w/o Aux: 1.5817944056111886, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.58338
+Epoch [8/10], Training Loss: 3.401070770653755, Training Loss w/o Aux: 1.5615932296677562, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.60356
+Epoch [9/10], Training Loss: 3.3545221774558325, Training Loss w/o Aux: 1.5453721761274724, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.61394
+Epoch [10/10], Training Loss: 3.309723097742801, Training Loss w/o Aux: 1.5281854832323654, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.61668
+Accuracy after retraining: 0.6167
+Removing pruning masks ...
+
+Resetting the model to the initial state ...
+Accuracy before: 0.6994
+
+------------------- Pruning Input Channels of Modules with 0.4 -------------------
+
+Module: inception3a.branch1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception3a.branch2.0.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception3a.branch2.1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception3a.branch3.0.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception3a.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception3a.branch4.1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception3b.branch1.conv, Pruned Input Channels: 0.3984375
+Module: inception3b.branch2.0.conv, Pruned Input Channels: 0.3984375
+Module: inception3b.branch2.1.conv, Pruned Input Channels: 0.3984375
+Module: inception3b.branch3.0.conv, Pruned Input Channels: 0.3984375
+Module: inception3b.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception3b.branch4.1.conv, Pruned Input Channels: 0.3984375
+Module: inception4a.branch1.conv, Pruned Input Channels: 0.4
+Module: inception4a.branch2.0.conv, Pruned Input Channels: 0.4
+Module: inception4a.branch2.1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception4a.branch3.0.conv, Pruned Input Channels: 0.4
+Module: inception4a.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception4a.branch4.1.conv, Pruned Input Channels: 0.4
+Module: inception4b.branch1.conv, Pruned Input Channels: 0.3984375
+Module: inception4b.branch2.0.conv, Pruned Input Channels: 0.3984375
+Module: inception4b.branch2.1.conv, Pruned Input Channels: 0.39285714285714285
+Module: inception4b.branch3.0.conv, Pruned Input Channels: 0.3984375
+Module: inception4b.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception4b.branch4.1.conv, Pruned Input Channels: 0.3984375
+Module: inception4c.branch1.conv, Pruned Input Channels: 0.3984375
+Module: inception4c.branch2.0.conv, Pruned Input Channels: 0.3984375
+Module: inception4c.branch2.1.conv, Pruned Input Channels: 0.3984375
+Module: inception4c.branch3.0.conv, Pruned Input Channels: 0.3984375
+Module: inception4c.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception4c.branch4.1.conv, Pruned Input Channels: 0.3984375
+Module: inception4d.branch1.conv, Pruned Input Channels: 0.3984375
+Module: inception4d.branch2.0.conv, Pruned Input Channels: 0.3984375
+Module: inception4d.branch2.1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception4d.branch3.0.conv, Pruned Input Channels: 0.3984375
+Module: inception4d.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception4d.branch4.1.conv, Pruned Input Channels: 0.3984375
+Module: inception4e.branch1.conv, Pruned Input Channels: 0.3996212121212121
+Module: inception4e.branch2.0.conv, Pruned Input Channels: 0.3996212121212121
+Module: inception4e.branch2.1.conv, Pruned Input Channels: 0.4
+Module: inception4e.branch3.0.conv, Pruned Input Channels: 0.3996212121212121
+Module: inception4e.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception4e.branch4.1.conv, Pruned Input Channels: 0.3996212121212121
+Module: inception5a.branch1.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5a.branch2.0.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5a.branch2.1.conv, Pruned Input Channels: 0.4
+Module: inception5a.branch3.0.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5a.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception5a.branch4.1.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5b.branch1.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5b.branch2.0.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5b.branch2.1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception5b.branch3.0.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5b.branch3.1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception5b.branch4.1.conv, Pruned Input Channels: 0.39903846153846156
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.3795
+Accuracy after pruning every module with 0.4: 0.0010
+Epoch [1/10], Training Loss: 5.408576911688447, Training Loss w/o Aux: 2.240891208764449, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.44188
+Epoch [2/10], Training Loss: 4.240737844387698, Training Loss w/o Aux: 1.8219160759576445, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.50292
+Epoch [3/10], Training Loss: 3.9364880955484867, Training Loss w/o Aux: 1.7423053835402813, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.52604
+Epoch [4/10], Training Loss: 3.768352281774528, Training Loss w/o Aux: 1.6959635437827139, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.55636
+Epoch [5/10], Training Loss: 3.6472378218730186, Training Loss w/o Aux: 1.6589705465389948, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.5652
+Epoch [6/10], Training Loss: 3.564996907565486, Training Loss w/o Aux: 1.6348820972042444, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.57134
+Epoch [7/10], Training Loss: 3.4960833803282263, Training Loss w/o Aux: 1.612056670899705, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.59178
+Epoch [8/10], Training Loss: 3.4342147926908355, Training Loss w/o Aux: 1.5900677182372127, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.59694
+Epoch [9/10], Training Loss: 3.38756971907599, Training Loss w/o Aux: 1.5727477465574886, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.60868
+Epoch [10/10], Training Loss: 3.344409734698511, Training Loss w/o Aux: 1.5554585151410816, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.61502
+Accuracy after retraining: 0.6150
+Removing pruning masks ...
+
+Resetting the model to the initial state ...
+Accuracy before: 0.6994
+
+------------------- Pruning Input Channels of Modules with 0.6 -------------------
+
+Module: inception3a.branch1.conv, Pruned Input Channels: 0.5989583333333334
+Module: inception3a.branch2.0.conv, Pruned Input Channels: 0.5989583333333334
+Module: inception3a.branch2.1.conv, Pruned Input Channels: 0.59375
+Module: inception3a.branch3.0.conv, Pruned Input Channels: 0.5989583333333334
+Module: inception3a.branch3.1.conv, Pruned Input Channels: 0.5625
+Module: inception3a.branch4.1.conv, Pruned Input Channels: 0.5989583333333334
+Module: inception3b.branch1.conv, Pruned Input Channels: 0.59765625
+Module: inception3b.branch2.0.conv, Pruned Input Channels: 0.59765625
+Module: inception3b.branch2.1.conv, Pruned Input Channels: 0.59375
+Module: inception3b.branch3.0.conv, Pruned Input Channels: 0.59765625
+Module: inception3b.branch3.1.conv, Pruned Input Channels: 0.59375
+Module: inception3b.branch4.1.conv, Pruned Input Channels: 0.59765625
+Module: inception4a.branch1.conv, Pruned Input Channels: 0.6
+Module: inception4a.branch2.0.conv, Pruned Input Channels: 0.6
+Module: inception4a.branch2.1.conv, Pruned Input Channels: 0.59375
+Module: inception4a.branch3.0.conv, Pruned Input Channels: 0.6
+Module: inception4a.branch3.1.conv, Pruned Input Channels: 0.5625
+Module: inception4a.branch4.1.conv, Pruned Input Channels: 0.6
+Module: inception4b.branch1.conv, Pruned Input Channels: 0.599609375
+Module: inception4b.branch2.0.conv, Pruned Input Channels: 0.599609375
+Module: inception4b.branch2.1.conv, Pruned Input Channels: 0.5982142857142857
+Module: inception4b.branch3.0.conv, Pruned Input Channels: 0.599609375
+Module: inception4b.branch3.1.conv, Pruned Input Channels: 0.5833333333333334
+Module: inception4b.branch4.1.conv, Pruned Input Channels: 0.599609375
+Module: inception4c.branch1.conv, Pruned Input Channels: 0.599609375
+Module: inception4c.branch2.0.conv, Pruned Input Channels: 0.599609375
+Module: inception4c.branch2.1.conv, Pruned Input Channels: 0.59375
+Module: inception4c.branch3.0.conv, Pruned Input Channels: 0.599609375
+Module: inception4c.branch3.1.conv, Pruned Input Channels: 0.5833333333333334
+Module: inception4c.branch4.1.conv, Pruned Input Channels: 0.599609375
+Module: inception4d.branch1.conv, Pruned Input Channels: 0.599609375
+Module: inception4d.branch2.0.conv, Pruned Input Channels: 0.599609375
+Module: inception4d.branch2.1.conv, Pruned Input Channels: 0.5972222222222222
+Module: inception4d.branch3.0.conv, Pruned Input Channels: 0.599609375
+Module: inception4d.branch3.1.conv, Pruned Input Channels: 0.59375
+Module: inception4d.branch4.1.conv, Pruned Input Channels: 0.599609375
+Module: inception4e.branch1.conv, Pruned Input Channels: 0.5984848484848485
+Module: inception4e.branch2.0.conv, Pruned Input Channels: 0.5984848484848485
+Module: inception4e.branch2.1.conv, Pruned Input Channels: 0.6
+Module: inception4e.branch3.0.conv, Pruned Input Channels: 0.5984848484848485
+Module: inception4e.branch3.1.conv, Pruned Input Channels: 0.59375
+Module: inception4e.branch4.1.conv, Pruned Input Channels: 0.5984848484848485
+Module: inception5a.branch1.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5a.branch2.0.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5a.branch2.1.conv, Pruned Input Channels: 0.6
+Module: inception5a.branch3.0.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5a.branch3.1.conv, Pruned Input Channels: 0.59375
+Module: inception5a.branch4.1.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5b.branch1.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5b.branch2.0.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5b.branch2.1.conv, Pruned Input Channels: 0.5989583333333334
+Module: inception5b.branch3.0.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5b.branch3.1.conv, Pruned Input Channels: 0.5833333333333334
+Module: inception5b.branch4.1.conv, Pruned Input Channels: 0.5997596153846154
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.5711
+Accuracy after pruning every module with 0.6: 0.0010
+Epoch [1/10], Training Loss: 6.663009952124402, Training Loss w/o Aux: 3.462017693378099, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.2428
+Epoch [2/10], Training Loss: 5.048884755474833, Training Loss w/o Aux: 2.560777776712232, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.36156
+Epoch [3/10], Training Loss: 4.563861409342722, Training Loss w/o Aux: 2.3096366670417767, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.4035
+Epoch [4/10], Training Loss: 4.298236046915038, Training Loss w/o Aux: 2.1763495440153897, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.44596
+Epoch [5/10], Training Loss: 4.112285986803237, Training Loss w/o Aux: 2.0829390290376844, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.48422
+Epoch [6/10], Training Loss: 3.9781322699586927, Training Loss w/o Aux: 2.015734642854234, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.47854
+Epoch [7/10], Training Loss: 3.8692520718579764, Training Loss w/o Aux: 1.9613320957781826, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.51472
+Epoch [8/10], Training Loss: 3.7817642495805823, Training Loss w/o Aux: 1.9164121756009116, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.52702
+Epoch [9/10], Training Loss: 3.707203789969307, Training Loss w/o Aux: 1.8775125775902717, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.536
+Epoch [10/10], Training Loss: 3.651782628003266, Training Loss w/o Aux: 1.849864195021779, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.55724
+Accuracy after retraining: 0.5572
+Removing pruning masks ...
+
+Resetting the model to the initial state ...
+Accuracy before: 0.6994
+
+------------------- Pruning Input Channels of Modules with 0.8 -------------------
+
+Module: inception3a.branch1.conv, Pruned Input Channels: 0.796875
+Module: inception3a.branch2.0.conv, Pruned Input Channels: 0.796875
+Module: inception3a.branch2.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception3a.branch3.0.conv, Pruned Input Channels: 0.796875
+Module: inception3a.branch3.1.conv, Pruned Input Channels: 0.75
+Module: inception3a.branch4.1.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch1.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch2.0.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch2.1.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch3.0.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch3.1.conv, Pruned Input Channels: 0.78125
+Module: inception3b.branch4.1.conv, Pruned Input Channels: 0.796875
+Module: inception4a.branch1.conv, Pruned Input Channels: 0.8
+Module: inception4a.branch2.0.conv, Pruned Input Channels: 0.8
+Module: inception4a.branch2.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception4a.branch3.0.conv, Pruned Input Channels: 0.8
+Module: inception4a.branch3.1.conv, Pruned Input Channels: 0.75
+Module: inception4a.branch4.1.conv, Pruned Input Channels: 0.8
+Module: inception4b.branch1.conv, Pruned Input Channels: 0.798828125
+Module: inception4b.branch2.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4b.branch2.1.conv, Pruned Input Channels: 0.7946428571428571
+Module: inception4b.branch3.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4b.branch3.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception4b.branch4.1.conv, Pruned Input Channels: 0.798828125
+Module: inception4c.branch1.conv, Pruned Input Channels: 0.798828125
+Module: inception4c.branch2.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4c.branch2.1.conv, Pruned Input Channels: 0.796875
+Module: inception4c.branch3.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4c.branch3.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception4c.branch4.1.conv, Pruned Input Channels: 0.798828125
+Module: inception4d.branch1.conv, Pruned Input Channels: 0.798828125
+Module: inception4d.branch2.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4d.branch2.1.conv, Pruned Input Channels: 0.7986111111111112
+Module: inception4d.branch3.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4d.branch3.1.conv, Pruned Input Channels: 0.78125
+Module: inception4d.branch4.1.conv, Pruned Input Channels: 0.798828125
+Module: inception4e.branch1.conv, Pruned Input Channels: 0.7992424242424242
+Module: inception4e.branch2.0.conv, Pruned Input Channels: 0.7992424242424242
+Module: inception4e.branch2.1.conv, Pruned Input Channels: 0.8
+Module: inception4e.branch3.0.conv, Pruned Input Channels: 0.7992424242424242
+Module: inception4e.branch3.1.conv, Pruned Input Channels: 0.78125
+Module: inception4e.branch4.1.conv, Pruned Input Channels: 0.7992424242424242
+Module: inception5a.branch1.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5a.branch2.0.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5a.branch2.1.conv, Pruned Input Channels: 0.8
+Module: inception5a.branch3.0.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5a.branch3.1.conv, Pruned Input Channels: 0.78125
+Module: inception5a.branch4.1.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5b.branch1.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5b.branch2.0.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5b.branch2.1.conv, Pruned Input Channels: 0.796875
+Module: inception5b.branch3.0.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5b.branch3.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception5b.branch4.1.conv, Pruned Input Channels: 0.7992788461538461
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.7617
+Accuracy after pruning every module with 0.8: 0.0010
+Epoch [1/10], Training Loss: 6.970340139680791, Training Loss w/o Aux: 3.754658417787951, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.21694
+Epoch [2/10], Training Loss: 5.286374057467161, Training Loss w/o Aux: 2.7709594749048976, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.31338
+Epoch [3/10], Training Loss: 4.746039828121251, Training Loss w/o Aux: 2.4693156791883863, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.37824
+Epoch [4/10], Training Loss: 4.444833700491816, Training Loss w/o Aux: 2.3050805734151703, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.40556
+Epoch [5/10], Training Loss: 4.2447501963246586, Training Loss w/o Aux: 2.1973828203445405, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.44728
+Epoch [6/10], Training Loss: 4.09477669107222, Training Loss w/o Aux: 2.118010036356264, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.46504
+Epoch [7/10], Training Loss: 3.9788436253405033, Training Loss w/o Aux: 2.05590953230441, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.49572
+Epoch [8/10], Training Loss: 3.8847258239612317, Training Loss w/o Aux: 2.0052146988322845, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.50716
+Epoch [9/10], Training Loss: 3.8153794019035745, Training Loss w/o Aux: 1.9693306393646697, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.5286
+Epoch [10/10], Training Loss: 3.7405746690352033, Training Loss w/o Aux: 1.9277514208326665, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.5434
+Accuracy after retraining: 0.5434
+Removing pruning masks ...
+
+Resetting the model to the initial state ...
+Accuracy before: 0.6994
+
+------------------- Pruning Input Channels of Modules with 0.2 -------------------
+
+Module: inception3a.branch1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3a.branch2.0.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3a.branch2.1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3a.branch3.0.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3a.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception3a.branch4.1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception3b.branch1.conv, Pruned Input Channels: 0.19921875
+Module: inception3b.branch2.0.conv, Pruned Input Channels: 0.19921875
+Module: inception3b.branch2.1.conv, Pruned Input Channels: 0.1953125
+Module: inception3b.branch3.0.conv, Pruned Input Channels: 0.19921875
+Module: inception3b.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception3b.branch4.1.conv, Pruned Input Channels: 0.19921875
+Module: inception4a.branch1.conv, Pruned Input Channels: 0.2
+Module: inception4a.branch2.0.conv, Pruned Input Channels: 0.2
+Module: inception4a.branch2.1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception4a.branch3.0.conv, Pruned Input Channels: 0.2
+Module: inception4a.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception4a.branch4.1.conv, Pruned Input Channels: 0.2
+Module: inception4b.branch1.conv, Pruned Input Channels: 0.19921875
+Module: inception4b.branch2.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4b.branch2.1.conv, Pruned Input Channels: 0.19642857142857142
+Module: inception4b.branch3.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4b.branch3.1.conv, Pruned Input Channels: 0.16666666666666666
+Module: inception4b.branch4.1.conv, Pruned Input Channels: 0.19921875
+Module: inception4c.branch1.conv, Pruned Input Channels: 0.19921875
+Module: inception4c.branch2.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4c.branch2.1.conv, Pruned Input Channels: 0.1953125
+Module: inception4c.branch3.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4c.branch3.1.conv, Pruned Input Channels: 0.16666666666666666
+Module: inception4c.branch4.1.conv, Pruned Input Channels: 0.19921875
+Module: inception4d.branch1.conv, Pruned Input Channels: 0.19921875
+Module: inception4d.branch2.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4d.branch2.1.conv, Pruned Input Channels: 0.19444444444444445
+Module: inception4d.branch3.0.conv, Pruned Input Channels: 0.19921875
+Module: inception4d.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception4d.branch4.1.conv, Pruned Input Channels: 0.19921875
+Module: inception4e.branch1.conv, Pruned Input Channels: 0.19886363636363635
+Module: inception4e.branch2.0.conv, Pruned Input Channels: 0.19886363636363635
+Module: inception4e.branch2.1.conv, Pruned Input Channels: 0.2
+Module: inception4e.branch3.0.conv, Pruned Input Channels: 0.19886363636363635
+Module: inception4e.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception4e.branch4.1.conv, Pruned Input Channels: 0.19886363636363635
+Module: inception5a.branch1.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5a.branch2.0.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5a.branch2.1.conv, Pruned Input Channels: 0.2
+Module: inception5a.branch3.0.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5a.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception5a.branch4.1.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5b.branch1.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5b.branch2.0.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5b.branch2.1.conv, Pruned Input Channels: 0.19791666666666666
+Module: inception5b.branch3.0.conv, Pruned Input Channels: 0.19951923076923078
+Module: inception5b.branch3.1.conv, Pruned Input Channels: 0.1875
+Module: inception5b.branch4.1.conv, Pruned Input Channels: 0.19951923076923078
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.1889
+Accuracy after pruning every module with 0.2: 0.0015
+Epoch [1/50], Training Loss: 5.0102883260177915, Training Loss w/o Aux: 1.8788215135024946, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.48396
+Epoch [2/50], Training Loss: 4.113631952986849, Training Loss w/o Aux: 1.7220046974607657, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.51866
+Epoch [3/50], Training Loss: 3.848158819094942, Training Loss w/o Aux: 1.6749449816244635, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.53516
+Epoch [4/50], Training Loss: 3.700105986117316, Training Loss w/o Aux: 1.6450944432358081, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.55588
+Epoch [5/50], Training Loss: 3.5973449218569726, Training Loss w/o Aux: 1.6197583968018376, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.57092
+Epoch [6/50], Training Loss: 3.5212463445031736, Training Loss w/o Aux: 1.6011548805563156, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.57494
+Epoch [7/50], Training Loss: 3.4545963019183232, Training Loss w/o Aux: 1.5808022374968176, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.59368
+Epoch [8/50], Training Loss: 3.3992791655585535, Training Loss w/o Aux: 1.5626495059451948, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.6063
+Epoch [9/50], Training Loss: 3.345785883711892, Training Loss w/o Aux: 1.5422032076419918, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.60256
+Epoch [10/50], Training Loss: 3.3094808449098694, Training Loss w/o Aux: 1.5300980182910777, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.63004
+Epoch [11/50], Training Loss: 3.2675232893937785, Training Loss w/o Aux: 1.5126346437673086, Learning Rate: 0.003138105960900002, Validation Accuracy: 0.63132
+Epoch [12/50], Training Loss: 3.239643265524758, Training Loss w/o Aux: 1.502569696199097, Learning Rate: 0.0028242953648100018, Validation Accuracy: 0.6414
+Epoch [13/50], Training Loss: 3.207513541272023, Training Loss w/o Aux: 1.48941375343625, Learning Rate: 0.0025418658283290017, Validation Accuracy: 0.64414
+Epoch [14/50], Training Loss: 3.1788348983439167, Training Loss w/o Aux: 1.4754860795143303, Learning Rate: 0.0022876792454961017, Validation Accuracy: 0.6443
+Epoch [15/50], Training Loss: 3.152751070146068, Training Loss w/o Aux: 1.4646778667660334, Learning Rate: 0.0020589113209464917, Validation Accuracy: 0.65714
+Epoch [16/50], Training Loss: 3.126833267461552, Training Loss w/o Aux: 1.4530801064056502, Learning Rate: 0.0018530201888518425, Validation Accuracy: 0.66276
+Epoch [17/50], Training Loss: 3.109294854745437, Training Loss w/o Aux: 1.4454137237353786, Learning Rate: 0.0016677181699666583, Validation Accuracy: 0.6668
+Epoch [18/50], Training Loss: 3.0881792266762615, Training Loss w/o Aux: 1.43411502294791, Learning Rate: 0.0015009463529699924, Validation Accuracy: 0.67458
+Epoch [19/50], Training Loss: 3.066901865604815, Training Loss w/o Aux: 1.4230998682444573, Learning Rate: 0.0013508517176729932, Validation Accuracy: 0.67732
+Epoch [20/50], Training Loss: 3.0519941199467797, Training Loss w/o Aux: 1.4165946251624995, Learning Rate: 0.001215766545905694, Validation Accuracy: 0.67838
+Epoch [21/50], Training Loss: 3.034566308654311, Training Loss w/o Aux: 1.4073625335339388, Learning Rate: 0.0010941898913151245, Validation Accuracy: 0.68648
+Epoch [22/50], Training Loss: 3.017617605392101, Training Loss w/o Aux: 1.3979448924794493, Learning Rate: 0.0009847709021836122, Validation Accuracy: 0.68502
+Epoch [23/50], Training Loss: 3.0086291783195906, Training Loss w/o Aux: 1.3948083984433788, Learning Rate: 0.0008862938119652509, Validation Accuracy: 0.69534
+Epoch [24/50], Training Loss: 2.9925248162445577, Training Loss w/o Aux: 1.3854325910895624, Learning Rate: 0.0007976644307687258, Validation Accuracy: 0.69374
+Epoch [25/50], Training Loss: 2.982609980493912, Training Loss w/o Aux: 1.380100025998711, Learning Rate: 0.0007178979876918532, Validation Accuracy: 0.69822
+Epoch [26/50], Training Loss: 2.967870693700346, Training Loss w/o Aux: 1.3714989265584245, Learning Rate: 0.0006461081889226679, Validation Accuracy: 0.69982
+Epoch [27/50], Training Loss: 2.9619829112540854, Training Loss w/o Aux: 1.3690931327229363, Learning Rate: 0.0005814973700304011, Validation Accuracy: 0.70198
+Epoch [28/50], Training Loss: 2.951003549410778, Training Loss w/o Aux: 1.3627206511175445, Learning Rate: 0.0005233476330273611, Validation Accuracy: 0.70568
+Epoch [29/50], Training Loss: 2.940043134329166, Training Loss w/o Aux: 1.3563427877469023, Learning Rate: 0.000471012869724625, Validation Accuracy: 0.70826
+Epoch [30/50], Training Loss: 2.9319917459399303, Training Loss w/o Aux: 1.3524034886000957, Learning Rate: 0.0004239115827521625, Validation Accuracy: 0.70828
+Epoch [31/50], Training Loss: 2.926323472387558, Training Loss w/o Aux: 1.348996806125658, Learning Rate: 0.00038152042447694626, Validation Accuracy: 0.7117
+Epoch [32/50], Training Loss: 2.919406848468794, Training Loss w/o Aux: 1.3447721996963864, Learning Rate: 0.00034336838202925164, Validation Accuracy: 0.7139
+Epoch [33/50], Training Loss: 2.9104474836420566, Training Loss w/o Aux: 1.3397808043448667, Learning Rate: 0.0003090315438263265, Validation Accuracy: 0.71144
+Epoch [34/50], Training Loss: 2.9063647815023272, Training Loss w/o Aux: 1.337901181483414, Learning Rate: 0.00027812838944369386, Validation Accuracy: 0.71662
+Epoch [35/50], Training Loss: 2.9021203471225796, Training Loss w/o Aux: 1.3358136722943632, Learning Rate: 0.0002503155504993245, Validation Accuracy: 0.71616
+Epoch [36/50], Training Loss: 2.8957947478188135, Training Loss w/o Aux: 1.3319838508012256, Learning Rate: 0.00022528399544939206, Validation Accuracy: 0.71758
+Epoch [37/50], Training Loss: 2.891438606962337, Training Loss w/o Aux: 1.3294057313682959, Learning Rate: 0.00020275559590445286, Validation Accuracy: 0.71796
+Epoch [38/50], Training Loss: 2.889569675759224, Training Loss w/o Aux: 1.3287157664850215, Learning Rate: 0.00018248003631400757, Validation Accuracy: 0.71856
+Epoch [39/50], Training Loss: 2.881215978626343, Training Loss w/o Aux: 1.3235019237705252, Learning Rate: 0.00016423203268260683, Validation Accuracy: 0.71992
+Epoch [40/50], Training Loss: 2.880237356124552, Training Loss w/o Aux: 1.3229013478342666, Learning Rate: 0.00014780882941434616, Validation Accuracy: 0.72088
+Epoch [41/50], Training Loss: 2.874156058543283, Training Loss w/o Aux: 1.3197400126498662, Learning Rate: 0.00013302794647291155, Validation Accuracy: 0.7203
+Epoch [42/50], Training Loss: 2.8700674234278396, Training Loss w/o Aux: 1.3166214435509551, Learning Rate: 0.00011972515182562039, Validation Accuracy: 0.72274
+Epoch [43/50], Training Loss: 2.868106354734783, Training Loss w/o Aux: 1.3159479314671827, Learning Rate: 0.00010775263664305835, Validation Accuracy: 0.72218
+Epoch [44/50], Training Loss: 2.867422249543701, Training Loss w/o Aux: 1.3155190503338807, Learning Rate: 9.697737297875251e-05, Validation Accuracy: 0.72188
+Epoch [45/50], Training Loss: 2.863144434037915, Training Loss w/o Aux: 1.3135611336540183, Learning Rate: 8.727963568087727e-05, Validation Accuracy: 0.72356
+Epoch [46/50], Training Loss: 2.8628008906592832, Training Loss w/o Aux: 1.3120558921935164, Learning Rate: 7.855167211278955e-05, Validation Accuracy: 0.72226
+Epoch [47/50], Training Loss: 2.8586428351830575, Training Loss w/o Aux: 1.3100879556983367, Learning Rate: 7.06965049015106e-05, Validation Accuracy: 0.7242
+Epoch [48/50], Training Loss: 2.85466943626602, Training Loss w/o Aux: 1.307939899195228, Learning Rate: 6.362685441135955e-05, Validation Accuracy: 0.72456
+Epoch [49/50], Training Loss: 2.856702050339486, Training Loss w/o Aux: 1.3091601010135439, Learning Rate: 5.7264168970223595e-05, Validation Accuracy: 0.72368
+Epoch [50/50], Training Loss: 2.8522270353586716, Training Loss w/o Aux: 1.306838176326445, Learning Rate: 5.153775207320124e-05, Validation Accuracy: 0.7238
+Accuracy after retraining: 0.7238
+Removing pruning masks ...
+
+Resetting the model to the initial state ...
+Accuracy before: 0.6994
+
+------------------- Pruning Input Channels of Modules with 0.4 -------------------
+
+Module: inception3a.branch1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception3a.branch2.0.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception3a.branch2.1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception3a.branch3.0.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception3a.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception3a.branch4.1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception3b.branch1.conv, Pruned Input Channels: 0.3984375
+Module: inception3b.branch2.0.conv, Pruned Input Channels: 0.3984375
+Module: inception3b.branch2.1.conv, Pruned Input Channels: 0.3984375
+Module: inception3b.branch3.0.conv, Pruned Input Channels: 0.3984375
+Module: inception3b.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception3b.branch4.1.conv, Pruned Input Channels: 0.3984375
+Module: inception4a.branch1.conv, Pruned Input Channels: 0.4
+Module: inception4a.branch2.0.conv, Pruned Input Channels: 0.4
+Module: inception4a.branch2.1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception4a.branch3.0.conv, Pruned Input Channels: 0.4
+Module: inception4a.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception4a.branch4.1.conv, Pruned Input Channels: 0.4
+Module: inception4b.branch1.conv, Pruned Input Channels: 0.3984375
+Module: inception4b.branch2.0.conv, Pruned Input Channels: 0.3984375
+Module: inception4b.branch2.1.conv, Pruned Input Channels: 0.39285714285714285
+Module: inception4b.branch3.0.conv, Pruned Input Channels: 0.3984375
+Module: inception4b.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception4b.branch4.1.conv, Pruned Input Channels: 0.3984375
+Module: inception4c.branch1.conv, Pruned Input Channels: 0.3984375
+Module: inception4c.branch2.0.conv, Pruned Input Channels: 0.3984375
+Module: inception4c.branch2.1.conv, Pruned Input Channels: 0.3984375
+Module: inception4c.branch3.0.conv, Pruned Input Channels: 0.3984375
+Module: inception4c.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception4c.branch4.1.conv, Pruned Input Channels: 0.3984375
+Module: inception4d.branch1.conv, Pruned Input Channels: 0.3984375
+Module: inception4d.branch2.0.conv, Pruned Input Channels: 0.3984375
+Module: inception4d.branch2.1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception4d.branch3.0.conv, Pruned Input Channels: 0.3984375
+Module: inception4d.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception4d.branch4.1.conv, Pruned Input Channels: 0.3984375
+Module: inception4e.branch1.conv, Pruned Input Channels: 0.3996212121212121
+Module: inception4e.branch2.0.conv, Pruned Input Channels: 0.3996212121212121
+Module: inception4e.branch2.1.conv, Pruned Input Channels: 0.4
+Module: inception4e.branch3.0.conv, Pruned Input Channels: 0.3996212121212121
+Module: inception4e.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception4e.branch4.1.conv, Pruned Input Channels: 0.3996212121212121
+Module: inception5a.branch1.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5a.branch2.0.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5a.branch2.1.conv, Pruned Input Channels: 0.4
+Module: inception5a.branch3.0.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5a.branch3.1.conv, Pruned Input Channels: 0.375
+Module: inception5a.branch4.1.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5b.branch1.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5b.branch2.0.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5b.branch2.1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception5b.branch3.0.conv, Pruned Input Channels: 0.39903846153846156
+Module: inception5b.branch3.1.conv, Pruned Input Channels: 0.3958333333333333
+Module: inception5b.branch4.1.conv, Pruned Input Channels: 0.39903846153846156
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.3795
+Accuracy after pruning every module with 0.4: 0.0010
+Epoch [1/50], Training Loss: 5.383434348869114, Training Loss w/o Aux: 2.216826900198143, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.4614
+Epoch [2/50], Training Loss: 4.235511940858833, Training Loss w/o Aux: 1.8226865999395405, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.49948
+Epoch [3/50], Training Loss: 3.9350290091224265, Training Loss w/o Aux: 1.7440701908183414, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.5228
+Epoch [4/50], Training Loss: 3.767943500221901, Training Loss w/o Aux: 1.6980887783765912, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.5336
+Epoch [5/50], Training Loss: 3.6473762192012953, Training Loss w/o Aux: 1.660358197122845, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.56208
+Epoch [6/50], Training Loss: 3.5654957364972555, Training Loss w/o Aux: 1.636143278189503, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.5749
+Epoch [7/50], Training Loss: 3.4918568580702525, Training Loss w/o Aux: 1.6100946185662441, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.5951
+Epoch [8/50], Training Loss: 3.4341004050115043, Training Loss w/o Aux: 1.5903485120682703, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.5988
+Epoch [9/50], Training Loss: 3.3833732976102606, Training Loss w/o Aux: 1.5720450873796084, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.60578
+Epoch [10/50], Training Loss: 3.3394855865292143, Training Loss w/o Aux: 1.5534865944901717, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.61894
+Epoch [11/50], Training Loss: 3.299081971850449, Training Loss w/o Aux: 1.5372039868777085, Learning Rate: 0.003138105960900002, Validation Accuracy: 0.62588
+Epoch [12/50], Training Loss: 3.2639322586737975, Training Loss w/o Aux: 1.522551397478584, Learning Rate: 0.0028242953648100018, Validation Accuracy: 0.63018
+Epoch [13/50], Training Loss: 3.2292426883763445, Training Loss w/o Aux: 1.5074837206305414, Learning Rate: 0.0025418658283290017, Validation Accuracy: 0.64518
+Epoch [14/50], Training Loss: 3.2017862362298994, Training Loss w/o Aux: 1.4952693984860819, Learning Rate: 0.0022876792454961017, Validation Accuracy: 0.64254
+Epoch [15/50], Training Loss: 3.1784783919406157, Training Loss w/o Aux: 1.4852477806719024, Learning Rate: 0.0020589113209464917, Validation Accuracy: 0.65256
+Epoch [16/50], Training Loss: 3.152571140844418, Training Loss w/o Aux: 1.4737511061266688, Learning Rate: 0.0018530201888518425, Validation Accuracy: 0.66294
+Epoch [17/50], Training Loss: 3.130312979739438, Training Loss w/o Aux: 1.4620500455513405, Learning Rate: 0.0016677181699666583, Validation Accuracy: 0.66392
+Epoch [18/50], Training Loss: 3.107256845204024, Training Loss w/o Aux: 1.4510615751309546, Learning Rate: 0.0015009463529699924, Validation Accuracy: 0.66916
+Epoch [19/50], Training Loss: 3.091742987779962, Training Loss w/o Aux: 1.4434289026955933, Learning Rate: 0.0013508517176729932, Validation Accuracy: 0.67344
+Epoch [20/50], Training Loss: 3.068006340756332, Training Loss w/o Aux: 1.4313101285355994, Learning Rate: 0.001215766545905694, Validation Accuracy: 0.67732
+Epoch [21/50], Training Loss: 3.0543399143199936, Training Loss w/o Aux: 1.424113054889603, Learning Rate: 0.0010941898913151245, Validation Accuracy: 0.68486
+Epoch [22/50], Training Loss: 3.0356635257716373, Training Loss w/o Aux: 1.4146644228380607, Learning Rate: 0.0009847709021836122, Validation Accuracy: 0.68668
+Epoch [23/50], Training Loss: 3.0244964928831393, Training Loss w/o Aux: 1.4091228319043367, Learning Rate: 0.0008862938119652509, Validation Accuracy: 0.68586
+Epoch [24/50], Training Loss: 3.007377558267132, Training Loss w/o Aux: 1.39894331472834, Learning Rate: 0.0007976644307687258, Validation Accuracy: 0.69352
+Epoch [25/50], Training Loss: 2.9975020111184794, Training Loss w/o Aux: 1.3939358121639651, Learning Rate: 0.0007178979876918532, Validation Accuracy: 0.69466
+Epoch [26/50], Training Loss: 2.985780897311057, Training Loss w/o Aux: 1.3874545177328133, Learning Rate: 0.0006461081889226679, Validation Accuracy: 0.69828
+Epoch [27/50], Training Loss: 2.9736595703464777, Training Loss w/o Aux: 1.3807593779804967, Learning Rate: 0.0005814973700304011, Validation Accuracy: 0.70102
+Epoch [28/50], Training Loss: 2.963436320535738, Training Loss w/o Aux: 1.3748427188733512, Learning Rate: 0.0005233476330273611, Validation Accuracy: 0.70482
+Epoch [29/50], Training Loss: 2.9564327565281885, Training Loss w/o Aux: 1.3711823037971518, Learning Rate: 0.000471012869724625, Validation Accuracy: 0.70784
+Epoch [30/50], Training Loss: 2.9450054828645893, Training Loss w/o Aux: 1.3648879683771646, Learning Rate: 0.0004239115827521625, Validation Accuracy: 0.70746
+Epoch [31/50], Training Loss: 2.94181729208662, Training Loss w/o Aux: 1.363883155133534, Learning Rate: 0.00038152042447694626, Validation Accuracy: 0.70966
+Epoch [32/50], Training Loss: 2.9309357954365045, Training Loss w/o Aux: 1.3573936626131997, Learning Rate: 0.00034336838202925164, Validation Accuracy: 0.70856
+Epoch [33/50], Training Loss: 2.9247228626438355, Training Loss w/o Aux: 1.3533561766022557, Learning Rate: 0.0003090315438263265, Validation Accuracy: 0.713
+Epoch [34/50], Training Loss: 2.921806791848457, Training Loss w/o Aux: 1.3513174555806422, Learning Rate: 0.00027812838944369386, Validation Accuracy: 0.71158
+Epoch [35/50], Training Loss: 2.9161683851241684, Training Loss w/o Aux: 1.3485191105688614, Learning Rate: 0.0002503155504993245, Validation Accuracy: 0.71296
+Epoch [36/50], Training Loss: 2.905553306765294, Training Loss w/o Aux: 1.3421887611756853, Learning Rate: 0.00022528399544939206, Validation Accuracy: 0.71622
+Epoch [37/50], Training Loss: 2.9018831293308267, Training Loss w/o Aux: 1.3401367718230857, Learning Rate: 0.00020275559590445286, Validation Accuracy: 0.71546
+Epoch [38/50], Training Loss: 2.9028677825196922, Training Loss w/o Aux: 1.3417314187560194, Learning Rate: 0.00018248003631400757, Validation Accuracy: 0.71738
+Epoch [39/50], Training Loss: 2.894539731284195, Training Loss w/o Aux: 1.3359651095098473, Learning Rate: 0.00016423203268260683, Validation Accuracy: 0.71734
+Epoch [40/50], Training Loss: 2.894383967440854, Training Loss w/o Aux: 1.3355606098443744, Learning Rate: 0.00014780882941434616, Validation Accuracy: 0.718
+Epoch [41/50], Training Loss: 2.8877724610862345, Training Loss w/o Aux: 1.331444177496313, Learning Rate: 0.00013302794647291155, Validation Accuracy: 0.7182
+Epoch [42/50], Training Loss: 2.8850905984083317, Training Loss w/o Aux: 1.330130221692698, Learning Rate: 0.00011972515182562039, Validation Accuracy: 0.7183
+Epoch [43/50], Training Loss: 2.883864670357679, Training Loss w/o Aux: 1.329402796097099, Learning Rate: 0.00010775263664305835, Validation Accuracy: 0.71954
+Epoch [44/50], Training Loss: 2.877360448206992, Training Loss w/o Aux: 1.3254198777424324, Learning Rate: 9.697737297875251e-05, Validation Accuracy: 0.7207
+Epoch [45/50], Training Loss: 2.877279954662165, Training Loss w/o Aux: 1.3263948691368865, Learning Rate: 8.727963568087727e-05, Validation Accuracy: 0.72126
+Epoch [46/50], Training Loss: 2.875156809547848, Training Loss w/o Aux: 1.3241197648302327, Learning Rate: 7.855167211278955e-05, Validation Accuracy: 0.72126
+Epoch [47/50], Training Loss: 2.872717792259633, Training Loss w/o Aux: 1.3237110188474472, Learning Rate: 7.06965049015106e-05, Validation Accuracy: 0.7211
+Epoch [48/50], Training Loss: 2.8733062868364114, Training Loss w/o Aux: 1.3234326417349187, Learning Rate: 6.362685441135955e-05, Validation Accuracy: 0.72126
+Epoch [49/50], Training Loss: 2.866699873120745, Training Loss w/o Aux: 1.319371533514153, Learning Rate: 5.7264168970223595e-05, Validation Accuracy: 0.72196
+Epoch [50/50], Training Loss: 2.8675281612746115, Training Loss w/o Aux: 1.3208994945751846, Learning Rate: 5.153775207320124e-05, Validation Accuracy: 0.72276
+Accuracy after retraining: 0.7228
+Removing pruning masks ...
+
+Resetting the model to the initial state ...
+Accuracy before: 0.6994
+
+------------------- Pruning Input Channels of Modules with 0.6 -------------------
+
+Module: inception3a.branch1.conv, Pruned Input Channels: 0.5989583333333334
+Module: inception3a.branch2.0.conv, Pruned Input Channels: 0.5989583333333334
+Module: inception3a.branch2.1.conv, Pruned Input Channels: 0.59375
+Module: inception3a.branch3.0.conv, Pruned Input Channels: 0.5989583333333334
+Module: inception3a.branch3.1.conv, Pruned Input Channels: 0.5625
+Module: inception3a.branch4.1.conv, Pruned Input Channels: 0.5989583333333334
+Module: inception3b.branch1.conv, Pruned Input Channels: 0.59765625
+Module: inception3b.branch2.0.conv, Pruned Input Channels: 0.59765625
+Module: inception3b.branch2.1.conv, Pruned Input Channels: 0.59375
+Module: inception3b.branch3.0.conv, Pruned Input Channels: 0.59765625
+Module: inception3b.branch3.1.conv, Pruned Input Channels: 0.59375
+Module: inception3b.branch4.1.conv, Pruned Input Channels: 0.59765625
+Module: inception4a.branch1.conv, Pruned Input Channels: 0.6
+Module: inception4a.branch2.0.conv, Pruned Input Channels: 0.6
+Module: inception4a.branch2.1.conv, Pruned Input Channels: 0.59375
+Module: inception4a.branch3.0.conv, Pruned Input Channels: 0.6
+Module: inception4a.branch3.1.conv, Pruned Input Channels: 0.5625
+Module: inception4a.branch4.1.conv, Pruned Input Channels: 0.6
+Module: inception4b.branch1.conv, Pruned Input Channels: 0.599609375
+Module: inception4b.branch2.0.conv, Pruned Input Channels: 0.599609375
+Module: inception4b.branch2.1.conv, Pruned Input Channels: 0.5982142857142857
+Module: inception4b.branch3.0.conv, Pruned Input Channels: 0.599609375
+Module: inception4b.branch3.1.conv, Pruned Input Channels: 0.5833333333333334
+Module: inception4b.branch4.1.conv, Pruned Input Channels: 0.599609375
+Module: inception4c.branch1.conv, Pruned Input Channels: 0.599609375
+Module: inception4c.branch2.0.conv, Pruned Input Channels: 0.599609375
+Module: inception4c.branch2.1.conv, Pruned Input Channels: 0.59375
+Module: inception4c.branch3.0.conv, Pruned Input Channels: 0.599609375
+Module: inception4c.branch3.1.conv, Pruned Input Channels: 0.5833333333333334
+Module: inception4c.branch4.1.conv, Pruned Input Channels: 0.599609375
+Module: inception4d.branch1.conv, Pruned Input Channels: 0.599609375
+Module: inception4d.branch2.0.conv, Pruned Input Channels: 0.599609375
+Module: inception4d.branch2.1.conv, Pruned Input Channels: 0.5972222222222222
+Module: inception4d.branch3.0.conv, Pruned Input Channels: 0.599609375
+Module: inception4d.branch3.1.conv, Pruned Input Channels: 0.59375
+Module: inception4d.branch4.1.conv, Pruned Input Channels: 0.599609375
+Module: inception4e.branch1.conv, Pruned Input Channels: 0.5984848484848485
+Module: inception4e.branch2.0.conv, Pruned Input Channels: 0.5984848484848485
+Module: inception4e.branch2.1.conv, Pruned Input Channels: 0.6
+Module: inception4e.branch3.0.conv, Pruned Input Channels: 0.5984848484848485
+Module: inception4e.branch3.1.conv, Pruned Input Channels: 0.59375
+Module: inception4e.branch4.1.conv, Pruned Input Channels: 0.5984848484848485
+Module: inception5a.branch1.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5a.branch2.0.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5a.branch2.1.conv, Pruned Input Channels: 0.6
+Module: inception5a.branch3.0.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5a.branch3.1.conv, Pruned Input Channels: 0.59375
+Module: inception5a.branch4.1.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5b.branch1.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5b.branch2.0.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5b.branch2.1.conv, Pruned Input Channels: 0.5989583333333334
+Module: inception5b.branch3.0.conv, Pruned Input Channels: 0.5997596153846154
+Module: inception5b.branch3.1.conv, Pruned Input Channels: 0.5833333333333334
+Module: inception5b.branch4.1.conv, Pruned Input Channels: 0.5997596153846154
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.5711
+Accuracy after pruning every module with 0.6: 0.0010
+Epoch [1/50], Training Loss: 6.68365795341497, Training Loss w/o Aux: 3.4796619429575455, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.2657
+Epoch [2/50], Training Loss: 5.047752977834857, Training Loss w/o Aux: 2.559141521401929, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.36834
+Epoch [3/50], Training Loss: 4.562066177040776, Training Loss w/o Aux: 2.3093081600171295, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.4097
+Epoch [4/50], Training Loss: 4.290783563900308, Training Loss w/o Aux: 2.1709867001818495, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.44888
+Epoch [5/50], Training Loss: 4.107862505906588, Training Loss w/o Aux: 2.0800724855752266, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.47448
+Epoch [6/50], Training Loss: 3.9672376978277075, Training Loss w/o Aux: 2.0085394115926314, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.48868
+Epoch [7/50], Training Loss: 3.8654218338171624, Training Loss w/o Aux: 1.9572730786865413, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.51734
+Epoch [8/50], Training Loss: 3.780349971078733, Training Loss w/o Aux: 1.9137426934788688, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.52502
+Epoch [9/50], Training Loss: 3.7096724639299543, Training Loss w/o Aux: 1.878462577666516, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.53652
+Epoch [10/50], Training Loss: 3.647200454852359, Training Loss w/o Aux: 1.8461356551774148, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.56178
+Epoch [11/50], Training Loss: 3.5892370251440147, Training Loss w/o Aux: 1.8150037485517718, Learning Rate: 0.003138105960900002, Validation Accuracy: 0.56178
+Epoch [12/50], Training Loss: 3.5371323605852893, Training Loss w/o Aux: 1.7869375238100338, Learning Rate: 0.0028242953648100018, Validation Accuracy: 0.57926
+Epoch [13/50], Training Loss: 3.5015569424722113, Training Loss w/o Aux: 1.768011247889004, Learning Rate: 0.0025418658283290017, Validation Accuracy: 0.58736
+Epoch [14/50], Training Loss: 3.4515227096184877, Training Loss w/o Aux: 1.7397887552162068, Learning Rate: 0.0022876792454961017, Validation Accuracy: 0.59892
+Epoch [15/50], Training Loss: 3.417958127641216, Training Loss w/o Aux: 1.7218441306943242, Learning Rate: 0.0020589113209464917, Validation Accuracy: 0.61
+Epoch [16/50], Training Loss: 3.388542918537699, Training Loss w/o Aux: 1.7058499577114759, Learning Rate: 0.0018530201888518425, Validation Accuracy: 0.60986
+Epoch [17/50], Training Loss: 3.361184203668793, Training Loss w/o Aux: 1.6899585703153188, Learning Rate: 0.0016677181699666583, Validation Accuracy: 0.62294
+Epoch [18/50], Training Loss: 3.333479024942539, Training Loss w/o Aux: 1.675574175734324, Learning Rate: 0.0015009463529699924, Validation Accuracy: 0.62534
+Epoch [19/50], Training Loss: 3.307504265562544, Training Loss w/o Aux: 1.6601194592965258, Learning Rate: 0.0013508517176729932, Validation Accuracy: 0.62762
+Epoch [20/50], Training Loss: 3.284643183198529, Training Loss w/o Aux: 1.6469847009141243, Learning Rate: 0.001215766545905694, Validation Accuracy: 0.6412
+Epoch [21/50], Training Loss: 3.2669435480708353, Training Loss w/o Aux: 1.6371172503915767, Learning Rate: 0.0010941898913151245, Validation Accuracy: 0.63982
+Epoch [22/50], Training Loss: 3.244564166970872, Training Loss w/o Aux: 1.6228986283034184, Learning Rate: 0.0009847709021836122, Validation Accuracy: 0.6458
+Epoch [23/50], Training Loss: 3.2264659419999706, Training Loss w/o Aux: 1.6131877873146114, Learning Rate: 0.0008862938119652509, Validation Accuracy: 0.64702
+Epoch [24/50], Training Loss: 3.2096620203910597, Training Loss w/o Aux: 1.6030278464323133, Learning Rate: 0.0007976644307687258, Validation Accuracy: 0.65388
+Epoch [25/50], Training Loss: 3.197423362579483, Training Loss w/o Aux: 1.5963321076976822, Learning Rate: 0.0007178979876918532, Validation Accuracy: 0.65912
+Epoch [26/50], Training Loss: 3.1792437639826243, Training Loss w/o Aux: 1.5848858649883848, Learning Rate: 0.0006461081889226679, Validation Accuracy: 0.6609
+Epoch [27/50], Training Loss: 3.169246143079421, Training Loss w/o Aux: 1.578797630275662, Learning Rate: 0.0005814973700304011, Validation Accuracy: 0.665
+Epoch [28/50], Training Loss: 3.1558615063225095, Training Loss w/o Aux: 1.5712008158135622, Learning Rate: 0.0005233476330273611, Validation Accuracy: 0.66902
+Epoch [29/50], Training Loss: 3.1418905785086393, Training Loss w/o Aux: 1.5616397853140136, Learning Rate: 0.000471012869724625, Validation Accuracy: 0.67104
+Epoch [30/50], Training Loss: 3.1342116971987326, Training Loss w/o Aux: 1.5572273342601546, Learning Rate: 0.0004239115827521625, Validation Accuracy: 0.67286
+Epoch [31/50], Training Loss: 3.127494716015428, Training Loss w/o Aux: 1.5537225936590369, Learning Rate: 0.00038152042447694626, Validation Accuracy: 0.6764
+Epoch [32/50], Training Loss: 3.1145731885660206, Training Loss w/o Aux: 1.5453181056450362, Learning Rate: 0.00034336838202925164, Validation Accuracy: 0.67566
+Epoch [33/50], Training Loss: 3.105663899263429, Training Loss w/o Aux: 1.539841417255596, Learning Rate: 0.0003090315438263265, Validation Accuracy: 0.67864
+Epoch [34/50], Training Loss: 3.099323613646743, Training Loss w/o Aux: 1.5358199062899094, Learning Rate: 0.00027812838944369386, Validation Accuracy: 0.6792
+Epoch [35/50], Training Loss: 3.0939090021817353, Training Loss w/o Aux: 1.5328540098227659, Learning Rate: 0.0002503155504993245, Validation Accuracy: 0.6823
+Epoch [36/50], Training Loss: 3.0900585015630706, Training Loss w/o Aux: 1.530121354024624, Learning Rate: 0.00022528399544939206, Validation Accuracy: 0.68296
+Epoch [37/50], Training Loss: 3.08484947453942, Training Loss w/o Aux: 1.5267264816010435, Learning Rate: 0.00020275559590445286, Validation Accuracy: 0.68452
+Epoch [38/50], Training Loss: 3.0783278948301462, Training Loss w/o Aux: 1.5230019815271343, Learning Rate: 0.00018248003631400757, Validation Accuracy: 0.68634
+Epoch [39/50], Training Loss: 3.075229315672474, Training Loss w/o Aux: 1.5210105994743643, Learning Rate: 0.00016423203268260683, Validation Accuracy: 0.6865
+Epoch [40/50], Training Loss: 3.068678922736093, Training Loss w/o Aux: 1.516187939095752, Learning Rate: 0.00014780882941434616, Validation Accuracy: 0.68604
+Epoch [41/50], Training Loss: 3.0597681515532926, Training Loss w/o Aux: 1.5108862498838211, Learning Rate: 0.00013302794647291155, Validation Accuracy: 0.68742
+Epoch [42/50], Training Loss: 3.055327720748805, Training Loss w/o Aux: 1.5083976010543052, Learning Rate: 0.00011972515182562039, Validation Accuracy: 0.68818
+Epoch [43/50], Training Loss: 3.057820279229734, Training Loss w/o Aux: 1.5109002118594688, Learning Rate: 0.00010775263664305835, Validation Accuracy: 0.68752
+Epoch [44/50], Training Loss: 3.053365230226817, Training Loss w/o Aux: 1.5077313784298119, Learning Rate: 9.697737297875251e-05, Validation Accuracy: 0.6916
+Epoch [45/50], Training Loss: 3.0511542106915788, Training Loss w/o Aux: 1.5059139842884157, Learning Rate: 8.727963568087727e-05, Validation Accuracy: 0.69056
+Epoch [46/50], Training Loss: 3.050434708106957, Training Loss w/o Aux: 1.5053439284731118, Learning Rate: 7.855167211278955e-05, Validation Accuracy: 0.69152
+Epoch [47/50], Training Loss: 3.044931867499251, Training Loss w/o Aux: 1.5023035429695744, Learning Rate: 7.06965049015106e-05, Validation Accuracy: 0.68894
+Epoch [48/50], Training Loss: 3.0391947430489554, Training Loss w/o Aux: 1.4977510184517082, Learning Rate: 6.362685441135955e-05, Validation Accuracy: 0.69208
+Epoch [49/50], Training Loss: 3.0406366484852887, Training Loss w/o Aux: 1.4994427816042928, Learning Rate: 5.7264168970223595e-05, Validation Accuracy: 0.69238
+Epoch [50/50], Training Loss: 3.0376725856902205, Training Loss w/o Aux: 1.4971819369808899, Learning Rate: 5.153775207320124e-05, Validation Accuracy: 0.6921
+Accuracy after retraining: 0.6921
+Removing pruning masks ...
+
+Resetting the model to the initial state ...
+Accuracy before: 0.6994
+
+------------------- Pruning Input Channels of Modules with 0.8 -------------------
+
+Module: inception3a.branch1.conv, Pruned Input Channels: 0.796875
+Module: inception3a.branch2.0.conv, Pruned Input Channels: 0.796875
+Module: inception3a.branch2.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception3a.branch3.0.conv, Pruned Input Channels: 0.796875
+Module: inception3a.branch3.1.conv, Pruned Input Channels: 0.75
+Module: inception3a.branch4.1.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch1.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch2.0.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch2.1.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch3.0.conv, Pruned Input Channels: 0.796875
+Module: inception3b.branch3.1.conv, Pruned Input Channels: 0.78125
+Module: inception3b.branch4.1.conv, Pruned Input Channels: 0.796875
+Module: inception4a.branch1.conv, Pruned Input Channels: 0.8
+Module: inception4a.branch2.0.conv, Pruned Input Channels: 0.8
+Module: inception4a.branch2.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception4a.branch3.0.conv, Pruned Input Channels: 0.8
+Module: inception4a.branch3.1.conv, Pruned Input Channels: 0.75
+Module: inception4a.branch4.1.conv, Pruned Input Channels: 0.8
+Module: inception4b.branch1.conv, Pruned Input Channels: 0.798828125
+Module: inception4b.branch2.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4b.branch2.1.conv, Pruned Input Channels: 0.7946428571428571
+Module: inception4b.branch3.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4b.branch3.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception4b.branch4.1.conv, Pruned Input Channels: 0.798828125
+Module: inception4c.branch1.conv, Pruned Input Channels: 0.798828125
+Module: inception4c.branch2.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4c.branch2.1.conv, Pruned Input Channels: 0.796875
+Module: inception4c.branch3.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4c.branch3.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception4c.branch4.1.conv, Pruned Input Channels: 0.798828125
+Module: inception4d.branch1.conv, Pruned Input Channels: 0.798828125
+Module: inception4d.branch2.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4d.branch2.1.conv, Pruned Input Channels: 0.7986111111111112
+Module: inception4d.branch3.0.conv, Pruned Input Channels: 0.798828125
+Module: inception4d.branch3.1.conv, Pruned Input Channels: 0.78125
+Module: inception4d.branch4.1.conv, Pruned Input Channels: 0.798828125
+Module: inception4e.branch1.conv, Pruned Input Channels: 0.7992424242424242
+Module: inception4e.branch2.0.conv, Pruned Input Channels: 0.7992424242424242
+Module: inception4e.branch2.1.conv, Pruned Input Channels: 0.8
+Module: inception4e.branch3.0.conv, Pruned Input Channels: 0.7992424242424242
+Module: inception4e.branch3.1.conv, Pruned Input Channels: 0.78125
+Module: inception4e.branch4.1.conv, Pruned Input Channels: 0.7992424242424242
+Module: inception5a.branch1.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5a.branch2.0.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5a.branch2.1.conv, Pruned Input Channels: 0.8
+Module: inception5a.branch3.0.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5a.branch3.1.conv, Pruned Input Channels: 0.78125
+Module: inception5a.branch4.1.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5b.branch1.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5b.branch2.0.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5b.branch2.1.conv, Pruned Input Channels: 0.796875
+Module: inception5b.branch3.0.conv, Pruned Input Channels: 0.7992788461538461
+Module: inception5b.branch3.1.conv, Pruned Input Channels: 0.7916666666666666
+Module: inception5b.branch4.1.conv, Pruned Input Channels: 0.7992788461538461
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.7617
+Accuracy after pruning every module with 0.8: 0.0010
+Epoch [1/50], Training Loss: 6.961000028696555, Training Loss w/o Aux: 3.7419940369364286, Learning Rate: 0.009000000000000001, Validation Accuracy: 0.2237
+Epoch [2/50], Training Loss: 5.277547740545624, Training Loss w/o Aux: 2.7663334451458743, Learning Rate: 0.008100000000000001, Validation Accuracy: 0.32612
+Epoch [3/50], Training Loss: 4.7422441607505865, Training Loss w/o Aux: 2.467772548045535, Learning Rate: 0.007290000000000001, Validation Accuracy: 0.38884
+Epoch [4/50], Training Loss: 4.448600404399986, Training Loss w/o Aux: 2.308872054061257, Learning Rate: 0.006561000000000002, Validation Accuracy: 0.41126
+Epoch [5/50], Training Loss: 4.242953558498859, Training Loss w/o Aux: 2.19696991191614, Learning Rate: 0.005904900000000002, Validation Accuracy: 0.44296
+Epoch [6/50], Training Loss: 4.09729557440395, Training Loss w/o Aux: 2.118784171275557, Learning Rate: 0.005314410000000002, Validation Accuracy: 0.46556
+Epoch [7/50], Training Loss: 3.975531065710561, Training Loss w/o Aux: 2.053082302479206, Learning Rate: 0.004782969000000002, Validation Accuracy: 0.48124
+Epoch [8/50], Training Loss: 3.89006079001936, Training Loss w/o Aux: 2.0084826717582516, Learning Rate: 0.004304672100000002, Validation Accuracy: 0.50706
+Epoch [9/50], Training Loss: 3.8079729602581995, Training Loss w/o Aux: 1.9638236520149597, Learning Rate: 0.003874204890000002, Validation Accuracy: 0.5201
+Epoch [10/50], Training Loss: 3.738600454221823, Training Loss w/o Aux: 1.9264947870344844, Learning Rate: 0.003486784401000002, Validation Accuracy: 0.55038
+Epoch [11/50], Training Loss: 3.6803170890524166, Training Loss w/o Aux: 1.8944315215974126, Learning Rate: 0.003138105960900002, Validation Accuracy: 0.54628
+Epoch [12/50], Training Loss: 3.6240900646426577, Training Loss w/o Aux: 1.863920934682174, Learning Rate: 0.0028242953648100018, Validation Accuracy: 0.55658
+Epoch [13/50], Training Loss: 3.578451135106372, Training Loss w/o Aux: 1.8371296784941853, Learning Rate: 0.0025418658283290017, Validation Accuracy: 0.57244
+Epoch [14/50], Training Loss: 3.5346083182985577, Training Loss w/o Aux: 1.8134397596421568, Learning Rate: 0.0022876792454961017, Validation Accuracy: 0.57734
+Epoch [15/50], Training Loss: 3.4988322583858946, Training Loss w/o Aux: 1.7928313085851595, Learning Rate: 0.0020589113209464917, Validation Accuracy: 0.5893
+Epoch [16/50], Training Loss: 3.462742001946745, Training Loss w/o Aux: 1.7723742334001107, Learning Rate: 0.0018530201888518425, Validation Accuracy: 0.59014
+Epoch [17/50], Training Loss: 3.433344308497939, Training Loss w/o Aux: 1.7553058991316424, Learning Rate: 0.0016677181699666583, Validation Accuracy: 0.60642
+Epoch [18/50], Training Loss: 3.4028959146852746, Training Loss w/o Aux: 1.737706292317528, Learning Rate: 0.0015009463529699924, Validation Accuracy: 0.6133
+Epoch [19/50], Training Loss: 3.377407187907676, Training Loss w/o Aux: 1.72313217682514, Learning Rate: 0.0013508517176729932, Validation Accuracy: 0.61594
+Epoch [20/50], Training Loss: 3.3550197004807414, Training Loss w/o Aux: 1.7099872710333444, Learning Rate: 0.001215766545905694, Validation Accuracy: 0.62562
+Epoch [21/50], Training Loss: 3.329169027859401, Training Loss w/o Aux: 1.6942265709269022, Learning Rate: 0.0010941898913151245, Validation Accuracy: 0.63398
+Epoch [22/50], Training Loss: 3.3175705120701426, Training Loss w/o Aux: 1.6878404117557169, Learning Rate: 0.0009847709021836122, Validation Accuracy: 0.63546
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 457446.0 ON galvani-cn126 CANCELLED AT 2024-07-02T16:30:18 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 457446 ON galvani-cn126 CANCELLED AT 2024-07-02T16:30:18 DUE TO TIME LIMIT ***

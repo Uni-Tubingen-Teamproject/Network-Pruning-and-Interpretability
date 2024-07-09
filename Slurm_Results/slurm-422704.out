@@ -1,0 +1,70 @@
+JobId=422704 JobName=act_collect
+   UserId=wzz745(4834) GroupId=wichmann(4014) MCS_label=N/A
+   Priority=74296 Nice=0 Account=wichmann QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:00 TimeLimit=2-06:00:00 TimeMin=N/A
+   SubmitTime=2024-06-17T16:53:42 EligibleTime=2024-06-17T16:53:42
+   AccrueTime=2024-06-17T16:53:42
+   StartTime=2024-06-17T16:53:42 EndTime=2024-06-19T22:53:42 Deadline=N/A
+   PreemptEligibleTime=2024-06-17T16:54:42 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-06-17T16:53:42 Scheduler=Main
+   Partition=2080-galvani AllocNode:Sid=galvani-slurmctl:876414
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=galvani-cn106
+   BatchHost=galvani-cn106
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1
+   AllocTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1,gres/gpu:rtx2080ti=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=40G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/test.sh
+   WorkDir=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability
+   StdErr=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-422704.out
+   StdIn=/dev/null
+   StdOut=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-422704.out
+   Power=
+   TresPerNode=gres:gpu:1
+   MailUser=jonathan.vonrad@gmail.com MailType=BEGIN,END,FAIL
+   
+
+Using cache found in /home/wichmann/wzz745/.cache/torch/hub/pytorch_vision_v0.10.0
+/usr/local/lib/python3.8/dist-packages/torchvision/models/googlenet.py:341: UserWarning: auxiliary heads in the pretrained googlenet model are NOT pretrained, so make sure to train them
+  warnings.warn(
+Accuracy before pruning: 69.772
+Training for 10 epochs with learning rate 0.01 and optimizer <class 'torch.optim.adam.Adam'> and scheduler <class 'torch.optim.lr_scheduler.ExponentialLR'>
+
+########## Global Unstructured L1 Pruning Iteratively ##########
+
+Accuracy before: 0.69772
+Non-zero params before Pruning: 5718464, Total params: 5718464
+Relative Pruning Rate: 0.4
+Relative Pruning Rate:  0.4
+Absolute Pruning Rate:  0.4
+Actual Pruning Rate: 0.44231335547447703
+Accuracy:  0.66244
+Starting training...
+Epoch [1/10], Training Loss: 10.43776922083044, Learning Rate: 0.009000000000000001
+Epoch [2/10], Training Loss: 10.11353804457795, Learning Rate: 0.008100000000000001
+Epoch [3/10], Training Loss: 10.009817547850556, Learning Rate: 0.007290000000000001
+Epoch [4/10], Training Loss: 9.900996718373332, Learning Rate: 0.006561000000000002
+Epoch [5/10], Training Loss: 9.819282196094463, Learning Rate: 0.005904900000000002
+Epoch [6/10], Training Loss: 9.746057832300604, Learning Rate: 0.005314410000000002
+Epoch [7/10], Training Loss: 9.674482771352336, Learning Rate: 0.004782969000000002
+Epoch [8/10], Training Loss: 9.60594593242451, Learning Rate: 0.004304672100000002
+Epoch [9/10], Training Loss: 9.533738276246305, Learning Rate: 0.003874204890000002
+Epoch [10/10], Training Loss: 9.473089612090028, Learning Rate: 0.003486784401000002
+Accuracy after retraining: 5.2
+Relative Pruning Rate: 0.4
+Relative Pruning Rate:  0.4
+Absolute Pruning Rate:  0.64
+Actual Pruning Rate: 0.5854145448847803
+Accuracy:  0.052
+Starting training...
+Epoch [1/10], Training Loss: 9.752497197340775, Learning Rate: 0.009000000000000001
+Epoch [2/10], Training Loss: 9.694314448578613, Learning Rate: 0.008100000000000001
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 422704 ON galvani-cn106 CANCELLED AT 2024-06-18T19:51:57 ***
+slurmstepd: error: *** STEP 422704.0 ON galvani-cn106 CANCELLED AT 2024-06-18T19:51:57 ***
