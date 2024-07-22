@@ -181,6 +181,58 @@ def load_pruning_rates(file_path):
     return pruning_rates
 
 
+def pruneSpecificLocalStructuredLNPruningNoRetraining(validation_loader, model, n):
+    initial_state = copy.deepcopy(model.state_dict())
+    accuracy = validate(model, validation_loader)
+
+    print(f"\n########## Specific Local Structured L{n} Pruning ##########\n")
+    print(f"Accuracy before: {accuracy}")
+
+    excluded_modules = ["conv1.conv", "conv2.conv",
+                        "conv3.conv", "aux1.conv.conv", "aux2.conv.conv"]
+
+    excluded_modules = ["conv1.conv", "conv2.conv",
+                        "conv3.conv", "aux1.conv.conv", "aux2.conv.conv"]
+
+    rates = [0.2, 0.4, 0.6, 0.8]
+
+    for rate in rates:
+        
+        accuracy = validate(model, validation_loader)
+        print("Accuracy before: ", accuracy)
+
+        print(
+            f"\n------------------- Pruning Modules with {rate} -------------------\n")
+        for module_name, module in model.named_modules():
+            if hasattr(module, 'weight') and isinstance(module, torch.nn.Conv2d):
+
+                if module_name in excluded_modules:
+                    continue
+
+                # Prune the module
+                prune.ln_structured(
+                    module, name='weight', amount=rate, n=n, dim=0)
+
+        print("\n--------------------------------------------------------\n")
+
+        non_zero_params, total_params = count_nonzero_params(model)
+        print(f"Actual Pruning Rate: {1 - non_zero_params / total_params}")
+
+        # Assess the accuracy and store it
+        accuracy = validate(model, validation_loader)
+        print(f"Accuracy after pruning every module with {rate}: ", accuracy)
+
+        print("removing pruning masks ...")
+        removePruningMasks(model, excluded_modules)
+
+        # Save the final pruned and retrained model
+        optimizer_name = optimizer.__class__.__name__
+        torch.save(model, f'pruned_{rate}_local_structured_not_retrained_model.pth')
+        print(f"Final pruned and retrained model saved as pruned_{rate}_local_structured_not_retrained_model.pth")
+
+        print("\nResetting the model to the initial state ...")
+        model.load_state_dict(initial_state)
+
 def pruneSpecificLocalStructuredLNPruning(validation_loader, model, n):
     initial_state = copy.deepcopy(model.state_dict())
     pruning_rates_file = "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/Pruning_Rates/pruning_rates_local_structured_l1.json"
@@ -621,46 +673,44 @@ def prune_channels(module, channels_to_prune):
     module.weight.data.mul_(mask)
 
 
-def prune_specific_local_connection_sparsity(validation_loader, model):
+def prune_channels_by_l1_norm(module, pruning_rate):
+    # Calculate the L1 norm of each input channel
+    l1_norms = torch.sum(torch.abs(module.weight.data), dim=(0, 2, 3))
+    # Determine the number of channels to prune
+    num_prune = int(module.weight.data.shape[1] * pruning_rate)
+    # Get indices of the channels with the lowest L1 norms
+    channels_to_prune = torch.argsort(l1_norms)[:num_prune]
+    # Prune the selected input channels
+    prune_channels(module, channels_to_prune)
 
+
+def prune_specific_local_connection_sparsity(validation_loader, model):
     initial_state = copy.deepcopy(model.state_dict())
     accuracy = validate(model, validation_loader)
-
     print(f"\n########## Specific Local Connection Sparsity Pruning ##########\n")
     print(f"Accuracy before: {accuracy:.4f}")
 
     excluded_modules = ["conv1.conv", "conv2.conv",
                         "conv3.conv", "aux1.conv.conv", "aux2.conv.conv"]
-
-    rates = [0.8]
+    rates = [0.2, 0.4, 0.6, 0.8]
     epochen = [50]
 
     for epochs in epochen:
         for rate in rates:
-            accuray_before = validate(model, validation_loader)
-            print(f"Accuracy before: {accuray_before:.4f}")
+            accuracy_before = validate(model, validation_loader)
+            print(f"Accuracy before: {accuracy_before:.4f}")
             print(
                 f"\n------------------- Pruning Input Channels of Modules with {rate} -------------------\n")
+
             for module_name, module in model.named_modules():
-                if hasattr(module, 'weight') and isinstance(module, torch.nn.Conv2d):
-
-                    if module_name in excluded_modules:
-                        continue
-
-                    weight = module.weight.detach().cpu().numpy()
-                    num_input_channels = weight.shape[1]
-                    num_prune = int(num_input_channels * rate)
-
-                    # Zufälliges Entfernen von Verbindungen (Input Channels)
-                    channels_to_prune = np.random.choice(
-                        num_input_channels, num_prune, replace=False)
-
-                    # Prune the selected input channels
-                    prune_channels(module, channels_to_prune)
-
-                    print(f"Module: {module_name}, Pruned Input Channels: {len(channels_to_prune) / num_input_channels}")
+                if hasattr(module, 'weight') and isinstance(module, torch.nn.Conv2d) and module_name not in excluded_modules:
+                    # Apply L1 norm pruning
+                    prune_channels_by_l1_norm(module, rate)
+                    print(
+                        f"Module: {module_name}, Pruned Input Channels: {rate:.2f}")
 
             print("\n--------------------------------------------------------\n")
+
 
             non_zero_params, total_params = count_nonzero_params(model)
             print(f"Actual Pruning Rate: {1 - non_zero_params / total_params:.4f}")
@@ -693,7 +743,8 @@ def prune_specific_local_connection_sparsity(validation_loader, model):
 
 # pruneSpecificLocalUnstructuredL1(val_loader, model, epochs)
 # prune_specific_local_connection_sparsity(val_loader, model)
-pruneSpecificLocalStructuredLNPruning(val_loader, model, 1)
+#pruneSpecificLocalStructuredLNPruning(val_loader, model, 1)
 # pruneSpecificLocalStructuredLNPruningSuccessively(val_loader, model, 1)
 #globalUnstructuredL1Pruning(val_loader, model)
+pruneSpecificLocalStructuredLNPruningNoRetraining(val_loader, model, 1)
 print("Finished pruning, retraining, and evaluation.")
