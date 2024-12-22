@@ -14,6 +14,24 @@ from ffcv_dataloaders import create_train_loader, create_test_loader
 import wandb
 
 
+################## Pruning and Retraining the GoogLeNet Model on ImageNet ##################
+
+##### Uncomment the desired pruning method at the bottom of the code and run the script. ########
+## 
+## Pruning Methods:
+## 1. Local Unstructured 
+## 2. Local Structured 
+## 3. Local Structured Successive/Iterative Pruning
+## 4. Local Connection Sparsity Pruning (Pruning Input Channels)
+## 5. Global Unstructured Pruning
+## 6. Local Structured Pruning without Retraining
+##
+## Change Filepaths in the code to the desired paths.
+## 
+##################################################################################################
+
+
+# Set the path to the FFCV dataset
 FFCV_PATH = "/mnt/lustre/datasets/ImageNet-ffcv"
 
 # Check if CUDA is available and set device to GPU if available
@@ -741,10 +759,22 @@ def prune_specific_local_connection_sparsity(validation_loader, model):
             model.load_state_dict(initial_state)
 
 
+##### Uncomment the desired pruning method at the bottom of the code and run the script. ########
+##
+# Pruning Methods:
+# 1. Local Unstructured
+# 2. Local Structured
+# 3. Local Structured Successive/Iterative Pruning
+# 4. Local Connection Sparsity Pruning (Pruning Input Channels)
+# 5. Global Unstructured Pruning
+# 6. Local Structured Pruning without Retraining
+##
+##################################################################################################
+
 # pruneSpecificLocalUnstructuredL1(val_loader, model, epochs)
-# prune_specific_local_connection_sparsity(val_loader, model)
-#pruneSpecificLocalStructuredLNPruning(val_loader, model, 1)
+# pruneSpecificLocalStructuredLNPruning(val_loader, model, 1)
 # pruneSpecificLocalStructuredLNPruningSuccessively(val_loader, model, 1)
-#globalUnstructuredL1Pruning(val_loader, model)
-pruneSpecificLocalStructuredLNPruningNoRetraining(val_loader, model, 1)
+# prune_specific_local_connection_sparsity(val_loader, model)
+# globalUnstructuredL1Pruning(val_loader, model)
+# pruneSpecificLocalStructuredLNPruningNoRetraining(val_loader, model, 1)
 print("Finished pruning, retraining, and evaluation.")
