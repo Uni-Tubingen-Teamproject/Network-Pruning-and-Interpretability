@@ -1,0 +1,110 @@
+JobId=420856 JobName=act_collect
+   UserId=wzz745(4834) GroupId=wichmann(4014) MCS_label=N/A
+   Priority=83370 Nice=0 Account=wichmann QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:00 TimeLimit=2-06:00:00 TimeMin=N/A
+   SubmitTime=2024-06-15T12:07:26 EligibleTime=2024-06-15T12:07:26
+   AccrueTime=2024-06-15T12:07:27
+   StartTime=2024-06-15T12:07:27 EndTime=2024-06-17T18:07:27 Deadline=N/A
+   PreemptEligibleTime=2024-06-15T12:08:27 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-06-15T12:07:27 Scheduler=Main
+   Partition=2080-galvani AllocNode:Sid=galvani-slurmctl:2002355
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=galvani-cn115
+   BatchHost=galvani-cn115
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=30G,node=1,billing=2,gres/gpu=1
+   AllocTRES=cpu=8,mem=30G,node=1,billing=2,gres/gpu=1,gres/gpu:rtx2080ti=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=30G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/test.sh
+   WorkDir=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability
+   StdErr=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-420856.out
+   StdIn=/dev/null
+   StdOut=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-420856.out
+   Power=
+   TresPerNode=gres:gpu:1
+   
+
+Using cache found in /home/wichmann/wzz745/.cache/torch/hub/pytorch_vision_v0.10.0
+/usr/local/lib/python3.8/dist-packages/torchvision/models/googlenet.py:341: UserWarning: auxiliary heads in the pretrained googlenet model are NOT pretrained, so make sure to train them
+  warnings.warn(
+Accuracy before pruning: 69.772
+
+########## Specific Local Structured L1 Pruning ##########
+
+Accuracy before: 0.69772
+
+------------------- Pruning Modules -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.05
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.05
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.08
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.03
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.14
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.03
+Module: inception3b.branch1.conv, Pruning Rate: 0.05
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.05
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.05
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.08
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.19
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.08
+Module: inception4a.branch1.conv, Pruning Rate: 0.08
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.11
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.11
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.16
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.03
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.05
+Module: inception4b.branch1.conv, Pruning Rate: 0.08
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.08
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.11
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.24
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.11
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.11
+Module: inception4c.branch1.conv, Pruning Rate: 0.05
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.05
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.05
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.24
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.24
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.05
+Module: inception4d.branch1.conv, Pruning Rate: 0.05
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.05
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.08
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.19
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.19
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.05
+Module: inception4e.branch1.conv, Pruning Rate: 0.08
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.08
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.08
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.14
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.19
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.14
+Module: inception5a.branch1.conv, Pruning Rate: 0.08
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.03
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.05
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.16
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.16
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.11
+Module: inception5b.branch1.conv, Pruning Rate: 0.19
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.03
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.16
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.05
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.24
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.24
+
+--------------------------------------------------------
+
+Avg Pruning Rate: 0.1
+Actual Pruning Rate: 0.09391612852682119
+Average Pruning Accuracy:  0.1  Accuracy:  0.34728
+Starting training...
+Epoch [1/10], Training Loss: 6.4364476095784555, Learning Rate: 0.0009000000000000001
+/usr/local/lib/python3.8/dist-packages/torch/optim/lr_scheduler.py:139: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+Epoch [2/10], Training Loss: 5.946645259571361, Learning Rate: 0.0008100000000000001
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 420856 ON galvani-cn115 CANCELLED AT 2024-06-15T14:01:17 ***
+slurmstepd: error: *** STEP 420856.0 ON galvani-cn115 CANCELLED AT 2024-06-15T14:01:17 ***

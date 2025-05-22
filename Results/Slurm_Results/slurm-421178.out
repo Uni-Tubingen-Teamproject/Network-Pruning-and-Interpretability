@@ -1,0 +1,143 @@
+JobId=421178 JobName=act_collect
+   UserId=wzz745(4834) GroupId=wichmann(4014) MCS_label=N/A
+   Priority=83370 Nice=0 Account=wichmann QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:01 TimeLimit=2-06:00:00 TimeMin=N/A
+   SubmitTime=2024-06-15T19:33:12 EligibleTime=2024-06-15T19:33:12
+   AccrueTime=2024-06-15T19:33:12
+   StartTime=2024-06-15T19:33:12 EndTime=2024-06-18T01:33:12 Deadline=N/A
+   PreemptEligibleTime=2024-06-15T19:34:12 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-06-15T19:33:12 Scheduler=Main
+   Partition=2080-galvani AllocNode:Sid=galvani-slurmctl:1207911
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=galvani-cn105
+   BatchHost=galvani-cn105
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=30G,node=1,billing=2,gres/gpu=1
+   AllocTRES=cpu=8,mem=30G,node=1,billing=2,gres/gpu=1,gres/gpu:rtx2080ti=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=30G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/test.sh
+   WorkDir=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability
+   StdErr=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-421178.out
+   StdIn=/dev/null
+   StdOut=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-421178.out
+   Power=
+   TresPerNode=gres:gpu:1
+   MailUser=jonathan.vonrad@gmail.com MailType=BEGIN,END,FAIL
+   
+
+Using cache found in /home/wichmann/wzz745/.cache/torch/hub/pytorch_vision_v0.10.0
+/usr/local/lib/python3.8/dist-packages/torchvision/models/googlenet.py:341: UserWarning: auxiliary heads in the pretrained googlenet model are NOT pretrained, so make sure to train them
+  warnings.warn(
+Accuracy before pruning: 69.772
+
+########## Specific Local Unstructured L1 Pruning Successively ##########
+
+Accuracy before: 0.69772
+Non-zero params before Pruning: 5718464, Total params: 5718464
+
+------------------- Pruning Modules -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.2
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.24
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.32
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.32
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.36
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.24
+Module: inception3b.branch1.conv, Pruning Rate: 0.28
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.28
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.32
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.36
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.32
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.28
+Module: inception4a.branch1.conv, Pruning Rate: 0.24
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.32
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.36
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.36
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.24
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.24
+Module: inception4b.branch1.conv, Pruning Rate: 0.28
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.36
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.32
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.36
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.32
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.32
+Module: inception4c.branch1.conv, Pruning Rate: 0.28
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.28
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.32
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.36
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.36
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.28
+Module: inception4d.branch1.conv, Pruning Rate: 0.32
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.28
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.32
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.36
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.36
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.32
+Module: inception4e.branch1.conv, Pruning Rate: 0.28
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.28
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.32
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.36
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.32
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.28
+Module: inception5a.branch1.conv, Pruning Rate: 0.28
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.32
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.28
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.36
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.28
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.28
+Module: inception5b.branch1.conv, Pruning Rate: 0.32
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.28
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.28
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.32
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.36
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.36
+
+--------------------------------------------------------
+
+Relative Pruning Rate:  0.3
+Absolute Pruning Rate:  0.3
+Actual Pruning Rate: 0.2906478033262079
+Accuracy:  0.68614
+Starting training...
+Traceback (most recent call last):
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/retraining.py", line 579, in <module>
+    pruneSpecificLocalUnstructuredL1Successively(validation_loader, model)
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/retraining.py", line 402, in pruneSpecificLocalUnstructuredL1Successively
+    train(model, train_loader, criterion, optimizer,
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/retraining.py", line 147, in train
+    outputs = model(images)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/torchvision/models/googlenet.py", line 174, in forward
+    x, aux1, aux2 = self._forward(x)
+  File "/usr/local/lib/python3.8/dist-packages/torchvision/models/googlenet.py", line 147, in _forward
+    x = self.inception4e(x)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/torchvision/models/googlenet.py", line 227, in forward
+    outputs = self._forward(x)
+  File "/usr/local/lib/python3.8/dist-packages/torchvision/models/googlenet.py", line 219, in _forward
+    branch2 = self.branch2(x)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/container.py", line 217, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/torchvision/models/googlenet.py", line 274, in forward
+    x = self.bn(x)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/batchnorm.py", line 171, in forward
+    return F.batch_norm(
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/functional.py", line 2450, in batch_norm
+    return torch.batch_norm(
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 32.00 MiB (GPU 0; 10.75 GiB total capacity; 10.51 GiB already allocated; 13.62 MiB free; 10.54 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+srun: error: galvani-cn105: task 0: Exited with exit code 1
+srun: Terminating StepId=421178.0
+DONE.

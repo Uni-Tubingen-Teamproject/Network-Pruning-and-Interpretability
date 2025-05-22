@@ -1,0 +1,137 @@
+JobId=456247 JobName=name
+   UserId=wzz745(4834) GroupId=wichmann(4014) MCS_label=N/A
+   Priority=78580 Nice=0 Account=wichmann QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:01 TimeLimit=3-00:00:00 TimeMin=N/A
+   SubmitTime=2024-06-28T15:08:48 EligibleTime=2024-06-28T15:08:48
+   AccrueTime=2024-06-28T15:08:48
+   StartTime=2024-06-28T15:08:48 EndTime=2024-07-01T15:08:48 Deadline=N/A
+   PreemptEligibleTime=2024-06-28T15:09:48 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-06-28T15:08:48 Scheduler=Main
+   Partition=2080-galvani AllocNode:Sid=galvani-slurmctl:3578282
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=galvani-cn116
+   BatchHost=galvani-cn116
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1
+   AllocTRES=cpu=8,mem=40G,node=1,billing=2,gres/gpu=1,gres/gpu:rtx2080ti=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=40G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/ffcv.sh
+   WorkDir=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability
+   StdErr=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-456247.out
+   StdIn=/dev/null
+   StdOut=/mnt/qb/home/wichmann/wzz745/Network-Pruning-and-Interpretability/slurm-456247.out
+   Power=
+   TresPerNode=gres:gpu:1
+   MailUser=jonathan.sakouhi@gmail.com MailType=BEGIN,END,FAIL
+   
+
+/usr/local/lib/python3.10/dist-packages/numba/np/ufunc/parallel.py:371: NumbaWarning: The TBB threading layer requires TBB version 2021 update 6 or later i.e., TBB_INTERFACE_VERSION >= 12060. Found TBB_INTERFACE_VERSION = 12050. The TBB threading layer is disabled.
+  warnings.warn(problem)
+Train loader created in 12.47137713432312 seconds
+Using cache found in /home/wichmann/wzz745/.cache/torch/hub/pytorch_vision_v0.10.0
+/usr/local/lib/python3.10/dist-packages/torchvision/models/googlenet.py:341: UserWarning: auxiliary heads in the pretrained googlenet model are NOT pretrained, so make sure to train them
+  warnings.warn(
+wandb: Currently logged in as: jonathan-vonrad (jonathan-von-rad). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /home/wichmann/wzz745/.netrc
+wandb: wandb version 0.17.3 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.11
+wandb: Run data is saved locally in /home/wichmann/wzz745/Network-Pruning-and-Interpretability/wandb/run-20240628_150914-7squj59u
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run stilted-plant-7
+wandb: ⭐️ View project at https://wandb.ai/jonathan-von-rad/my-awesome-project
+wandb: 🚀 View run at https://wandb.ai/jonathan-von-rad/my-awesome-project/runs/7squj59u
+Train loader created in 0.23045587539672852 seconds
+Training for 10 epochs with learning rate 0.01 and optimizer <class 'torch.optim.sgd.SGD'> and scheduler <class 'torch.optim.lr_scheduler.ExponentialLR'>
+
+########## Specific Local Structured L1 Pruning ##########
+
+Accuracy before: 0.69938
+
+------------------- Pruning Modules with 0.2 -------------------
+
+Module: inception3a.branch1.conv, Pruning Rate: 0.2
+Module: inception3a.branch2.0.conv, Pruning Rate: 0.2
+Module: inception3a.branch2.1.conv, Pruning Rate: 0.2
+Module: inception3a.branch3.0.conv, Pruning Rate: 0.2
+Module: inception3a.branch3.1.conv, Pruning Rate: 0.2
+Module: inception3a.branch4.1.conv, Pruning Rate: 0.2
+Module: inception3b.branch1.conv, Pruning Rate: 0.2
+Module: inception3b.branch2.0.conv, Pruning Rate: 0.2
+Module: inception3b.branch2.1.conv, Pruning Rate: 0.2
+Module: inception3b.branch3.0.conv, Pruning Rate: 0.2
+Module: inception3b.branch3.1.conv, Pruning Rate: 0.2
+Module: inception3b.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4a.branch1.conv, Pruning Rate: 0.2
+Module: inception4a.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4a.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4a.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4a.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4a.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4b.branch1.conv, Pruning Rate: 0.2
+Module: inception4b.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4b.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4b.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4b.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4b.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4c.branch1.conv, Pruning Rate: 0.2
+Module: inception4c.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4c.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4c.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4c.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4c.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4d.branch1.conv, Pruning Rate: 0.2
+Module: inception4d.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4d.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4d.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4d.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4d.branch4.1.conv, Pruning Rate: 0.2
+Module: inception4e.branch1.conv, Pruning Rate: 0.2
+Module: inception4e.branch2.0.conv, Pruning Rate: 0.2
+Module: inception4e.branch2.1.conv, Pruning Rate: 0.2
+Module: inception4e.branch3.0.conv, Pruning Rate: 0.2
+Module: inception4e.branch3.1.conv, Pruning Rate: 0.2
+Module: inception4e.branch4.1.conv, Pruning Rate: 0.2
+Module: inception5a.branch1.conv, Pruning Rate: 0.2
+Module: inception5a.branch2.0.conv, Pruning Rate: 0.2
+Module: inception5a.branch2.1.conv, Pruning Rate: 0.2
+Module: inception5a.branch3.0.conv, Pruning Rate: 0.2
+Module: inception5a.branch3.1.conv, Pruning Rate: 0.2
+Module: inception5a.branch4.1.conv, Pruning Rate: 0.2
+Module: inception5b.branch1.conv, Pruning Rate: 0.2
+Module: inception5b.branch2.0.conv, Pruning Rate: 0.2
+Module: inception5b.branch2.1.conv, Pruning Rate: 0.2
+Module: inception5b.branch3.0.conv, Pruning Rate: 0.2
+Module: inception5b.branch3.1.conv, Pruning Rate: 0.2
+Module: inception5b.branch4.1.conv, Pruning Rate: 0.2
+
+--------------------------------------------------------
+
+Actual Pruning Rate: 0.19134368949424185
+Accuracy after pruning every module with 0.2:  0.00368
+Traceback (most recent call last):
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/./retraining_ffcv.py", line 678, in <module>
+    # prune_specific_local_connection_sparsity(val_loader, model)
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/./retraining_ffcv.py", line 229, in pruneSpecificLocalStructuredLNPruning
+    scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/./retraining_ffcv.py", line 132, in train
+UnboundLocalError: local variable 'running_loss_without_aux' referenced before assignment
+Traceback (most recent call last):
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/./retraining_ffcv.py", line 678, in <module>
+    # prune_specific_local_connection_sparsity(val_loader, model)
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/./retraining_ffcv.py", line 229, in pruneSpecificLocalStructuredLNPruning
+    scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
+  File "/home/wichmann/wzz745/Network-Pruning-and-Interpretability/./retraining_ffcv.py", line 132, in train
+UnboundLocalError: local variable 'running_loss_without_aux' referenced before assignment
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb: - 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: \ 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: | 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: / 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: - 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: \ 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: | 0.009 MB of 0.009 MB uploaded (0.000 MB deduped)wandb: 🚀 View run stilted-plant-7 at: https://wandb.ai/jonathan-von-rad/my-awesome-project/runs/7squj59u
+wandb: ️⚡ View job at https://wandb.ai/jonathan-von-rad/my-awesome-project/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjIzMjI4NTA4OQ==/version_details/v2
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240628_150914-7squj59u/logs
+srun: error: galvani-cn116: task 0: Exited with exit code 1
+srun: Terminating StepId=456247.0
